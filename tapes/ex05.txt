@@ -1,0 +1,4 @@
+# tar tvf /dev/nst0
+backup/backup-paissandu.tar.bz2
+backup/backup-mysqld.tar.bz2
+# tar xf /dev/nst0 backup/backup-mysqld.tar.bz2

@@ -1,0 +1,12 @@
+SEX=Homem
+case $SEX in
+  Homem)
+    echo Sexo do individuo é Masculino
+    ;;
+  Mulher)
+    echo Sexo do individuo é Feminino
+    ;;
+  *)
+    echo Sexo do indiviudo é Desconhecido,
+    echo Será que está indeciso?
+esac

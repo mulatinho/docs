@@ -1,0 +1,999 @@
+ÍNDICE
+
+1. - A SHELL NO LINUX
+  1.1 - O que é uma shell?
+  1.2 - Principais tarefas da shell.
+
+2. - O BÁSICO DO BÁSICO.   
+  2.1 - Conectivos padrões e retornos lógicos.
+  2.2 - A matemática na shell.
+  2.3 - Tipos de parametros.
+
+3. - VARIÁVEIS
+  3.1 - Variáveis ambiente.
+  3.2 - Atribuindo comandos à variáveis.
+
+4. - ESTRUTURAS DE LOOP E CONDIÇÕES
+  4.1 - Usando loops.
+  4.2 - Fazendo condições.
+  
+5. - AVANÇANDO
+  5.1 - Redirecionando entrada/saída de dados.
+  5.2 - Usando comandos em background e adcionando interrupções.
+  5.3 - Alguns comandos: sed, cut, wc, od.
+  5.4 - Cores no terminal.
+
+6. - ARQUIVOS DE CONFIGURAÇÃO
+  6.1 - .bashrc
+  6.2 - .bash_history
+
+
+BIBLIOGRAFIA:
+-------------
+Programação Shell Linux, Júlio Cezar Neves, Brasport.
+The GNU Bash Reference Manual
+http://www.network-theory.co.uk/bash/manual/toc/
+
+AUTOR:
+------
+Alexandre Mulatinho,
+crudo@psl-pe.softwarelivre.org
+
+-EOF-
+ 
+ 
+
+1. A shell no Linux
+
+  A shell está no Linux desde o início e serve justamente  para executar os
+comandos com mais  eficiência  do que seriam  executados  se estivessem sem
+a organização que ela oferece.
+
+  O  Linux  desde o início foi  desenvolvido  em partes que formam um  todo
+utilizando um núcleo que chamamos de KERNEL,  essas partes são  pequenos ou
+grandes programas que utilizam  chamadas do kernel para realizar a  maioria
+de suas tarefas em conjunto ou separados. Digamos que se quisessemos copiar
+um  arquivo para outro  usariamos algo como o  comando cp ou se quisessemos 
+apenas modificar seu nome usariamos o comando mv. Para que tudo  fosse mais
+prático os seus desenvolvedores pensaram em algo que pudesse interpretar  e
+unir com mais facilidade esses comandos/programas, foi aí que originou-se a
+shell com o intuito de organizar estes  comandos, interpretando-os e também
+com uma poderosa linguagem de programação com o conjunto de seus programas.
+
+  O sistema operacional  UNIX e seus derivados como no nosso caso, o Linux,
+é composto por várias  "camadas".  A mais  interna  de  todas  elas é a que
+chamamos de  KERNEL ou núcleo,  ele é responsável por interagir diretamente
+com o HARDWARE simplesmente fornecendo o controle total para que o resto do
+sistema funcione, por exemplo quando escrevemos algo em um arquivo ou mesmo
+quando estamos lendo, o  KERNEL envia sinais para que o processador procure
+na trilha e no setor certo do disco onde está sendo gravado/lido certo dado
+que foi processado. 
+
+  Os programas  por  sua vez quando  são executados as vezes precisam que o 
+usuário forneça  dados como  argumentos ou opções,  no nosso terminal então
+precisamos de algo que  entenda  o que está sendo pedido e é  finalmente aí 
+onde entramos com a SHELL.
+
+
+
+1.1 O Que é uma shell?
+
+  Pra começo de conversa, no momento em que você se loga no sistema você já
+está numa SHELL. A SHELL é um meio pelo qual o usuário entra com dados para
+o sistema fazendo com que o  sistema  identifique esses dados e os converta 
+para o sistema operacional poder lê-los sem ter que resolvê-los, diminuindo
+assim o tempo que seria gasto se a  SHELL não interpretasse esses dados e o 
+deixasse para que o  kernel também fosse  resolvê-lo.  Tendo em vista esses 
+dados podemos dizer que a  SHELL é uma ferramenta poderosa que  usamos para
+interpretar nossos comandos antes de roda-los fazendo com que seja possível
+o uso de  parametros,  substituição de  strings,  modificação de  variáveis 
+ambiente, etc.  Também  vale ressaltar que a  shell  vem  com uma linguagem 
+poderosa, chamada shell script, que nos  permite utilizar laços de condição
+e processamento de certos dados, principalmente os de entrada e saída .
+
+
+
+1.2 Principais tarefas da Shell.
+
+  As principais tarefas  da nossa shell são compreender e organizar a linha 
+de comando que o usuário  envia na  entrada de dados, fazendo assim com que 
+os comandos executados rodem com mais performance e de um jeito muito  mais
+estruturado, depois de feito isso a  shell ordena de ESPAÇO  em ESPAÇO cada
+comando e argumento enviado, procurando-os na variável $PATH que contém  os
+caminhos onde o usuário em questão pode executar programas.
+  A shell  também é  capaz de  agir  como  um  interpretador  de  linguagem
+estruturada,  permitindo-nos  fazer scripts com a  mistura de comandos  que
+o sistema nos fornece. Podemos resumir então estes processos desta forma:
+ 
+  => A shell pega os dados e os interpreta antes de serem executados.
+  => Usa variáveis ambiente como o $PATH, que nos mostra os diretórios aos
+     quais o usuário tem acesso para execução de comandos.
+  => Processa como os dados vão sair e entrar corretamente (input/output).
+  => A nível de programação ela executa laços, condições, etc.
+
+
+
+2. O básico do básico.
+
+  Este capítulo é chamado de  básico do básico  porque relaciona coisas bem
+iniciantes  a nível de noções da  shell no Linux,  para obtermos  uma visão 
+correta é preciso ter noção de como funciona alguns comandos do  linux  que 
+estão diretamente ligados ao uso da nossa shell, por exemplo para listarmos
+o conteúdo de  um  diretório  não  precisamos  entrar  nele  para  ver seus 
+arquivos,  basta que usemos  o  comando de  listagem  com o  diretório como
+parametro, por exemplo:
+
+$ ls /home/alexandre/txtz/y0/
+bash.txt  plantz.txt  provas.txt  userfile.txt
+
+ou
+
+$ cd /home/alexandre/txtz/y0
+$ pwd
+/home/alexandre/txtz/y0
+$ ls
+bash.txt  plantz.txt  provas.txt  userfile.txt
+
+  Como podemos ver isso tudo é muito básico mas é necessário ter uma idéia 
+que estamos trabalhando com um  interpretador  de comandos que nos oferece 
+além  de  qualidade  para  entender  o  que  está  sendo  digitado  também
+praticidade e velocidade.  Vejamos como seria se eu quisesse me movimentar
+um diretório abaixo:
+
+$ cd ..
+$ pwd
+/home/alexandre/txtz
+$ ls -lh
+-rw-r--r--    1 alexandr users        307k Dec 22  2003 focalinux.txt
+drwxr-xr-x    2 alexandr users         200 Sep  3 12:01 y0
+
+ Vemos que descemos um diretório abaixo de onde estávamos usando o comando
+cd seguido de 2 pontos finais, a shell interpreta isso fazendo com que nós
+voltemos  um  diretório  do  orignal  a  qual  estávamos.  Uma  observação
+interessante a  se  comentar é que o diretório  y0  nada mais é  do que um 
+arquivo assim como todos os diretórios do linux, a diferença é a flagzinha
+'d' na sua permissão.
+
+  Outra coisa que devemos observar  é  que como na  matemática a  shell da
+preferência a opções que estejam entre parenteses, por exemplo:
+
+$ ls txtz/y0/
+bash.txt  file.txt  plantz.txt  provas.txt  userfile.txt
+$ pwd
+/home/alexandre
+$ ( cd txtz/y0/ ; cat file.txt )
+voce esta me lendo! ohh :~
+$ pwd
+/home/alexandre
+
+  Ué ? por que eu não fui pro diretorio txtz/y0/ ?  e como eu li o arquivo
+file.txt se ele estava dentro desse diretório e eu ainda continuo no $HOME
+CALMA!  Não foi nenhuma macumba..  o  que  aconteceu foi que a  shell  deu
+preferência ao comando entre parenteses,  executou o comando  em uma shell
+filho e retornou a shell normal matando a shell filho.
+  Outro tipo de forma pra mostramos como o parenteses está em preferência
+com a shell é usando um comando qualquer entre parenteses:
+
+$ echo "A versão do meu kernel é: $(uname -r)"
+A versão do meu kernel é: 2.4.26
+
+  Para saber como funciona essa  interpretação  de comandos  nós temos que 
+voltar a coisas bem iniciais  por isso  chamamos  essa parte de  básico do 
+básico, imaginemos então:
+
+$ ls 
+eu.txt voce.txt nos.txt vos.txt eles.txt
+
+  Temos  um  comando simples  'ls'  que quando  executado  na  shell 
+retorna os arquivos do diretorio em que estamos. Agora vejamos:
+
+$ ls e*
+eu.txt eles.txt
+  
+  Digitamos novamente o 'ls' sendo que com um argumento,  a primeira letra
+'e' seguida de um ASTERISCO,  a shell então  retorna todos os  arquivos do
+diretório que contém a primeira letra que indicamos mais TODO O RESTO, que
+é o que significa o asterisco. Vemos agora a utilidade das aspas no echo:
+
+$ echo 1 2 3...    VOCE  EH ESTA  APRENDENDO  BASH
+1 2 3... VOCE EH ESTA APRENDENDO BASH
+$ echo "1 2 3...    VOCE  EH ESTA  APRENDENDO  BASH"
+1 2 3...    VOCE  EH ESTA  APRENDENDO  BASH
+
+OBS: Veja que a mudança ocorre na saída do texto quando usamos às aspas.
+
+  Resumindo,  ela interpretou  o comando  antes de executa-lo, isso se faz
+muito útil para que você as vezes  não tenha que fazer vários comandos com
+um objetivo só ou as vezes queira  obter mais  performance. Por exemplo no 
+caso de interagir  com um ou mais comandos,  deve-se usar conectivos.
+
+
+
+2.1 Conectivos padrões e retornos lógicos.
+
+        TABELA DE CONECTIVOS                       TABELA VERDADE
++-----------+---------------------------------+   +---+---+------+
+| CONECTIVO | DESCRIÇÃO                       |   | A | B | A & B|
++-----------+---------------------------------+   +---+---+------+
+|     &     | AND (E) lógico.                 |   | 0 | 0 |  0   | 
+|     |     | DOUBLE PIPE (OU) lógico.        |   | 0 | 1 |  0   |
+|     |     | PIPE (OU) lógico.               |   | 1 | 0 |  0   |
++-----------+---------------------------------+   | 1 | 1 |  1   |
+                                                  +---+---+------+
+
+$ df -h
+Filesystem            Size  Used Avail Use% Mounted on
+/dev/hda1             9.8G  2.9G  6.9G  29% /
+/dev/hda4              14G  3.2G   10G  23% /mnt
+$ echo $?
+0
+
+  O duplo caracter $? (dólar,interrogação) retorna o valor do resultado do
+comando digitado na entrada, fornecendo  0 se o comando retornar OK e 1 se 
+ele  retornar com algum erro (observemos que é o inverso da tabela verdade 
+usada na lei de Boole). Com isso podemos usar os conectivos e colocar dois
+comandos numa linha apenas, por exemplo:
+
+$ cd /
+$ echo "Arquivos do diretório atual ($PWD):" && ls
+Arquivos do diretório atual (/):
+bin  boot  dev  etc  home  lib  mnt  opt  proc  root  sbin  tmp  usr  var
+
+ *OBS: Como o resultado do comando echo e do ls são 0 (e na tabela verdade 
+da shell o 0 representa LIGADO), indicando que eles retornaram  VERDADEIRO 
+os dois comandos são colocados na tela. O  $PWD  é uma variável do sistema 
+que será explicada depois ;)
+
+  Então já podemos dizer que a  tabela  VERDADE  da nossa shell ficaria da
+forma inversa da tabela original da lei de Boole.
+
+TABELA VERDADE DE EXECUÇÃO NA SHELL
+   +---+---+------+
+   | A | B | A&&B |          RETORNO:
+   +---+---+------+          --------
+   | 0 | 0 |  0   |          0 = OK. 
+   | 0 | 1 |  1   |          1 = ERRO.
+   | 1 | 0 |  1   |
+   | 1 | 1 |  1   |
+   +---+---+------+
+   
+  Ou seja, os dois comandos só seriam impressos na tela juntos se ambos os
+termos fossem  0  quanto ao seu resultado.  Agora vejamos se  no  primeiro 
+argumento  o resultado fosse maior que ou igual a 1,  e o próximo fosse  0
+usando o AND condicional ficaria:
+
+$ ls /root && echo "Fim do /root"
+ls: /root: Permission denied
+$ echo $?
+1
+
+ *OBS: O  1° argumento retorna um numero diferente de 0 fazendo com que  o
+      2° comando nao seja executado porque de acordo com a tabela  verdade
+      do AND condicional o 2° comando só executado se houvesse uma verdade
+      lógica ou um retorno 0;.
+
+ Temos:
+   $ ls /root
+   ls: /root: Permission denied
+   $ echo $?
+   1
+
+   $ echo "Fim do /root"
+   Fim do /root
+   $ echo $? 
+   0
+
+  Então:
+    1 && 0 => 1 (ERRO/DESLIGADO)
+  
+  Já no caso do PIPE (|), a prioridade dos argumentos sempre estão do lado
+direito(ou 2° argumento) é muito útil quando estamos lendo algo no console
+quando o texto é muito grande e precisamos realizar pausas pra leitura:
+
+$ cat /usr/doc/Linux-HOWTOs/Bash-Prompt-HOWTO | grep PS1
+
+ O comando cat é executado fazendo com que todo o arquivo seja impresso na
+tela embora com uma diferença, todo o texto é enviado para o comando grep,
+que por sua vez procura por strings no arquivo de entrada retornando apenas
+as linhas que contenham o argumento passado no comando 'grep' ;]
+
+
+
+2.2 A matemática da shell.
+
+  Temos várias  formas para realizarmos  calculos  matemáticos  na  shell, 
+podemos  simplesmente  usar  o comando  'expr'  ou  usar  cálculos  entre 
+parenteses com as definições de operadores da shell.
+
+TABELA DE OPERADORES
++-------+-----------------------------------------------+
+| VALOR | SIGNIFICADO                                   |
++-------+-----------------------------------------------+
+|   +   | Como na matemática, serve para somar números. |
+|   -   | Também como na matemática, subtrair.          |
+|   /   | Este é o operador para divisão de números.    |
+|   *   | Operador de multiplicação.                    |
+|   %   | Resto de uma divisão.                         |
+| == != | Igual e diferente.                            |
+| <= >= | Menor igual que, maior igual que.             |
++-------+-----------------------------------------------+
+
+  Podemos realizar operações usando o comando  expr mais os números e  que
+tipo de operadores queremos para realizar cálculos, ou simplesmente usar o
+echo $((CALCULO MATEMATICO)), onde dentro desses  DOIS parenteses, faremos
+o cálculo para ser armazenado ou impresso na tela. Exemplos:
+
+Fazer a soma de 4 + 5:
+  $ expr 4 + 5 
+  9
+
+A média aritmética de 20+15+10:
+  $ echo $(( (20+15+10) / 3 ))  
+  15
+
+Multiplicar 3 por 5:
+  $ expr 3 * 5
+  expr: syntax error
+
+  Ué!? O que houve de errado? bom, relembrando o início a shell interpreta 
+os  comandos antes de  executa-los, ela  entendeu o  ASTERISCO como usamos
+anteriormente  significando  QUALQUER COISA,  só  que isso  numa  operação
+matemática  não  faz  sentido.  O que fazer então?  temos  que proteger  o
+asterisco  da  shell pra  dar prioridade ao operador e não a interpretação 
+que a shell faz do asterisco normal.
+
+  Novamente, protegendo o asterisco, multiplicando 3 por 5:
+  $ expr 3 \* 5
+  15
+
+  Há  também outra forma de fazermos cálculos, usando a cálculadora padrão 
+do GNU a bc.  Como vimos, usando o PIPE podemos jogar uma informação no 2°
+argumento de um comando:
+
+$ echo "(4 * 27) + 21" | bc
+129
+
+  Usamos às aspas para proteger o parenteses da shell e jogamos a operação
+na calculadora bc que nos retorna o resultado rapidamente.
+
+
+
+2.3 Tipos de parâmetros.
+
+  O  uso de parametros é quase  constante  em uma linha de comando de uma
+pessoa  que esteja acostumada à shell,  eles tornam  tudo mais fácil e as
+vezes se fazem extremamente necessários.
+
+o> parametro de substituição de comando
+
+   para a shell saber onde executar os comandos é necessário uma forma de
+  procura por programas para executar no sistema, a variável $PATH indica 
+  onde  o  usuário  em  questão verá os diretorios separados por  ':'  do 
+  sistema aos quais ele obterá acesso à comandos.
+
+   podemos utilizar um parametro para executar comandos na  shell fazendo 
+  com que seu output saia na tela ou seja  armazenado em alguma variável,
+  a  shell bash  vai entender o que estiver  entre os parenteses  como um
+  comando de algum diretório do $PATH. 
+  
+
+  SINTAXE
+  
+    $(COMANDO)  => Abre uma subshell e executa o comando retornando a
+                   shell pai e saindo da subshell. 
+
+  ou 
+    
+    `comando`   => Executa um comando normal do sistema.
+
+
+  $ echo -e "todays fortune:\n $(fortune)"
+  todays fortune:
+    "All flesh is grass"
+    -- Isiah
+    Smoke a friend today.
+
+  $ SYSTEM=`uname -s`
+  $ echo "Sistema: $SYSTEM"
+  Sistema: Linux
+
+   voce pediu pra  a  shell imprimir uma frase, seguida  de  um  comando 
+  'fortune'  que faz parte  de  um  pacote  chamado  bsdgames, ele é bem
+  interessante,  é  composto  de  milhares  de  frases e  pensamentos de
+  filósofos,  autores de livros, etc.  já no segundo  exemplo usamos uma
+  variável SYSTEM para armazenar o retorno do comando  'uname -s' depois
+  imprimimos na tela.
+                    
+
+o> parametros com chaves
+  
+   as vezes queremos nos referir a um nome de arquivo em vários tipos de
+  extensão, ou fazer coisas do tipo,  para isso podemos ao  inves de ter 
+  que escrever toda a linha de comando repetidamente usamos as chaves.
+
+  $ echo m{a,e,o}ngo          ou         $ ls *.{bz2,txt}
+  mango mengo mongo                      IAO-paper.txt focalinux.txt
+                                         gcc-3.3.tar.bz2 retlib.txt
+
+   evitamos ter que  fazer repetições  na linha de comando  colocando as
+  sequencias necessarias entre chaves.
+
+
+o> outros parametros
+
+   podemos trocar strings de um parametro,  declaramos  ele desta forma:
+  ${PARAMETRO/STRING/NEWSTRING} ,  onde  STRING é a ocorrência  que você
+  deseja modificar e o NEWSTRING é a nova string que vai ficar.
+
+   $ STR="estou aprendendo a errar"
+   $ echo ${STR/errar/viver}
+   estou aprendendo a viver
+
+   ou se quisessemos ver o tamanho de caracteres de uma string, fariamos
+  assim ${#STRING}, onde STRING seria a variavel ou palavra/frase.
+  
+   $ echo $STR
+   estou aprendendo a errar
+   $ echo ${#STR}
+   24
+   
+   para  pegarmos  um  argumento  da  linha de comando usamos o carácter
+  dólar seguido da ordem do seu argumento, exemplo:
+
+  $ ./comando arg1 arg2 arg3
+    $1 ==> arg1
+    $2 ==> arg2
+    $3 ==> arg2
+
+
+3. Variáveis.
+
+  Uma coisa muito útil na  shell  é a possibilidade  de armazenamento de
+dados na memória,  fazendo isso podemos  atribuir à variaveis  saídas de
+comandos,  calculos aritméticos e  strings.  Para setar  uma variável na
+shell basta fazer:
+
+  $ A=1
+  $ B=HELLO
+  $ C="HELLO WORLD"
+
+  $ echo $A $B $C
+  1 HELLO HELLO WORLD
+
+  Veja que dessa vez não usamos o DÓLAR para setar a variável A,B,C esse
+dólar só vai ser  colocado  quando quisermos que a shell retorne o valor 
+da variável.  Para remover a variável do sistema é só fazer:
+  
+  $ unset C
+  $ echo $C
+
+
+3.1 Variáveis ambiente.
+  
+  Há uma série de variáveis padrões definidas  pela SHELL quando você se 
+loga nela,  estas servem para organizar de forma mais eficiente tudo que 
+o usuário tem acesso, pode fazer e quer saber. Vamos ver algumas delas:
+
+$HOME    => Indica o diretório raiz do usuário que esta logado na shell.
+$PATH    => Diretórios aos quais o usuário tem acesso à comandos.
+$PWD     => Diretório onde o usuário se encontra.
+$USER    => Usuário logado na shell.
+
+  Para vermos todas elas usamos o comando 'export' que serve também para
+setar as variáveis ambiente na shell. Para ver todas:
+
+  $ export 
+  .........................
+
+Para setar:
+
+  $ export VAR="Conteúdo"
+  $ echo $VAR
+  Conteúdo
+  
+
+3.2 Atribuindo comandos à variáveis.
+
+  Podemos  utilizar as variáveis também para armazenar  saída de comandos
+do sistema, para isso colocamos o comando entre crases, vejamos exemplos:
+
+  $ cd txtz/y0/
+  $ pwd
+  /home/alexandre/txtz/y0
+  $ var=`ls`
+  $ echo $var
+  bash.txt file.txt plantz.txt provas.txt slides.txt userfile.txt
+
+  Entramos no diretório e setamos uma variável 'var' com o valor da saída
+do comano 'ls', depois imprimimos o valor com o comando echo.
+
+  $ proc=`cat /proc/cpuinfo | grep "model name" | cut -d" " -f4-10`
+  $ echo "PROCESSADOR: $proc"
+  PROCESSADOR: Athlon(tm) XP 1700+
+
+
+
+4. Estrutura de loops e condições.
+
+  Podemos elaborar processos repetidas vezes de acordo com a condição que
+desejarmos, usando as estruturas de loop e condições começamos a falar de
+shell script que nada mais é do que uma forma estruturada de organizar os
+comandos do sistema utilizando tudo que aprendemos em conjunto(variáveis,
+comandos, retornos de comandos, etc).
+  Há diferença entre  eles é que os loops executam uma certa sequencia de
+comandos  digitados  pelo  programador até que  aconteça  algo  que  será
+processado e  de  acordo  com o  tipo de  loop,  terminado ou continuado,
+enquanto as condições esperam que o programa  receba algo e de acordo com
+um teste que foi previsto pelo programador anteriormente execute um bloco
+de códigos ou não.
+  Para  setar  um  arquivo  como  shell script deve-se  coloca-lo com uma
+permissão de execução, fazendo:
+ 
+  $ chmod +x arquivo
+  $ ./arquivo
+
+  Tendo em vista isto, temos também que entender que no shell script os
+operadores para condições matemáticas tambem mudam, exemplo:
+
+| OPERADOR | SIGNIFICADO                                 |
++----------+---------------------------------------------+
+|   -lt    | less than (menor que).                      |
+|   -le    | less or equal than (menor ou igual que).    |
+|   -gt    | greater than (maior que).                   |
+|   -ge    | greater or equal than (maior ou igual que). |
+|   -eq    | equal than (igual que).                     |
+|   -ne    | not equal (diferente de).                   |
++----------+---------------------------------------------+
+ 
+  Também é  bom lembrar  que  num arquivo shell script,  a primeira linha
+deverá sempre ser a declaração da shell em que estamos programando:
+
+  #!/bin/bash
+
+
+4.1 Usando loops.
+
+  Os loops  servem entre  outras coisas para executar um bloco de códigos
+até que um teste seja atingido, vejamos alguns tipos de loop:
+
+  o> until
+
+    SINTAXE
+      
+      until [ 'TESTE' ] ; do
+        CÓDIGO....
+      done
+  
+    O comando until serve para executar um laço até o seu  TESTE  retorne
+  um valor diferente diferente de 0 (ou seja, até que o teste seja falso)
+  
+  #!/bin/bash
+  IN=10
+
+  until [ $IN -lt 4 ] ; do
+    echo "LOOP: $IN"
+    IN=`expr $IN - 2`
+  done
+  
+  $ ./until   
+  LOOP REVERSO: 10
+  LOOP REVERSO: 8
+  LOOP REVERSO: 6
+  LOOP REVERSO: 4
+      
+
+  o> while
+
+    SINTAXE
+
+      while [ 'TESTE' ] ; do
+        CÓDIGO...
+      done
+       
+     Fazendo o inverso do until, o comando while executa o CÓDIGO até que
+   o retorno de seu TESTE seja igual a 0 (ou seja verdadeiro), exemplo:
+  
+   #!/bin/bash
+   IN=0
+
+   while [ $IN -lt 4 ] ; do
+     echo "LOOP: $IN"
+     IN=`expr $IN + 1`
+   done
+  
+   $ ./while
+   LOOP: 0
+   LOOP: 1
+   LOOP: 2
+   LOOP: 3
+
+
+  o> for
+
+    SINTAXE
+
+      for (( expr1 ; expr2; expr3 )) ; do
+        CÓDIGO...   
+      done
+
+     Onde temos o primeiro modo de utilizar o for na shell, o expr1 é um
+   valor que será  atribuido à uma variável, o expr2 é um teste que será
+   feito até que seu resultado seja verdadeiro, fazendo com que  o bloco
+   de código seja executado repitidamente e expr3 será o que  será feito
+   quando o teste for  verdadeiro,  poucos usam o for desta forma embora
+   na minha opnião seja mais eficiente. Por exemplo:
+ 
+   #!/bin/bash
+   for (( i=0 ; i<5 ; i++ )); do
+     echo "loop: $i"
+   done
+  
+   $ ./for
+   loop: 0
+   loop: 1
+   loop: 2
+   loop: 3
+   loop: 4
+  
+  
+       
+4.2 Fazendo condições.
+
+  É necessário fazer condições quando  recebemos  algo da entrada de um
+usuário e queremos realizar um TESTE com esses dados para ver qual rumo
+o programa deve tomar.  Vamos usar dois tipos de  comandos básicos para
+execução de condições, são eles:
+
+  o> if-then-else
+  
+    SINTAXE
+    
+    if [ 'TESTE' ] ; then
+      CÓDIGO...
+    fi
+
+      Executa o TESTE, se ele for verdadeiro executa o bloco de CÓDIGO
+    senão sai sem executar nada dentro do if.
+      
+
+    if [ 'TESTE' ] ; then
+      CÓDIGO...
+    elif [ 'TESTEDOIS' ] ; then
+      CÓDIGO DOIS...
+    fi
+
+      Executa o TESTE, aciona o bloco de CÓDIGO se o resultado do teste
+    for verdadeiro.. depois executa o TESTEDOIS e se for verdadeiro ele
+    executa o bloco de CÓDIGO DOIS.
+    
+
+    if [ 'TESTE' ] ; then
+      CÓDIGO...
+    else 
+      CÓDIGO DOIS...
+    then
+
+      Aqui ele executa o TESTE, entra no bloco de CÓDIGO se o resultado
+    do teste for verdadeiro, senão ele entre no bloco de CÓDIGO DOIS.
+
+
+    #!/bin/bash
+    IN=$1
+
+    if [ "$1" == "Mulher" ] ; then
+      echo "Olá senhorita :)~"
+    elif [ "$1" == "Homem" ] ; then
+      echo "Como vai meu bom homem?"
+    else
+      echo "Escolha sua opção sexual rapaz!"
+    fi
+
+    $ ./ifthenelse
+    Escolha sua opção sexual rapaz!
+    $ ./ifthenelse Homem
+    Como vai meu bom homem?
+    $ ./ifthenelse Mulher
+    Ola senhorita :)~
+    
+              
+
+  o> case
+    
+    SINTAXE
+    
+    case ARG in
+      PS1) 
+        CÓDIGO
+        ;;
+      
+      PS2)
+        CÓDIGO DOIS
+        ;;
+    esac
+
+      Aqui  o  teste  ocorre  em  cima  de  ARG,  o case explode várias
+    possíveis alternativas que podem ser PS1,  PS2,  PS3, ..., PSN. Uma
+    boa função  do  case  é  poder  fazer  essas  possibilidades usando 
+    meta-caracteres.
+
+    #!/bin/bash
+    IN=$1
+
+    case $IN in
+      [a-c])
+        echo "Tu és homem!"
+        ;;
+      [d-f])
+        echo "Tu és mulher!"
+        ;;
+      [0-9])
+        echo "Tá confuso?"
+        ;;
+    esac
+
+    $ ./case b
+    Tu és homem!
+    $ ./case 3
+    Tá confuso?
+
+                                  
+
+5. Avançando.
+
+  Nesta   parte  vamos  começar  a  complicar  mais  um  pouquinho  pra
+descomplicar  bem muito, hã? é isso mesmo, aqui  vamos  mostrar  alguns
+comandos que a  maioria nem  chega perto  mas que são úteis demais para
+um shell scripter.
+
+
+5.1 Redirecionando entrada/saída de dados.
+
+ Podemos direcionar como os dados irão entrar e como irão sair em nossa
+shell usando operadores, para começarmos a fazer isso devemos lembrar
+os 3 tipos padrões de entrada/saída de dados, são eles:
+
+ (0 ou STDIN) => Standard Input (Entrada Padrão).
+(1 ou STDOUT) => Standard Output (Saída Padrão).
+(2 ou STDERR) => Standard Error (Saída de erro padrão).
+
+ Tendo em mente isso, usamos operadores para o redirecionamento que são
+parecidos com os símbolos da matemática:
+
+| OP | SIGNIFICADO                                                    |
++----+----------------------------------------------------------------+
+| N> |  Onde N, é o valor da saída de dados (1 ou 2), fazendo com que |
+|    | o redirecionamento da saída seja feito há direita do operador. |
+|  > |  Envia os dados para arquivo, criando-o caso não existe ou     |
+|    | apagando seu conteúdo anterior e adcionando novo, caso exista. |
+| >> |  Aqui há o redirecionamento de dados para o FINAL do arquivo   |
+|    | caso exista, ou uma criação de arquivo, caso não exista.       |
+| <  |  Setamos na shell que a entrada padrão não irá vir do teclado  |
+|    | e sim do arquivo em questão.                                   |
+| << |  Indicamos um LABEL para o começo de uma linha fazendo com que |
+|    | a linha só termine quando houver a proxima ocorrência do LABEL |
++----+----------------------------------------------------------------+
+
+$ echo "Ohh! voce me leu :~" > file.txt
+$ cat file.txt
+Ohh! voce me leu :~
+
+$ echo "Que trágico!" >> file.txt
+$ cat file.txt
+Ohh! voce me leu :~
+Que trágico!
+
+$ tr e i < file.txt 
+Ohh! voci mi liu :~
+Qui trágico!
+
+$ mount /dev/cdrom /mnt/cdrom 2> error.txt
+$ cat error.txt 
+mount: only root can do that
+
+
+5.2 Usando comandos em background e adcionando interrupções
+
+  Podemos rodar comandos em modo background., que significaria mais ou
+menos que executamos um comando  deixando-o numa file de espera, então
+ele  em alguns  programas  que  precisam  de  entrada  de dados só irá 
+executar suas funções quando agente o chamar no sistema.
+
+$ vim file.txt &
+[1] 22956
+ Î   Î 
+ `---|-------- 1 = First Job (Primeiro trabalho.)
+     '--- 22956 = PID (Process ID).
+
+
+  Vêmos que ele carregou o programa  numa subshell, mas não executou a
+sua função que era de editar o arquivo,  para fazermos isso, digitamos
+
+$ fg 1
+
+  E então o ID do processo em background sairá da subshell e virá para
+nossa shell principal, podemos fazer isso várias vezes.
+
+  Outra  coisa  muito  útil  é que podemos  adcionar  interrupções  ou
+simplesmente modifica-las de acordo com o nosso interesse, para agente
+começar a mecher nos sinais devemos é claro, entendê-los:
+
+0  => Saída normal do programa.
+1  => Sinal de quando se recebe um kill -HUP
+2  => Interrupção forçada pelo teclado CTRL+C.
+15 => Sinal de interrupção de programa quando se é kilado. (kill PID).
+
+  Isso é muito útil quando fazemos um  programa e queremos ter certeza
+que o usuário não fará a besteira de  termina-lo  usando  CTRL+C ou se 
+fizer nós termos como ajeitar sua trapalhada, por exemplo:
+
+$ trap "echo THE POWER OF TRAP" 2
+
+
+5.3 Alguns comandos: sed, cut, wc, od.
+
+  Aqui vamos ver alguns comandos que são  muito úteis quando  se esta 
+trabalhando  com arquivos,  é importante  domina-los  para  uma maior
+velocidade e eficiência.
+
+  o> sed
+
+    SINTAXE
+
+      sed <OPCAO> <EXPRESSÃO> <ARQUIVO>
+
+    EXPRESSÂO
+     
+      SUBSTITUIÇÃO
+
+      sed 's/FRASE/NOVA/' <ARQUIVO>
+
+        Usando sed podemos substituir FRASE(strings, números, frases)
+      por uma NOVA palavra ou frase, vejamos um exemplo simples:
+      
+      $ cat file.txt
+      batatinha quando nasce, esparrama pelo chão.
+      $ sed 's/esparrama/cai/' file.txt
+      batatinha quando nasce, cai pelo chão.i
+
+    EXPRESSÃO
+
+      EXCLUIR
+
+      sed 'X,Yd' <ARQUIVO>
+
+        Não imprime linhas de X à Y.
+
+      sed '/PALAVRA/d' <ARQUIVO>
+
+        Não imprime linhas que contém PALAVRA.
+
+        $ cat file.txt
+        Linux comanda o mundo.
+        Windows comanda o mundo.
+        Freebsd comanda o mundo.
+        
+        $ sed '2,3d' file.txt
+        Linux comanda o mundo.
+
+        $ sed '/Windows/d' file.txt
+        Linux comanda o mundo.
+        Freebsd comanda o mundo.
+
+     EXPRESSÃO
+
+       NEGAR
+
+       sed -n .... <ARQUIVO>
+
+       $ sed -n '/Windows/!p'
+       Linux comanda o mundo.
+       Freebsd comanda o mundo.
+       
+
+  o> cut
+
+    Serve para separar de acordo  com o seu DELIMITADOR as palavras e
+  imprimir apenas o que é pedido. 
+
+    SINTAXE
+
+      cut <OPTION> <ARQUIVO>
+
+    OPÇÕES
+
+      -d  => Usado para definir qual vai ser o delimitador.
+      -fN => De acordo com o delimitador, a Nª palavra.
+
+  $ cat /etc/passwd | cut -d":" -f1
+  root
+  bin
+  daemon
+  adm
+  lp
+  sync
+  .......
+  
+    
+  o> wc
+    
+    Este comando serve para imprimir a quantidade de bytes, palavras
+  e linhas de um arquivo, é geralmente usado depois de um PIPE.
+
+    SINTAXE 
+    
+      wc <OPCOES> <ARQUIVO>
+
+    OPÇÕES
+
+      -l  => quantidade de linhas
+      -w  => quantidade de palavras
+      -c  => quantidade de bytes (caracteres).
+
+  $ wc -l file.txt
+        2 file.txt
+  $ wc -c file.txt
+       34 file.txt
+  
+  
+  o> od
+    
+    O comando od  serve  para imprimir  um arquivo de  acordo com uma
+  especificação dada pelo usuário,  podemos imprimir um arquivo texto
+  com suas letras em formato hexadecimal, octal, etc.
+
+    SINTAXE 
+
+      od <OPCOES> <ARQUIVO>
+
+    OPÇÕES
+    
+      -h  => imprime letras e números em hexadecimal.
+      -o  => imprime letras e números em octal.
+  
+  $ od -h file.txt
+  0000000 684f 2168 7620 636f 2065 656d 6c20 7565
+  0000020 3a20 0a7e 7551 2065 7274 67e1 6369 5c6f
+  0000040 0a21
+  0000042
+  
+  
+
+5.4 Cores no terminal.
+
+  Podemos  sim  adcionar  cores  para dar ênfase  a  alguma frase  ou 
+enfeitar nossos programas shell,  usamos então uma definição especial 
+para isso, um caracter  ESC seguido de  uma [ mais códigos de cores e 
+terminando por uma barra  invertida seguida de um m,  ']m', vejamos a 
+lista de códigos para suas cores:
+
+| TEXTO | FUNDO | COR               |   | CÓDIGO | SIGNIFICADO   |
++-------+-------+-------------------+   +--------+---------------+
+|   30  |   40  | Preto (cinza).    |   |   0    | Desliga tudo. |
+|   31  |   41  | Vermelho.         |   |   1    | Negrito.      |
+|   32  |   42  | Verde.            |   |   5    | Pisca pisca.  |
+|   33  |   43  | Marrom (amarelo). |   |   7    | Reverso.      |
+|   34  |   44  | Azul.             |   +--------+---------------+
+|   35  |   45  | Roxo.             |
+|   36  |   46  | Ciano.            |   *OBS: ESC == \033 (Octal)
+|   37  |   47  | Cinza (branco).   |
++-------+-------+-------------------+
+
+$ echo -e "\033[40;31;1mSPORT RECIFE\033[m"
+$ echo -e "\033[45;33;1mCOLORIDO GAY\033[m"
+
+
+6. Arquivos de configuração.
+
+  Estes arquivos servem para quando iniciarmos a shell, carregarmos  ou
+executarmos váriaveis/programas, mudarmos o prompt, adcionarmos aliases
+e várias outras opções.
+
+  o> .bashrc
+    
+    Este arquivo é executado assim que logamos na shell, podemos então
+  utiliza-lo para setar o prompt, adcionar aliases padrões, etc.
+    
+  o> .bash_history
+
+    Este é o arquivo onde ficama a história dos processados pela shell
+  no sistema, ele fica no diretório $HOME do usuário.

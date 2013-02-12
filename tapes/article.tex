@@ -1,0 +1,108 @@
+\documentclass[10pt,a4paper,oneside,titlepage]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx,url,geometry,verbatim,fancyvrb,ifpdf,indentfirst}
+
+\geometry{verbose,a4paper,tmargin=3cm,bmargin=2cm,lmargin=3cm,rmargin=2cm,headsep=5mm,footskip=0cm}
+
+\begin{document}
+
+\begin{center}
+\textsf{\Huge{Gravando Dados em Fitas Dat}}\\
+\small{Alexandre Mulatinho - <crudovisk at gmail.com>}\\[5mm]
+\end{center}
+
+Fitas DAT ainda são essencias para gravar backups em empresas que tem grande volume de
+dados para serem armazenados, hoje em dia temos fitas com capacidade de 400GB (quatrocentos
+gigabytes) as vezes até mais do que precisamos no dia-a-dia. Para operar estes processos de
+backups precisamos de hardwares especializados em Backup, no nosso caso nos basearemos
+principalmente no \textsf{\emph{Sun StorEdge C4}}, e utilizaremos como base de todo o processo
+duas ferramentas: o \textsf{\emph{mt}} e \textsf{\emph{mtx}}. Isso não quer dizer que você
+não possa aplicar o mesmo conhecimento para outros storages.\\[2mm]
+
+O StorEdge C4 da Sun Microsystems têm uma controladora SCSI que serve principalmente para
+controlar o braço robótico que posiciona e transfere as fitas no drive ou slot, além disso ele
+tem dois drivers para gravação e leitura de dados e 38 posições para fitas, ou seja, você tem
+a opção de carregá-lo com trinta e oito fitas para backups.\\[2mm]
+
+Utilizaremos também aqui o comando \textsf{\emph{tar}} que servirá tanto para gravar ou extrair
+dados e listar o conteúdo das fitas, e o comando \textsf{\emph{file}} para saber que tipo de
+arquivos estão gravados em cada posição que selecionamos manualmente ou de forma automatizada
+dentro das fitas.\\[2mm]
+
+A primeira coisa que devemos fazer é habilitar os dispositivos no linux, precisando então
+fazer com que ele seja reconhecido pelo kernel, para tal devemos ter carregados fixos no kernel
+ou como módulos alguns suportes:
+
+\begin{itemize}
+\item SCSI - Driver para utilizar dispositivos SCSI que utilizaremos principalmente para fazer
+com que o braço robô fique ativo para movimentação da fita. Ele gera o dispositivo SCSI de 
+nome \textsf{\emph{/dev/sg0, /dev/sg1, ...}} (Módulo: \textsf{\emph{scsi}})
+\item ST - Storage Tapes. Este é o suporte responsável por reconhecer como dispositivo os
+drives de fitas DAT. Ele gera os dispositivos \textsf{\emph{/dev/st0*, /dev/st1*, /dev/nst0*,
+/dev/nst1*}}.\footnote{Os dispositivos nst0 e st0 se referem respectivamente há uso de um driver em modo \textbf{no rewind} (não rebobina a fita nst0) e \textbf{rewind} (rebobina a fita st0)} (Módulo: \textsf{\emph{st}})
+\end{itemize}
+
+Após termos estes suportes no kernel do Linux, poderemos enxerga-los utilizando o comando do
+linux \textsf{\emph{dmesg}} que mostra os dispositivos que foram reconhecidos no sistema
+operacional. Para vermos se o braço está ligado e em modo de operação devemos executar o
+comando e obter uma saída semelhante à abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex01.txt}
+\end{center}
+
+O que a saída está dizendo fica claro com uma boa interpretação no texto, temos um dispositivo
+/dev/sg0 (o braço robótico) que é chamado de \textsf{\emph{Medium Changer}} ou \textsf{\emph{
+Storage Changer}} e ele tem dois drivers vazios (Empty), ou seja, sem cartuchos no slot de
+gravação ou leitura, além de termos 38 slots completos com cartuchos esperando serem posicionados
+para gravação ou leitura de dados.\\[2mm]
+
+A transferência de cartuchos deve ser feita com a \textsf{\emph{biblioteca desligada}}, para
+posicionarmos um cartucho no driver de gravação leitura, ou transferirmos ele de posição utilizamos
+o \textsf{\emph{/dev/sg0}} (braço robótico), um exemplo pode ser visto abaixo mostrando como carregar
+um driver com um cartucho e descarregá-lo:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex02.txt}
+carregando driver com o argumento \textbf{load} e descarregando com o \textbf{unload}
+\end{center}
+
+Já para vêrmos se existe um cartucho no driver e ele está disponível para gravação ou extração de dados
+sem estar fisicamente presente com o hardware, utilizamos o comando abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex03.txt}
+\end{center}
+
+A flag \textbf{ONLINE} indica que a fita está no cartucho de gravação/leitura e está pronta
+para ser utilizada, fazendo com que só agora seja possível gravar, extrair ou lêr dados dentro
+da fita. Abaixo um exemplo de como rebobinar e gravar dados na fita:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex04.txt}
+\end{center}
+
+Já para restaurarmos o backup de dados, devemos posicionar a fita desejada no driver e extrair os dados
+com o comando \textsf{\emph{tar}}, podemos também listá-los para requisitar apenas um arquivo ou diretório
+e não a fita completa, vejamos um exemplo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex05.txt}
+\end{center}
+
+E finalmente para apagarmos a fita DAT devemos usar o argumento \textsf{\emph{erase}}, este processo costuma
+demorar \textbf{horas}, por isso não se assuste se o comando travar na tela algum tempo.
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex06.txt}
+\end{center}
+
+\end{document}

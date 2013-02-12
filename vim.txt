@@ -1,0 +1,106 @@
+Dominando o VIM pelos cabelo! _[08/2005]
+
+  Bom, salve  a  todos leitores que se interessam principalmente pelo software
+livre! Esta zine e este artigo em questao visa esse grupo mas tambem os outros
+se enquadram  perfeitamente aqui.  O  objetivo  deste  artigo  foi da um passo
+inicial para o que eu quero  chamar de "tres passos" para o desenvolvimento em
+UNIX. Por quê três passos? primeiro deveriamos conhecer o nosso editor, depois
+o nosso compilador e finalmente um depurador de erros de código.  Neste artigo
+começaremos a ver que editor podemos usar, neste caso, o VIM.
+
+  Os  editores de  codigo  sao aqueles  chamados de IDE(Integrated Development
+Environment) que servem para facilitar a vida do programador tornando o editor
+cheio de atalhos uteis e o mais visual possivel (colorindo funcoes, variaveis,
+etc), neste  artigo  em especial iremos fazer uso do VIM (www.vim.org), um dos 
+editores mais completos  e  poderosos  que  existem e que poucas pessoas sabem 
+mais  de  cinco  ou  sete  comandos  perdendo  a  oportunidade  de  ir  alem e
+conhece-lo melhor.
+
+  O  VIM  foi criado mais ou menos em meados de Abril em  1992,  de la  ate ca
+mudaram muita coisa, mas uma coisa ainda continua ate hoje que sao os tipos de
+modos do VIM. Podemos  classificar o vim  por modos,  entao podemos  dizer que
+existem  tres  modos basicos no VIM:  modo de insercao, modo de comando e modo
+normal.
+
+ MODO DE INSERCAO: Processo de digitacao de textos.
+  MODO DE COMANDO: Quando voce esta  inserindo comandos da sintaxe do VIM para
+                   alterar a interface ou o proprio sistema da aplicacao.
+      MODO NORMAL: Quando voce executa comandos pre-definidos para  alterar ou
+	 	   modificar o texto.
+
+  Quais as vantagens de usar o VIM? 
+  - Editar  multiplos  arquivos ao mesmo  tempo, facilidade  na manipulacao de
+    texto digitado,  execucao de  comandos  remotos  integrados ou nao ao vim,
+    coloracao de sintaxe de linguagens de programacao (C, Shell, PHP, etc.)
+    
+  Quais as desvantagens do VIM?
+  - Muitos odeiam console (eu particularmente amo)  e o vim e todo no console,
+    existe tambem uma interface grafica mas de qualquer maneira alguns comandos
+    precisam ser executados no  MODO DE COMANDO/NORMAL, ha tambem aquela ideia 
+    de ter que ficar decorando comandos que nem todo mundo gosta.
+
+  Para editar um texto no VIM basta que o usuario digite no prompt: 
+  $ vim file.txt  {abre o arquivo "file.txt" para edita-lo}
+
+  Para  toda acao existe uma reacao, ja dizia Newton, no VIM isso nao deixa  de
+ser uma verdade absoluta,  para podermos  usar o modo de comando do vim devemos
+apertar ESC. Aqui vai uma lista dos comandos basicos do VIM:
+
+|  MODO NORMAL |
+ --------------+--------------------------------------------------------------
+|     ACAO     | REACAO
+ --------------+--------------------------------------------------------------
+|     i        | insere texto a partir do cursor.
+|     o        | insere texto na proxima linha a partir do cursor.
+|  <N> yy      | onde N e o numero de linhas a serem copiadas e "yy" o comando
+                 para copiar estas linhas.
+|     p        | cola as linhas copiadas pelo vim.
+|     u        | volta uma operacao que voce fez anteriormente.
+|     dd       | deleta uma linha completa.
+
+| MODO COMANDO |
+ --------------+--------------------------------------------------------------
+|    ACAO      | REACAO
+ --------------+--------------------------------------------------------------
+| :set number  | adiciona contagem de linhas a esquerda do editor.
+| :split arqv  | quebra  a  janela  e  abre  um  novo  arquivo  <arqv>, sendo 
+                 possivel editar simultaneamente dois ou mais arquivos.
+| :wq ou :x    | sai do vim, salvando o arquivo.
+| :q!          | sai do vim, sem salvar o arquivo.
+| :syntax on   | ativa as cores de formatacao de texto.
+|:%s/str/buf/gc| substitui "todas" as ocorrencias de "str" por "buf".
+| :/feijao     | procura e marca a palavra "feijao" em todo o texto.
+| :r <arqv>    | lê o conteúdo de <arqv> e ponhe no editor.
+
+  Ah  entao voce  continua  achando  pouco o  que  o  VIM  pode fazer? Que tal
+experimentar comandos remotos? tente isto:
+
+  UNIX: PRESSIONE "ESC"
+    :!cp file.txt filenew.txt (copia file.txt para filenew.txt)
+	:r !date (coloca a saida do comando date no texto)
+
+MS-DOS:	PRESSIONE "ESC"
+    :!deltree Directory (deleta o diretorio Directory)
+	:!rename file.txt file.new (renomeia arquivo file.txt para file.new)
+
+  Voce ve que alem de uma interface para edicao de textos o VIM também permite
+executar comandos remotos na  SHELL, isso pode ser muito útil  para o programa
+podemos por exemplo fazer calculos mais complexos sem maiores problemas, como:
+
+VALOR DA SUA LIGACAO PARA O BIG BROTHER BRASIL: 0.39 ?
+      QUANTIDADE DE PESSOAS QUE LIGAM EM MÉDIA: 12.000.000 ? (teve mais) :P
+
+Executando o seguinte comando:
+:r !echo "0.39*12000000" | bc 
+
+Obtemos o resultado de:
+4680000.00 ou seja, 4.680.000 (4 Milhões, 680 Mil reais jogados fora num dia.)
+
+  Isso e apenas algumas poucas possibilidades do uso do VIM, podemos  compilar
+codigos sem sair do editor e fazer operacoes complexas nao so de aritmetica.  
+  O VIM pode ser fantastico  basta apenas  um pouco de interesse e aprendizado
+sobre suas  funcionalidades e ai talvez,  como eu, voce nunca mais  edite seus
+arquivos sem usar o VIM, porque o VIM pode tornar sua maneira de editar textos
+e codigo divertida, simples e eficiente! :)
+
+- Alexandre Mulatinho <crudo@psl-pe.softwarelivre.org>

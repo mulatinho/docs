@@ -1,0 +1,2 @@
+$ ls -lh logo.eps
+-rw-r--r--  1 alexandre users 38K 2006-10-21 19:54 logo.eps

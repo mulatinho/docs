@@ -1,0 +1,17 @@
+boot=/dev/hda
+default=0
+timeout=5
+hiddenmenu
+
+title Fedora Core (2.6.11-1.1369_FC4smp)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.11 ro
+        initrd /initrd-2.6.11.img
+
+title Slackware Linux
+	rootnoverify (hd0,2)
+	chainloader +1
+
+title Windows 2000
+        rootnoverify (hd0,3)
+        chainloader +1

@@ -1,0 +1,12 @@
+# fdisk -l /dev/hda
+
+Disk /dev/hda: 20.0 GB, 20060135424 bytes
+255 heads, 63 sectors/track, 2438 cylinders
+Units = cilindros of 16065 * 512 = 8225280 bytes
+
+Dispositivo Boot      Start         End      Blocks   Id  System
+/dev/hda1   *           1        1020     8193118+  83  Linux
+/dev/hda2            1531        1595      522112+  82  Linux swap / Solaris
+/dev/hda3            1596        2438     6771397+  83  Linux
+/dev/hda4            1021        1530     4096575    5  Estendida
+/dev/hda5            1021        1530     4096543+  83  Linux

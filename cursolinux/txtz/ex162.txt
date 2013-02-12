@@ -1,0 +1,6 @@
+# tar xfz php-5.0.0.tar.gz
+# cd php-5.0.0
+# ./configure --with-apxs2=/usr/local/apache2/bin/apxs \
+--with-config-file-path=/etc/
+# make && make install
+# cp php.ini-dist /etc/php.ini

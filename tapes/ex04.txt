@@ -1,0 +1,3 @@
+# mt -f /dev/nst0 rewind
+# tar cvfj /dev/nst0 backup-projetos.tar.bz2 1> backup_projetos.log
+# tar cvfj /dev/nst0 /root 1> backup_root.log

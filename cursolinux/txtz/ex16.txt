@@ -1,0 +1,4 @@
+# tar xfz httpd-2.0.54.tar.gz
+# cd httpd-2.0.54
+# ./configure --prefix=/usr/local/apache2
+# make && make install

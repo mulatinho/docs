@@ -1,0 +1,4 @@
+$ at -f ./ex1.sh 2:54pm  (adiciona um job às 2:54 da tarde)
+job 1 at 2006-11-08 14:54
+$ at -f ./bakup-projetos 1:00am +2 days  (adiciona um job às 1 da manhã daqui há 2 dias)
+job 2 at 2006-11-10  1:00

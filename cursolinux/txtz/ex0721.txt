@@ -1,0 +1,19 @@
+$ smbclient -L \\\\GOP 
+Server time is Sat Aug 10 15:58:27 2006
+Timezone is UTC-3.0
+Password:
+
+Domain=[WORKGROUP] OS=[Windows NT 3.51] Server=[NT LAN Manager 3.51]
+Server=[GOP] User=[] Workgroup=[WORKGROUP] Domain=[]
+
+Sharename      Type      Comment
+---------      ----      -------
+ADMIN$         Disk      Remote Admin				
+public         Disk      Public
+C$             Disk      Default share
+IPC$           IPC       Remote IPC
+OReilly        Printer   OReilly
+print$         Disk      Printer Drivers
+
+# mount -t smbfs \\\\GOP\\public /mnt/public -o username=billyjoe
+Password:

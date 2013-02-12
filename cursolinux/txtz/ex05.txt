@@ -1,0 +1,7 @@
+$ tar cfz arquivos.tar.gz buu.dvi vii.pdf dolar.pdf
+$ ls -lh arquivos.tar.gz
+-rw-rw-r--  1 alexandre alexandre 11K Out 31 10:57 arquivos.tar.gz
+
+$ tar cfj backupmanguebit.tar.bz2 manguebit/
+$ ls -lh backupmanguebit.tar.bz2
+-rw-rw-r--  1 alexandre alexandre 4,4M Out 31 10:58 backupmanguebit.tar.bz2

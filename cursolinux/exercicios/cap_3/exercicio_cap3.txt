@@ -1,0 +1,17 @@
+Capítulo 3.
+
+1) Simule que seu sistema está dando problemas, entre no modo single e
+   modifique a permissão do arquivo 'install.log' dentro do diretório
+   '/root' para o usuário 'emprel' e o grupo 'adm'.
+
+2) Inicie o sistema no modo multi usuário, simule que o serviço dadmr está
+   com problemas utilizando o comando: 'service dadmr stop', rode o serviço
+   com o comando 'dadmr' no console 1 e vá para o console 2 e modifique a
+   permissão do arquivo '/bin/dadmr' para leitura,escrita e execução em todos
+   os usuários.
+
+3) Modifique a permissão de todos os arquivos e subdiretórios do dir. /tmp:
+   A) Setando permissão de leitura e escrita para o dono e apenas leitura 
+      para grupo e outros em  todos os arquivos que contiverem.
+   B) Modifique o dono e o grupo de todos os arquivos e diretórios dentro do
+      /tmp para o usuário 'adm' e o grupo 'bin'

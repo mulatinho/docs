@@ -1,0 +1,8 @@
+# mkfs.vfat /dev/hda4
+mkfs.vfat 2.10 (22 Sep 2003)
+
+# mkreiserfs /dev/hda5 
+UUID: c2476d84-0ff5-45f7-b363-d0bd41098a93
+ATTENTION: YOU SHOULD REBOOT AFTER FDISK!
+        ALL DATA WILL BE LOST ON '/dev/hda5'!
+Continue (y/n):

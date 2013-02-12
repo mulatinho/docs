@@ -1,0 +1,253 @@
+/etc/X11//gdm/PreSession/Default: Registering your session with wtmp and utmp
+/etc/X11//gdm/PreSession/Default: running: /usr/X11R6/bin/sessreg -a -w /var/log/wtmp -u /var/run/utmp -x "/var/gdm/:0.Xservers" -h "" -l ":0" "alexandre"
+qvwm: The pager must include a page (0, 0)
+qvwm: The pager must include a page (0, 0)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:2641): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+Hash Manager Error : 1
+Error - could not open affix description file /usr/local/lib/thunderbird-1.5/components/myspell/pt-BR.aff
+Failure loading aff file /usr/local/lib/thunderbird-1.5/components/myspell/pt-BR.aff
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+(gnome-terminal:4708): Gdk-WARNING **: gdk_property_get(): length value has wrapped in calculation (did you pass G_MAXLONG?)
+
+** (gnome-terminal:4708): WARNING **: Erro (Multibyte ou caracter largo inv\xe1lido) ao converter dados para filho, descartando.

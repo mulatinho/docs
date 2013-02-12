@@ -1,0 +1,11 @@
+VARIAVEL="/home /etc /tmp"
+LOOP=1
+for x in $VARIAVEL; do
+  echo "loop numero:$LOOP e o valor: $x"
+  echo "o tamanho de $x é: `du -hs $x`"
+  LOOP=$(($LOOP+1))
+done
+
+for (( i=0;$i<5;i=$(($i+1)) )); do
+  echo $i
+done

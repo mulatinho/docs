@@ -1,0 +1,10 @@
+case $VARIAVEL in
+  OPCAO1)
+    Faca algo
+    ;;
+  OPCAO2)
+    Faca outra coisa
+    ;;
+  *)
+    Ja que nao fez nada, faca isso
+esac

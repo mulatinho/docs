@@ -1,0 +1,14 @@
+$ VAR='Hello World'
+$ echo $VAR
+Hello World
+
+$ VAR2=456
+$ echo $VAR2
+456
+
+$ NOVAVAR='VAR VAR2' && echo $NOVAVAR
+VAR VAR2
+$ NOVAVAR='$VAR $VAR2' && echo $NOVAVAR
+$VAR $VAR2
+$ NOVAVAR="$VAR $VAR2" && echo $NOVAVAR
+Hello World 456

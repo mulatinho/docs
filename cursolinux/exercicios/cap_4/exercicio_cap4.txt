@@ -1,0 +1,11 @@
+Capítulo 4.
+
+1) Entre no diretório '/etc/ssh' e copie o arquivo 'ssh_config' para o
+   diretório '/tmp', após isso modifique o nome do arquivo para o nome
+   'ssh_client_config'
+
+2) Faça uma compactação do diretório '/root' no seguintes formatos abaixo:
+   A) root.tar
+   B) root.tar.bz2
+   C) root.tar.gz
+   D) root.zip

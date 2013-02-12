@@ -1,0 +1,1424 @@
+\documentclass[10pt,a4paper,oneside,titlepage]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx,url,geometry,verbatim,fancyvrb,ifpdf,indentfirst}
+
+\geometry{verbose,a4paper,tmargin=3cm,bmargin=2cm,lmargin=3cm,rmargin=2cm,headsep=5mm,footskip=0cm}
+
+\author{Alexandre Mulatinho}
+\title{\Huge{Desmistificando o Linux}\\
+\Large{Aprender, instalar, configurar e utilizar!}}
+
+% Desmistificando o Linux
+% Versão 0.0.1
+%
+% Este livro utiliza a licença GPLv2 sendo possível copiá-lo e imprimi-lo,
+% distribuí-lo sem fins comerciais, este livro foi totalmente feito utilizando
+% \LaTeX, uma amostra de seu código fonte utilizando ferramentas livres pode
+% ser vista vista na última página deste livro. ;)
+%
+% Índice
+%
+% 1. Introdução
+% 2. Conceitos Básicos
+% 3. 
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Introdução}
+
+Prepare sua cabeça e abra sua mente pois você entrará num mundo novo, um mundo no qual você
+poderá dominar ou ser dominado, aprender a utilizar um novo sistema operacional a princípio
+tende a ser um pouco difícil e cansativo porém com um pouco de perseverança tudo é possível,
+se você usa um outro sistema operacional diferente do Linux você pode tomar como exemplo uma
+pessoa que nunca usou algo diferente de Unix e se depara com a tela de janelas do Windows,
+lhe garanto por experiência que também para ele vai ser um pouco difícil de se acostumar e
+entender os conceitos básicos do sistema, mas não se preocupe, com prática e estudo tudo é
+possível.\\[3mm]
+
+Les Paul
+
+\chapter{Conceitos Básicos}
+
+\section{O que é linux?}
+
+O linux é um sistema operacional baseado no \emph{Minix} que foi desenvolvido por Andrew S.
+Tanenbaum, e em 1991 um estudante da Universidade de Helsinki na Finlandia chamado \emph{Linus Torvalds}
+desenvolveu a primeira versão do Linux. No início o linux era um sistema que servia
+mais para aprendizado na cadeira de sistemas operacionais do que para utilização no dia-a-dia
+de trabalho ou desenvolvimento.\\[3mm]
+
+Em Agosto de 1991, \emph{Linus Torvalds}, enviou um email anunciando a primeira versão do
+linux para o grupo de notícias dos usuário do Minix informando que tinha portado o bash (uma
+das shell do linux) e o gcc (gnu c compiler, compilador de c) dentro do seu sistema que rodava
+em processadores 386, na epóca um dos computadores pessoais mais modernos, apartir daí muitos
+desenvolvedores começaram a baixar o linux e a implementar funções para sua biblioteca e
+suportes aos mais variados drivers, arquiteturas, etc.\\[3mm]
+
+Por isso o linux é o maior projeto colaborativo do mundo, nenhum outro projeto de software ou
+outra categoria em que você estiver pensando conta ou contou com mais desenvolvedores do que o
+\emph{kernel do linux}, um dos frutos desse processo colaborativo pode ser imaginado da 
+seguinte maneira, em 1991 quando o linux foi lançado ele continha 12 (doze) mil linhas de 
+código, hoje em dia o linux varia há mais de 3 (três) milhões de linhas de código. O linux
+atualmente é utilizado em quase todos os servidores do mundo, provavelmente quando você está
+acessando seu webmail ou sua página na internet você está acessando uma máquina Linux; Então
+chega de história e vamos direto ao que interessa. :-)
+
+\section{Quais as vantagens do linux?}
+
+Acho que não poderia listar todas as vantagens do Linux nesta pequena página mas vamos nos
+concentrar nas principais que fazem de fato o sistema ser o que é, algumas destas serão aqui
+comentadas e outras não.\\
+
+\begin{itemize}
+\item Multi-Processamento, fornece a você capacidade de executar milhares de operações ao mesmo tempo.
+\item Multi-Usuário, permite que você utilize até mais ou menos 35.000 (trinta e cinco mil) usuários
+ao mesmo tempo, ou seja, um usuário pode estar lendo seu correio de email enquanto outro pode estar
+navegando na internet e outro programando um software.
+\item Não tem vírus, o linux trabalha com permissões em arquivos e diretórios, usuários normais não
+tem acesso a diretórios de configuração do sistema, logo mesmo que invente-se algum o usuário precisa
+ser administrador para que haja algum dano.
+\item É livre, de acordo com a Fundação do Software Livre, um software só é livre de fato se ele permitir
+que o usuário \emph{utilize, modifique, distribua e veja o código-fonte}, tudo isso o linux lhe oferece.
+\item É de graça, quase todas as distribuições linux que existem têm sua versão disponível na internet.
+\item Portabilidade, o linux roda em várias arquiteturas diferentes como x86, x86\_64, Sun Sparcs, Motorola,
+Compaq, MIPS, etc.
+\item Segurança, além de já vir altamente blindado, o linux e seus softwares sempre são muito testados
+antes de entrar em produção e estão sujeitos a correções de segurança.
+\end{itemize}
+
+\section{O que é um kernel?}
+
+O linux na verdade é apenas o kernel, o kernel é o núcleo de um sistema operacional que serve principalmente
+para interagir entre o software e o hardware, ele é responsável por gerenciar os recursos do computador como
+todo. O kernel é responsável por gravar os dados fisicamente no HD, lêr o conteúdo de um CDROM de música e
+passar para o software tocá-lo, montar o seu pendrive virtualmente no seu disco, etc. No linux, todos os
+drivers e periféricos são embutidos no código do kernel porém com uma vantagem, eles podem ser carregados ou
+removidos em tempo real como módulo, você pode ativar o suporte para que sua placa de rede seja reconhecida
+num minuto e no outro desativar o suporte a seu pendrive, isto é muito útil quando vamos testar algum suporte
+que não sabemos se queremos ou não.
+
+\section{O que é uma shell?}
+
+Pra começo de conversa, no momento em que você se loga no sistema você já está numa Shell. A Shell é um meio
+pelo qual o usuário entra com dados para o sistema fazendo com que o sistema identifique esses dados e os
+converta para o sistema operacional poder lê-los sem ter que resolvê-los, diminuindo assim o tempo que seria
+gasto se a Shell não interpretasse esses dados e o deixasse para que o kernel também fossem resolvê-los. Tendo
+em vista esse ponto podemos dizer que a Shell é uma ferramenta poderosa que usamos para interpretar nossos
+comandos antes de roda-los fazendo com que seja possível o uso de parâmetros, substituição de strings, 
+modificação de variáveis ambiente, etc. Também  vale ressaltar que a shell vem com uma linguagem poderosa,
+chamada shell script, que nos permite utilizar laços de condição e processamento de certos dados, 
+principalmente os de entrada e saída.\\[3mm]
+
+As principais tarefas da nossa shell são compreender e organizar a linha de comando que o usuário envia na
+entrada de dados, fazendo assim com que os comandos executados rodem com mais performance e de um jeito muito
+mais estruturado, depois de feito isso a  shell ordena de espaço em espaço cada comando e argumento enviado, 
+procurando-os na variável \emph{\$PATH} que contém os caminhos onde o usuário em questão pode executar programas.\\[3mm]
+
+A shell também é capaz de agir como um interpretador de linguagem estruturada, permitindo-nos fazer scripts
+com a mistura de comandos que o sistema nos fornece. Podemos resumir então estes processos desta forma:
+
+\begin{itemize}
+\item A shell pega os dados e os interpreta antes de serem executados.
+\item Usa variáveis ambiente como o \emph{\$PATH}, que nos mostra os diretórios aos quais o usuário tem
+acesso para execução de comandos.
+\item Processa como os dados vão sair e entrar corretamente (input/output).
+\item A nível de programação ela executa laços, condições, etc.
+\end{itemize}
+
+Mais à frente e com mais calma, nós veremos exemplos de execução de comandos na shell, bem como a utilização
+de \emph{shell scripts} para mostrar rotinas de backups e outro exemplos do dia-a-dia.
+
+\chapter{Instalando o Linux}
+
+Antes de começar a instalação de um sistema operacional deve-se entender alguns conceitos básicos, todo
+sistema operacional ocupa uma partição física ou lógica do Hard Disk e por isso deve-se aprender a particionar
+o disco e fornecer a partição qual sistema de arquivos ela deve usar. No linux as partições são reconhecidas
+como dispositivos dentro do diretório \texttt{\emph{/dev}}, em discos IDE normais elas aparecem como:
+\emph{hda, hdb, hdc e hdd} sendo respectivamente os dois primeiros a primeira IDE mestre e escrava, e os dois
+últimos a segunda IDE mestre e escrava, em discos SCSI a coisa é um pouco diferente, ao invés de termos o prefixo
+\"h\" temos o prefixo \"s\", logo seria escrito como: \emph{sda, sdb, sdc, sdd}. 
+
+\section{Particionamento do Disco}
+
+Por padrão um HD só pode têr 4 (quatro) partições físicas e várias outras partições lógicas, então você poderia
+por exemplo têr 3 partições físicas e 8 partições lógicas no lugar da última física, isso é padrão para qualquer
+Hard Disk que você encontrar no mercado. No linux temos ferramentas que usamos para criar, remover e modificar
+as partições de um HD como por exemplo o: fdisk, cfdisk, gnu parted, etc.\\[3mm]
+
+Aqui mostraremos exemplos do funcionamento destas ferramentas a nível de exibição de tabelas de partição, criação
+destas partições e iremos também remove-las. Então vamos direto ao que interessa, abaixo podemos vêr uma imagem
+mostrando um HD particionado:
+
+\begin{center}
+\includegraphics[height=3cm,width=6cm]{imgs/img01.eps}
+\end{center}
+
+O exemplo abaixo mostra como listar e mostrar as partições criadas num Hard Disk com o comando fdisk, deve-se
+prestar atenção que aqui estou simulando que o meu HD está no primeiro IDE mestre, ou seja, \emph{/dev/hda}:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex01.txt}
+\end{center}
+
+No campo acima podemos obter informações bem interessantes como o tamanho físico do HD que no caso é de $20$GB e
+também mostrar a tabela de partições, com base nisso podemos seguir em frente e aprender como manipular o fdisk
+para criar e remover partições:
+
+\begin{center}
+ \begin{tabular}{ | c | l | }
+   \hline
+   \textbf{letra} & \textbf{função} \\ \hline
+   a & liga ou desliga a opção de \textsf{boot} na partição. \\ \hline
+   d & remove uma partição do disco rígido. \\ \hline
+   l & mostra uma lista de formatos de partição existentes. \\ \hline
+   n & cria uma nova partição no disco rígido. \\ \hline
+   t & muda o tipo de partição. \\ \hline
+   p & imprime a tabela de partições do disco rígido. \\ \hline
+   w & sai e salva as alterações. \\ \hline
+   q & sai sem salvar as alterações. \\
+   \hline
+ \end{tabular}
+\end{center}
+
+Vejamos exemplos a seguir que nos mostra a utilização do \textsf{fdisk} para deletar uma partição existente, depois
+imprimir a tabela do disco rígido e após isso criar uma nova partição modificando seu tipo para Linux Native:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex012.txt}
+Deletando a partição \textsf{/dev/hda5}, imprimindo a nova tabela, criando nova partição com \textsf{950MB}.
+\end{center}
+
+\section{Sistema de Arquivos}
+
+Quando criamos, deletamos ou modificamos um arquivo estamos falando de sistema de arquivos, a função principal
+que esta camada de software fornece está em organizar a estrutura de diretórios e os arquivos a qual eles
+pertencem para que o sistema operacional saiba onde estão, quem são seus donos e quais permissões cada arquivo
+contém. No windows temos o VFAT e o NTFS, já no linux temos como principais o \textsf{\emph{reiserfs, ext2 e ext3}} cada
+qual tem sua ferramenta apropriada para fazer modificações a nível de checagem de integridade e organização de
+dados.\\[3mm]
+
+Então para ser direto, a primeira coisa que acontece na instalação de um sistema operacional é informar ao
+instalador em questão qual sistema de arquivos usar, no linux o instalador utiliza o comando \textsf{\emph{mkreiserfs}}
+para criar um sistema de arquivos baseado no ReiserFS ou então \textsf{\emph{mkfs.ext2 e mkfs.ext3}} para criar sistema
+de arquivos baseados em ext2 ou ext3. Há também como formatar uma partição ou dispositivo com outros sistemas
+de arquivos utilizando os comandos: \textsf{\emph{mkfs.msdos e mkfs.vfat}}. Imaginando que têmos duas partições chamadas
+pelo linux de \textsf{hda4} e \textsf{hda5} e queremos formata-las respectivamente como \textsf{vfat e reiserfs}, podemos
+então fazer desta maneira como no exemplo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex011.txt}
+\end{center}
+
+\section{Memória SWAP}
+
+A memória SWAP é uma memória criada por nós fisicamente no Hard Disk, ela é estrategicamente usada em sistemas
+com pouca capacidade de memória ou que utilizam muito mais do que o computador contém, quando a memória embutida
+no hardware chega ao limite o swap entra em ação alocando dados fisicamente no HD e depois mostrando para você
+quando pedido, por ser uma memória física no HD ela é mais lenta porém muito útil. Para criarmos uma memória
+swap devemos particionar o disco especificando o dobro de tamanho que a memória do hardware contém quando esse
+tamanho \emph{é menor que 512 (quinhentos e doze) megabytes}, quando maior devemos colocar o mesmo tamanho da
+memória de hardware como tamanho da partição swap.\\[3mm]
+
+Após termos criado a partição p devemos indicar ao kernel do linux que esta partição será usada para swap, para
+isso devemos antes formatar a partição com o sistema de arquivos swap utilizando um comando chamado \emph{mkswap}
+e depois utilizando o comando \emph{swapon} para ativa-la como swap de fato, vejamos um exemplo:
+
+\begin{center}
+ \fbox{\# mkswap /dev/hda5 \&\& swapon /dev/hda5}
+\end{center}
+
+\section{O que é uma distribuição?}
+
+Como dito anteriormente o linux é apenas o kernel, o conjunto de ferramentas e a organização das mesmas bem
+como os ambientes gráficos e outras facilidades peculiares são conjuntos de uma distribuição do Linux, portanto
+basicamente uma distribuição de linux deve oferecer um instalador para instalar o sistema operacional no HD e
+um conjunto de ferramentas para o usuário final utilizar como editores, compiladores, desktops, navegadores, etc.\\[3mm]
+
+No linux temos o que chamamos de distribuições oficiais, todas elas ou a grande maioria delas podem ser encontradas
+no site \url{www.linux.org}, porém as oficiais podem ser citadas sem problemas, são elas: RedHat, Slackware,
+Debian, Suse e Mandriva. Há também filhas delas, ou seja, distribuições baseadas nestas distribuições já existentes
+mas grande parte delas pode ser baixada gratuitamente na internet ou compradas numa banca de revista por um preço baixissimo.\\[3mm]
+
+\textbf{Slackware} é a distribuição mais antiga do Linux, Criada em 1993 e mantida por Patrick Volkerding, a Slackware tem 
+como objetivo manter-se fiel aos padrões UNIX, rejeitando também ferramentas de configuração que escondam do 
+usuário o real funcionamento do sistema. Simplicidade e estabilidade são duas características marcantes nesta distribuição,
+que é muito apreciada por usuários mais experientes.\\[3mm]
+
+\textbf{Red Hat} é uma distribuição de Linux muito conhecida, líder do mercado nos EUA. Um grupo de programadores na Carolina
+do Norte decidiu torná-lo mais fácil para possibilitar as pessoas uma experiência mais tranquila com o Linux. A distribuição
+Red Hat está atualmente voltada para mercado empresarial. No entanto, ela mantém a sua vertente comunitária através do projeto Fedora Core.\\[3mm]
+
+A \textbf{SuSE}, mais precisamente SUSE LINUX AG, é uma empresa alemã, que disponibiliza soluções informáticas baseadas no
+sistema operativo GNU/Linux, incluindo várias distribuições. Em Janeiro de 2004 a empresa foi adquirida pela Novell, uma empresa
+americana que na década de 1980 ficou famosa por seus roteadores.\\[3mm]
+
+O \textbf{Debian} é especialmente conhecido pelo seu sistema de gestão de pacotes, chamado APT, que permite: atualizações
+relativamente fáceis a partir de versões realmente antigas; instalações quase sem esforço de novos pacotes e remoções limpas
+dos pacotes antigos. Várias distribuições comerciais baseiam-se (ou basearam-se) no Debian, incluindo: Lindows (atual Linspire),
+Xandros, Kurumin, Debian-BR-CDD e Libranet. O Ubuntu Linux também se baseia em Debian.\\[3mm]
+
+\textbf{Mandriva} é junção do nome das duas empresas MandrakeSoft e Conectiva. A Mandriva Conectiva é a operação brasileira da Mandriva,
+desenvolvedora e distribuidora do sistema operacional Mandriva Linux, resultado da fusão ocorrida em 24 de fevereiro de 2005
+entre a MandrakeSoft, uma das principais distribuições Linux da Europa, com atuação mundial em mais de 120 países, e a Conectiva,
+pioneira na distribuição Linux e código aberto em português, espanhol e inglês para toda a América Latina\\[3mm]
+
+\textbf{LINKS}\\[2mm]
+\url{http://www.slackware.com}\\
+\url{http://www.redhat.com}\\
+\url{http://fedora.redhat.com}\\
+\url{http://suse.de}\\
+\url{http://www.debian.org}\\
+\url{http://www.mandriva.com}
+
+\chapter{Primeira Inicialização}
+
+Apartir do momento que você instala uma versão do Linux no seu computador e reinicia a máquina ele irá mostrar
+um monte de mensagens de ativação de serviços e carregamento de drivers, tudo isto pode ser controlado por você
+e veremos um pouco destes processos mais à frente. 
+
+\section{Run-levels}
+
+Run-levels são como a própria tradução diz, níveis de corrida, que informam ao nosso sistema operacional Linux
+como ele deve inicializar o sistema, você pode definir os níveis de inicialização modificando o arquivo que se
+encontra em \texttt{\emph{/etc/inittab}}, são 6 (seis) os níveis de inicialização do linux e podem ser vistos
+abaixo:
+
+\begin{center}
+ \begin{tabular}{ | c | l | }
+   \hline
+   \textbf{nível} & \textbf{descrição} \\ \hline
+   0 & HALT. Funciona pra desligar a máquina. \\ \hline
+   1 & SINGLE USER. Inicia o sistema no console com o modo mono-usuário. \\ \hline
+   2 & MULTI USER. Inicia o sistema no console com multi-usuário e sem NFS. \\ \hline
+   3 & MULTI USER. Inicia o sistema no console com multi-usuário. \\ \hline
+   4 & Sem função na maioria das distribuições. \\ \hline
+   5 & MULTI USER WITH X. Inicia com modo multi-usuário e o login no X. \\ \hline
+   6 & REBOOT. Nível de corrida para reinicializar a máquina. \\
+   \hline
+ \end{tabular}
+\end{center}
+
+Tudo isto são níveis que são passados ao comando \texttt{\emph{init}}, responsável por ativar os modos de inicialização
+do linux, vamos dar uma olhadinha na linha do arquivo \texttt{\emph{/etc/inittab}} onde se seta os níveis de inicialização:
+
+\begin{center}
+\fbox{id:5:initdefault:}
+\end{center}
+
+No meu sistema vocês veêm que estou inicializando em multi-usuário, me conectando a interface gráfica X para fazer
+a autenticação no sistema, ou seja, o login. Já se fôssemos reiniciar o sistema poderiamos digitar assim:
+
+\begin{center}
+\fbox{\# init 6}
+\end{center}
+
+Voilá! O sistema estaria se reinicializando no exato momento em que você pressionasse o ENTER após este comando
+como root, super-usuário, é claro! O arquivo inittab é bem interessante e deve ser lido se você puder.
+
+\section{Estrutura de diretórios}
+
+O linux utiliza um padrão para organização de estrutura de diretórios aonde diretório principal ou raiz é o 
+\texttt{\emph{/}}, então podemos dizer que assim como no Windows temos o \emph{C:} no linux temos o 
+\texttt{\emph{/}}. Para analisarmos melhor como funciona esta estrutura podemos visualizar a tabela abaixo:
+
+\begin{center}
+ \begin{tabular}{ | c | l | }
+   \hline
+   \textbf{diretório} & \textbf{pra que serve?} \\ \hline
+   /bin  & contém os principais comandos binários da shell \\ \hline
+   /boot & aonde estão as imagems de boot e inicialização \\ \hline
+   /dev  & diretório dos dispositivos e periféricos do computador \\ \hline
+   /etc  & diretório aonde estão os arquivos de configuração do sistema \\ \hline
+   /home & pasta de usuários \\ \hline
+   /lib  & principais bibliotecas dos softwares e módulos do kernel \\ \hline
+   /proc & diretório de coleta de informações do sistema \\ \hline
+   /root & pasta do super-usuário \\ \hline
+   /sbin & diretório de binários que são executados apenas por administradores \\ \hline
+   /tmp  & pasta de arquivos temporários \\ \hline
+   /usr  & contém grande parte dos softwares e também bibliotecas utilizadas \\ \hline
+   /var  & diretório de logs do sistema, muito útil para administradores \\
+   \hline
+ \end{tabular}
+\end{center}
+
+Vale salientar que o linux é baseado em \textsf{\emph{case sensitive}}, ou seja, ele difere letras maiúsculas de
+letras minúsculas, então um arquivo de nome \textbf{pagamentos.txt} vai ser diferente de \textbf{Pagamentos.TXT} e
+também que todo diretório no linux é na verdade um arquivo normal com uma flag especial indicando que ele é um
+diretório.
+
+\section{O que são permissões?}
+
+Permissões são atributos de arquivos no sistema Unix, eles servem para informar que tipo
+de acesso o usuário pode ter dentro de um arquivo como leitura, escrita e execução, no linux
+temos usuários e grupos que também são atributos de um arquivo, as permissões são formadas
+por números octais, ou seja, de $0$ até $7$, vejamos o exemplo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex02.txt}
+\end{center}
+
+Então há uma sequência de 10 (dez) números octais, um dono que no exemplo é \textsf{alexandre}
+e um grupo que no caso é \textsf{users}, o primeiro número octal é uma flag reservada pra
+indicar se o arquivo é um arquivo normal, é um diretório ou alguma outra flag especial, os
+3 (três) últimos números da direita pra esquerda são as flags que indicam o que qualquer
+usuário que não seja o dono do arquivo ou nao pertença ao grupo do arquivo possa vir a fazer
+com o arquivo, os 3 (três) do meio são o que o grupo pode fazer, e os 3 (três) primeiros
+depois do primeiro numero são o que o dono pode fazer.
+
+\begin{center}
+  \begin{tabular}{ c  c }
+    \begin{tabular}{| c | l |}
+    \hline
+    \textbf{flag} & \textbf{significado} \\ \hline
+    r & read, leitura. \\ \hline
+    w & write, escrita. \\ \hline
+    x & execute, execução. \\ 
+    \hline
+    \end{tabular} 
+    &
+    \begin{tabular}{| c | l |}
+    \hline
+    \textbf{flag} & \textbf{significado} \\ \hline
+    a & ALL. todos os usuários, grupos e outros. \\ \hline
+    u & USER. apenas o usuário dono do arquivo. \\ \hline
+    g & GROUP. apenas o grupo ao qual o arquivo pertence. \\ \hline 
+    o & OTHERS. qualquer usuário ou grupo. \\ 
+    \hline
+    \end{tabular}
+  \end{tabular}
+\end{center}
+
+Com base nisso podemos dizer que no exemplo mais acima o usuário \emph{alexandre} tem a
+permissão de \textbf{escrever/write} e \textbf{lêr/read}, o grupo \emph{users} tem a
+permissão de \textbf{lêr} apenas e qualquer usuário que não seja alexandre e não pertença
+ao grupo users poderá também apenas \textbf{lêr}.\footnote{OBS: Um dos motivos pelo qual o linux não tem vírus é por ele ter permissões dentro de seus arquivos que faz com que o usuário normal não tenha acesso a arquivos de configuração do sistema}. Os comandos \textbf{chown} e \textbf{chmod} servem respectivamente para mudar usuário e grupo, e mudar permissões de um arquivo, para entendermos o seu funcionamento basta que nós 
+vejamos o exemplo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex03.txt}
+\end{center}
+
+O comando com \textsf{\emph{ls}} e os argumentos \textsf{\emph{-lh}} mostram quais as
+permissões, a quem o arquivo pertence e qual grupo ele pertence. O primeiro chown modifica
+o dono do arquivo para \textsf{\emph{root}} e o grupo para \textsf{\emph{users}}, já o
+segundo chown modificou o usuário para \textsf{\emph{alexandre}} e o grupo do arquivo para
+\textsf{\emph{root}}.\\[3mm]
+Já o comando \textsf{\emph{chmod}} utilizado pela primeira vez com o argumento \textsf{\emph{u+rwx}}
+indica que o \textsf{\emph{usuário dono}} do arquivo receberá permissão de \textsf{leitura, escrita
+e execução}, o segundo comando com o argumento \textsf{\emph{g+wx}} indica que o grupo ao qual o
+arquivo pertence recebe permissão de \textsf{escrita e execução}, enquanto o último comando com
+o argumento \textsf{\emph{o-r}} retira a permissão de leitura de usuários que não pertençam ao
+grupo do arquivo e não seja dono do arquivo, ou seja, os outros.
+
+\section{Como obter ajuda?}
+
+Muita gente diz que é difícil aprender Linux porque ele não oferece material necessário e especializado
+para isso, mentira!! O Linux é um dos sistemas mais documentados existentes no mundo, se não for o maior,
+além de contar com seus eternos HOWTOs (como fazer), ele tem uma série de comunidades espalhadas no mundo
+inclusive brasileiras, além disso têm alguns comandos voltados justamente para auxiliar o usuário final
+na utilização do sistema. Algumas das coisas que são fornecidas no Linux como ajuda podem ser listadas como:
+
+\begin{itemize}
+\item Man-pages, ou páginas de manuais, mostram desde sintaxes de comandos e sua lista completa de argumentos
+para se obter um resultado mais eficiente, até funções de programação da linguagem C e shell script para os
+desenvolvedores unix-likes.
+\item HOWTOs, uma série de documentos em inglês dentro do diretório /usr/doc da maioria das distribuições, 
+eles também são encontrados em português do Brasil no site \url{www.tldp.org}, contém resumos de assuntos que
+você se depara com o linux e como proceder quando encontrá-los.
+\item Quase todo software do Unix é bem documentado, contém pelo o menos três arquivos como README, INSTALL e
+AUTHORS, estes arquivos te introduzem na utilização básica do software, te mostram como o instalá-lo e também
+quem procurar caso deseje ajuda ou se involver mais no projeto. 
+\end{itemize}
+
+Fora tudo isto podemos ainda recorrer ao mundo virtual da internet para obtermos ajuda, como fórums, listas
+de e-mail e canais de IRC (bate-papo) que visam assuntos nerds ;D Porém ninguém é obrigado a te ajudar e sempre
+é melhor você pesquisar num \emph{google} e em outros lugares antes de pedir ajuda, seja específico e ofereça
+uma coleta de informações quando precisar, ninguém vai advinhar o tipo de hardware que você tem.\\[3mm]
+\url{www,linux.org} - site oficial do linux.\\
+\url{www,brlinux.org} - site brasileiro de noticias sobre linux em geral.\\
+\url{www,softwarelivre.org} - portal de software livre brasileiro.\\[2mm]
+\url{irc.freenode.net} - rede de bate papo IRC que contém grande comunidade brasileira de Unix-likes.\\
+\#slackware-br, \#debian-br, \#fedora-br, \#ubuntu-br, \#psl-pe, etc\\
+
+
+
+\chapter{Utilizando o Linux}
+
+Neste capítulo iremos abordar conceitos básicos na utilização do Linux no dia-a-dia, aqui
+nós veremos o uso de comandos, configuração de ambiente de console e gráfico, como compactar
+e descompactar arquivos, montar dispositivos virtualmente na sua máquina e também veremos
+uma parte de impressão no linux.
+
+\section{Comandos Básicos}
+
+Hoje em dia quase não é preciso mais decorar comandos de Unix para mecher no Linux, temos a
+interface gráfica e podemos utilizá-la bastante como no Windows, porém, como aqui queremos
+nos aprofundar no conhecimento do sistema se faz necessário ter dominio de no mínimo alguns
+comandos básicos do sistema, entre eles podemos citar: \textsf{\emph{cat, cd, cp, ls, mv, ps, pwd,
+rm}} e o \textsf{\emph{vi}}. Para todo comando no Unix há um manual referente ao seu uso e
+suas sintaxes para obter um resultado mais eficiente, o responsável por mostrar esse manual é
+o comando \textsf{\emph{man}}, se você quisesse por exemplo saber como utilizar o comando \textsf{\emph{cp}}
+você digitaria no console o seguinte: \textsf{\emph{man cp}}; Vejamos a lista de comandos abaixo:
+
+\begin{center}
+  \begin{tabular}{| c | l |}
+  \hline
+  \textbf{comando} & \textbf{significado} \\ \hline
+  cat & mostra o conteúdo de um arquivo e/ou concatena arquivos. \\ \hline
+  cd  & entra no diretório passado como parâmetro. \\ \hline
+  cp  & copia arquivo de um local para o seu destino. \\ \hline
+  ls  & lista arquivos e diretórios, podendo mostrar suas permissões e dono/grupo. \\ \hline
+  mv  & move arquivos de um local para um destino e/ou renomeia-os. \\ \hline
+  ps  & lista os processos em execução no sistema operacional como todo. \\ \hline
+  pwd & retorna o diretório atual onde o usuário se encontra. \\ \hline
+  rm  & remove um arquivo ou diretório. \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+Abaixo uma série de exemplos mostrando a utilização dos comandos: \textsf{\emph{pwd, cd, ls, cp}} e \textsf{\emph{cat}}:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex04.txt}
+listando diretório \textsf{textos}, mostrando o conteúdo do arquivo \textsf{yeah.txt} e copiando-o para \textsf{novoyeah.txt}
+\end{center}
+
+% MOSTRAR ARQUIVOS DE CONFIGURACAO DA SHELL, COMO EDITAR, ETC
+\section{O console} 
+
+Em grande parte das distribuições do Linux é aqui que você começa tudo, após um monte de mensagens de sistema informando o seu
+hardware e ativando drivers e controladoras necessárias a tela que você deve receber é algo deste tipo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex041.txt}
+\end{center}
+
+Aonde você terá que digitar o login do seu usuário e a senha do mesmo para ter acesso ao prompt de comando da shell, uma das
+coisas que nós devemos nos concentrar logo de cara são as variáveis ambientes do sistema, para isso utilizamos os comandos:
+\textsf{\emph{env}} para vê-las, \textsf{\emph{export}} para setá-las e \textsf{\emph{unset}} para descarrega-las.\\[3mm]
+
+Algumas variáveis ambiente como a variável \textbf{\$PATH} nos indica os caminhos aonde estão os binários que o usuário em
+questão pode utilizar, já a variável \textbf{\$LANG} nos informa a codificação de caracteres utilizada pela shell, a variável
+\textbf{\$HOME} indica a pasta do usuário em questão no sistema Unix e a \textbf{\$SHELL} indica qual a shell está sendo utilizada.
+As variáveis ambiente ajudam muito o usuário a coletar informações que são necessárias pra algumas aplicações.\\[3mm] 
+
+Além disso há diretórios de configuração do sistema que interferem no uso do console, o diretório \textsf{\emph{/etc/skel}} contém
+arquivos que serão passados para a pasta de cada usuário com o intuito de padronizar algum comando ou script desejado pelo
+administrador. Geralmente estes arquivos são: \textsf{\emph{.bashrc}} ou \textsf{\emph{.profile}}, responsáveis por adicionar
+comandos, variáveis de ambiente e scripts quando for efetuado o login pelo usuário.
+
+\section{Pacotes de Arquivo}
+
+No linux temos vários formatos para a compressão e descompressão de arquivos e diretórios,
+isso se faz muito necessário para realizar backups de dados, comprimir dados até que eles
+obtenham um tamanho menor para enviar em locais remotos com mais facilidade, etc. Na tabela
+abaixo podemos dar uma olhada em alguns sufixos/extensões de arquivos e como comprimi-los
+ou descomprimi-los:
+
+\begin{center}
+  \begin{tabular}{| c | l | l |}
+  \hline
+  \textbf{formato} & \textbf{compressão} & \textbf{descompressão} \\ \hline
+  .gz & gzip \textsf{arquivo.gz} & gzip -d \textsf{arquivo.gz}  \\ \hline
+  .tar & tar cf \textsf{arquivo.tar} & tar xf \textsf{arquivo.tar}  \\ \hline
+  .tar.gz & tar cfz \textsf{arquivo.tar.gz} & tar xfz \textsf{arquivo.tar.gz}  \\ \hline
+  .tar.bz2 & tar cfj \textsf{arquivo.tar.bz2} & tar xfj \textsf{arquivo.tar.bz2}  \\ \hline
+  .rpm & rpmbuild -ba arquivo\textsf{.spec} & rpm -hiv \textsf{arquivo.rpm}  \\ \hline
+  .deb & dpkg \textsf{arquivo.deb} & dpkg -i \textsf{arquivo.deb}  \\ \hline
+  .zip & zip \textsf{arquivo} & unzip \textsf{arquivo.zip}  \\
+  \hline
+  \end{tabular}
+\end{center}
+
+Para ficar mais claro vamos vêr um exemplo abaixo mostrando como comprimir uma lista de
+arquivos e também alguns diretórios e adicionar em um único arquivo compressado:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex05.txt}
+criando backup dos três arquivos para o \textsf{.tar.gz} e do diretório manguebit para \textsf{.tar.bz2}
+\end{center}
+
+% comandos mount e umount alem de visao no /etc/fstab
+\section{Montando dispositivos}
+
+Muitas vezes precisamos lêr o conteúdo de uma outra partição que não está sendo usada como parte do nosso
+sistema operacional linux, uma mídia incluida no CDROM, um disquete, um pendrive ou qualquer outro periférico,
+para isso têmos que colocar este dispositivo virtualmente na nossa máquina utilizando o comando \textsf{\emph{mount}}
+e tirando ele com o comando \textsf{\emph{umount}}.\\[3mm]
+
+O campo abaixo mostra exemplos de como montar e desmontar dispositivos virtualmente na sua máquina garantindo
+segurança para o equipamento e integridade dos dados virtuais:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex06.txt}
+mostrando tabela de montagem e depois montando dispositivos \textsf{sda1} (pendrive) e \textsf{hda4} (partição)
+\end{center}
+
+Existe ainda um arquivo chamado \textsf{\emph{/etc/fstab}} que é responsável pelos pontos de montagem nos sistemas
+baseados em Unix-Likes, este arquivo é carregado na inicialização do sistema e monta as pastas ou dispositivos
+dentro do sistema:
+
+\begin{center}
+\fbox{[caminho/dispositivo] [diretorio local] [sistema de arquivos] [opcoes] [nivel1] [nivel2]}
+\end{center}
+
+Vejamos o exemplo abaixo:
+
+\begin{center}
+\small
+[/etc/fstab]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex061.txt}
+\end{center}
+
+
+\section{Imprimindo no Linux}
+
+Em se falando de impressão no Linux vamos utilizar o gerenciador de impressão CUPS, o arquivo principal de configuração
+é o \textsf{\emph{/etc/cups/cupsd.conf}} e as impressoras cadastradas ficam todas dentro do arquivo \textsf{\emph{/etc/cups/printers.conf}},
+basicamente precisamos saber se a impressora desejada esta localmente embutida no computador ou remotamente em outro pc,
+caso esteja remota deve-se saber também qual o sistema operacional da máquina remota.\\[3mm]
+
+Caso a impressora desejada esteja remota e o seu sistema operacional seja Windows precisaremos também configurar o
+Samba (responsável pela comunicação entre máquinas windows e linux) para que a impressão possa ser realizada com
+sucesso! O arquivo de configuração do samba se encontra em \textsf{\emph{/etc/samba/smb.conf}} e contém regras que
+devem se adaptar a rede em questão. Veremos isso mais abaixo.
+
+\subsection{Configurando o CUPS}
+
+Entre grande parte das linhas que estão escritas no arquivo de configuração do CUPS só devemos a princípio dar atenção na
+verdade há apenas algumas poucas listadas no campo abaixo:
+
+\begin{center}
+\small
+/etc/cups/cupsd.conf
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex07.txt}
+arquivo de configuração do cups
+\end{center}
+
+A linha que tem o \textbf{AccessLog} informa o arquivo ao qual o cups irá atribuir os usuários e ips que acessaram sua fila
+para impressão de arquivos/textos. Já a tag \textbf{<Location /admin>} é responsável por instruir dentro do seu corpo metódos
+de acesso à parte administrativa do gerenciamento de impressão. O \textbf{<Location /printers/lp0>} informa que haverá uma
+impressora local no sistema cujo o corpo há uma linha \textbf{Allow From All}, este \textsf{\emph{All}} pode ser trocado por
+um ip específico para permitir que apenas este ip acesse-a para impressão. A última linha \textbf{Listen 127.0.0.1:631} indica
+que o CUPS estará escutando na porta 631 apenas escutando conexões do ip 127.0.0.1 para acesso a parte administrativa do CUPS.\\[3mm]
+
+Já o arquivo de configuração \textsf{\emph{/etc/cups/printers.conf}} tem a seguinte configuração:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex071.txt}
+arquivo de configuração do cups
+\end{center}
+
+Neste arquivo também só devemos nos concentrar de verdade em apenas uma linha, ela serve pra informar que protocolo
+iremos utilizar para acessar a impressora remota, além de especificar estes dados impressora por impressora às
+separando pela tag \textbf{<DefaultPrinter \textsf{impressora}>} ou \textbf{<Printer \textsf{impressora}>}, além de
+informar outros dados:
+
+\begin{center}
+\fbox{DeviceURI smb://GOP/print\_bloco\_f/lex\_optra}
+\end{center}
+
+No caso está mostrando que estamos utilizando o protocolo samba, ou smb, acessando a impressora \textbf{lex\_optra}
+da máquina \textbf{print\_bloco\_f} no grupo de trabalho \textbf{GOP}. Se a impressora tivesse usando uma máquina
+remota linux com o CUPS a linha correta seria utilizando o protocolo IPP:
+
+\begin{center}
+\fbox{DeviceURI ipp://10.2.244.237/printers/lex\_optra}
+\end{center}
+
+\section{Acessando Compartilhamento de Diretórios}
+
+As vezes numa rede ou empresa queremos compartilhar diretórios e/ou impressoras, para isso devemos saber que
+sistema operacional usamos e qual solução devemos adotar, no linux temos duas soluções simples e muito eficientes
+para poder vêr caminhos remotos compartilhados, temos o \textsf{Samba} que pode ser instalado no Windows também para
+compartilhamento de diretórios/impressoras e também temos o \textsf{NFS} que é uma solução para sistemas Unix-likes.
+
+\subsection{Samba}
+
+O samba é o protocolo responsável por dar suporte ao compartilhamento de diretórios e impressoras do Windows
+para o Linux, ele fornece através do seu protocolo possibilidade de acessar uma máquina remota pelo domínio ou
+pelo compartilhamento na rede. O arquivo principal de configuração do samba é o \textsf{\emph{/etc/samba/smb.conf}}
+ele é um pouco complexo e grande para entendermos tudo o que ele contém, porém iremos aqui abordar suas principais
+linhas e pra que elas servem:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex072.txt}
+arquivo de configuração do cups
+\end{center}
+
+Uma boa olhada neste arquivo e de cara como leigos podemos têr noção de que algumas linhas são bastante
+comuns para pessoas que usam o sistema Windows, o \textsf{\emph{WORKGROUP}} será o grupo de trabalho ao qual
+o usuário pertecen enquanto o \textsf{\emph{NETBIOS NAME}} será o nome da sua máquina na rede. As quatro linhas
+abaixo devem ser padrões e informam que o samba compartilhará também as impressoras do sistema local e utilizará
+o CUPS para fazer isto. A linha \textsf{\emph{SECURITY = USER}} indica que o samba irá pedir um usuário e uma
+senha toda vez que for acessado um diretório/impressora compartilhado(a), já o \textsf{\emph{WINS SERVER}} vai
+informar que o Samba utilizará um \emph{servidor de domínios} especificado pelo seu IP. Finalmente as linhas
+a seguir dos campos \textsf{\emph{[print\$] e [printers]}} também são padrões e não devem ser modificadas, elas
+informam dados para alimentar o processo de seleção remota de impressoras.\\[3mm]
+
+A parte mais importante para o usuário final talvez seja a última parte do arquivo, a diretiva \textsf{\emph{
+[public]}} serve para informar à rede que o diretório compartilhado na máquina será de nome \textbf{public} e
+será publico para qualquer usuário o vê-lo (\textsf{\emph{browseable = yes}}), porém os arquivos ou diretórios
+que ele irá conter é especificado pelo path (\textsf{\emph{path = /home/public}}), e só será acessado pelo
+usuário chamado public (\textsf{\emph{valid users = public}}).\\[3mm]
+
+Okay e como fazer para checar se o compartilhamento está ativo ou não? E se eu precisar modificar um arquivo
+constantemente e precisar que ele fique virtualmente na minha máquina? Bom, tudo isto foi pensado pelos 
+desenvolvedores do Samba, abaixo podem ser visto dois comandos: o primeiro irá checar se um diretório virtual
+é válidou ou não (smbclient) e o segundo montará virtualmente na sua máquina um diretório virtual usando o
+protocolo do Windows.
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex0721.txt}
+verificando diretório virtual com smbclient e montando-o depois na máquina.
+\end{center}
+
+
+\subsection{NFS}
+
+o NFS (Network File System) é um sistema de arquivos que monta virtualmente diretórios remotos Unix dentro de uma
+máquina local, a utilização do NFS no linux é feita através do comando \textsf{mount} para o cliente que monta o
+diretório virtual dentro da sua máquina; E por uma série de serviços RPC (Remote Procedure Connection) para o 
+usuário servidor dos arquivos: \textsf{\emph{rpc.mountd, rpc.rquotad, rpc.statd, rpc.portmap, rpc.nfsd e lockd}}.\\[3mm]
+
+Para criar uma pasta compartilhada com o NFS deve-se edita o arquivo \textsf{\emph{/etc/exports}} especificando a
+pasta que se deseja compartilhar e quais ips poderão ter acesso a ela. Vejamos o exemplo abaixo:
+
+\begin{center}
+\small
+[/etc/exports]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex073.txt}
+\end{center}
+
+O arquivo informa que o diretório \textsf{/projetos} está sendo compartilhado para a máquina \textsf{192.168.0.2}
+com a permissão de leitura e escrita (rw) e sincronizando os dados. Já o diretório \textsf{/docs} está sendo
+compartilhado para as máquinas \textsf{192.168.0.2 e 192.168.0.3} com as mermas permissões do diretório projetos.
+Além deste arquivo devemos também editar o \textsf{/etc/hosts.deny} e o \textsf{/etc/hosts.allow}.
+
+\begin{center}
+\small
+[/etc/hosts.deny]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex074.txt}
+\end{center}
+
+\begin{center}
+\small
+[/etc/hosts.allow]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex075.txt}
+\end{center}
+
+Todos os serviços citados anteriormente: \textsf{rpc.portmap, rpc.mountd, rpc.rquotad, rpc.statd, rpc.nfsd e lockd}
+ devem ser re-startados para que as alterações tenham tido efeito com sucesso, após isso basta o usuário utilizar o
+comando \textsf{mount} na máquina cliente para montar o diretório virtualmente no seu computador:
+
+\begin{center}
+\fbox{mount -t nfs 192.168.0.1:/projetos /mnt/projetos}
+\end{center}
+
+% mostrar como configurar a interface grafica, o arquivo, exemplos, startando, parando, etc.
+\section{A interface gráfica}
+
+No início o Linux não tinha interface gráfica e isso prejudicava a utilização por usuários mais leigos que
+eram acostumados a ter navegadores, editores e desktops que funcionavam com base no click do mouse. Houve então
+uma preocupação dos desenvolvedores de portar um ambiente gráfico para o Linux, e então foi iniciado o projeto X11
+hoje em dia conhecido como Xorg.\\[3mm]
+
+O Xorg é um ambiente multi-usuário que possibilita a utilização de um ambiente gráfico em cima de sua camada,
+hoje em dia no linux há, sem querer exagerar, mais de 15 (quinze) desktops para o usuário final escolher qual
+deseja utilizar embora os mais conhecidos e utilizados sejam o KDE e o Gnome, por oferecer uma camada com suporte
+a multi-usuário, o linux permite que você abra mais de 1 (uma) sessão gráfica por vez no sistema. Em alguns casos
+são abertas até mais que 10 (dez) sessões por vez sem perda de performance em computadores novos.\\[3mm]
+
+O arquivo principal de configuração do X hoje em dia se encontra em \textsf{\emph{/etc/X11/xorg.conf}}, e deve ser
+modificado sempre que o usuário desejar modificar alguma opção do mouse, teclado ou display. É lá que estão as
+configurações de qual linguagem do teclado ser utilizado no ambiente gráfico, que tipo de mouse é usado, e qual
+a resolução que a sua tela irá têr no display, placa de vídeo utilizada, etc.
+
+\begin{center}
+  \begin{tabular}{| c | l |}
+  \hline
+  \textbf{comando} & \textbf{significado} \\ \hline
+  xorgconfig & configura a interface gráfica por completo. \\ \hline
+  system-config-display & configura a interface gráfica no red hat/fedora. \\ \hline
+  xsri & modifica o papel de parede durante a sessão do display. \\ \hline
+  startx & lê o arquivo .xinitrc do \$HOME do usuário e entra no wm especificado. \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+Uma vez que o arquivo de configuração do X não esteja correto a interface gráfica irá abrir e travar causando um
+erro e voltando ao console na maioria das vezes, logo, têmos que aprender a configurar este arquivo para podermos
+utilizar a interface gráfica corretamente! Para isso podemos utilizar sem medo o comando \textsf{\emph{xorgconfig}}
+na maioria das distribuições, porém a red hat/fedora core utilizam seus proprios metódos com comandos de configuração
+iniciados pelo prefixo \textbf{system-config}, no caso do X usamos a ferramenta \textbf{system-config-display},
+já no keyboard utilizamos textbf{system-config-keyboard}, no mouse \textbf{system-config-mouse}, etc.\\[3mm]
+
+Como dito anteriormente o Linux possui uma porção de Desktops diferentes e o uso de um ou outro cabe apenas ao usuário
+em questão, dentro da pasta de cada usuário pode ser criado um arquivo chamado \textsf{\emph{.xinitrc}} que contém o
+caminho completo de binário para executar algum Desktop, bastando ao usuário digitar \textbf{startx} após a especificação. Abaixo poderemos vêr alguns exemplos de imagens de Desktops que utilizamos no dia-a-dia do Linux. 
+
+\begin{center}
+\includegraphics[height=4cm,width=8cm]{imgs/img02.eps}\\
+QVWM, interface gráfica semelhante ao Windows
+\end{center}
+
+O QVWM fornece uma interface gráfica baseada em janelas como o Windows, ele te dá um menu inicial e posiciona os softwares
+ minimizados em ordem e em baixo da tela do Desktop, bastando ao usuário clicar em um deles para eles aparecerem na tela
+novamente, também fornece um arquivo de configuração chamado \textbf{system.qvwmrc}, e ícones pré-posicionados na tela.\\[2mm]
+
+\begin{center}
+\includegraphics[height=4cm,width=8cm]{imgs/img03.eps}\\
+KDE, inrerface gráfica pesada porém completa a nível de ferramentas
+\end{center}
+
+O KDE é um sistema completo porém pesado, máquinas de baixa performance não devem o utilizar porque ele utiliza muito a
+memória e o processador, grande parte dos seus softwares conversam entre si e são executados em conjunto por um software
+que faz parte da base do KDE, ele possui milhares de ferramentas e desenvolvedores.\\[3mm]
+
+Como dito anteriormente existem dezenas de Desktops cabe a você, usuário, escolher a qual você se adapta
+melhor e qual se enquadra em suas necessidades, lêr um pouco a respeito da interface e customizá-la de acordo
+com o que desejar e utilizá-la sem problemas! :D Você pode achar algumas em: \url{www.freshmeat.net} ou então
+\url{www.freedesktop.org}
+
+\chapter{Administrando o Sistema}
+
+Esta parte visa mostrar como um administrador de sistemas utiliza o Unix no dia-a-dia, aqui nós
+veremos desde configurações de serviços e dispositivos, programação em shell, manipulação de usuários até a
+compilação do kernel. Algumas das coisas que um administrador de sistemas deve sempre saber fazer são:
+configurar, compilar e executar pacotes e serviços do seu sistema operacional.
+
+\section{Configurando Boot Loaders}
+
+Boot Loaders são responsáveis pela inicialização do linux gravando seus dados no MBR (Master
+Boot Record) e carregando a imagem do kernel para abrir o sistema no seu computador. No linux
+temos 2 (dois) gerenciadores de boot, o GRUB e o LILO, veremos aqui exemplos de como configurar
+os dois para dar boot numa imagem do kernel.\\[3mm]
+
+Todo linux tem uma imagem de boot para iniciar seu sistema, esta imagem é um binário que é
+compilado no Kernel responsável por carregar todas as suas partes, esta imagem geralmente fica
+dentro da àrvore \textsf{\emph{arch/i386/boot/bzImage}} do kernel. Por padrão deve-se adicionar
+as imagens do Kernel no diretório \textsf{\emph{/boot}}.\\[3mm]
+
+Na primeira parte iremos mostrar como configurar uma imagem de boot no LILO, ele foi um dos
+primeiros gerenciadores de boot do Linux e há pouco tempo perdeu muito espaço para o GRUB do
+GNU, porém ainda é usado em muitas distribuições como o slackware e o kurumin, vejamos o seu
+arquivo de configuração:
+
+\begin{center}
+\small
+[/etc/lilo.conf]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex08.txt}
+\end{center}
+
+A primeira linha (\textbf{boot = /dev/hda}) indica que o boot irá ser configurado na partição
+\textsf{hda} já a segunda informa um arquivo para colocar a mensagem de boot no início. O 
+\textbf{prompt} é para que apareça a tela que o usuário irá digitar qual imagem deseja escolher,
+e o \textbf{timeout=200} indica que o sistema irá esperar $200$ mili-segundos até que o usuário
+digite algo, \textbf{lba32} indica que o hard disk tem mais que 10GB, este \textbf{vga=773} é
+para que o console tenha resolução de 1024x768, mais o que agente precisa dar mais atenção é o
+que está em aixo dessas linhas.\\[3mm]
+
+A linha \textbf{image = /boot/bzImage} indica que a primeira imagem de boot irá carregar o 
+arquivo \textsf{/boot/bzImage} que está na partição número 2 (dois) da linha seguinte, /dev/hda2
+ (\textbf{root = /dev/hda2}), vamos dar um apelido a imagem de \textbf{slackware-2.4}, e o
+\textbf{read-only} indica que a raiz do sistema de arquivos será montada apenas pra leitura. Para
+atualizar a entrada do MBR e salvar com suas alterações digite o comando abaixo:
+
+\begin{center}
+\fbox{\# lilo}
+\end{center}
+
+Já o GRUB, outro gerenciador de boot desenvolvido pela equipe da GNU, utiliza como padrão outro
+arquivo de configuração e outra maneira para configurar cargas de sistemas operacionais no MBR, abaixo
+podemos vêr um exemplo do GRUB:
+
+\begin{center}
+\small
+[/etc/grub.conf]
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex081.txt}
+\end{center}
+
+A linha (boot=/dev/hda) é semelhante ao lilo, porém o \textbf{timeout=5} aqui é em segundos. O que importa
+pra nós são as categorias separadas pelo \textbf{title}, ele informa apenas o nome que será mostrado para a
+escolha de um sistema operacional quando a CPU der boot, a linha \textbf{root (hd0,0)} indica que o nosso
+sistema raiz será encontrado no IDE primário mestre (\textsf{\emph{hd0}}), na primeira partição (\textsf{\emph{0}}) e
+utilizará a imagem de kernel \textbf{vmlinuz-2.6.11} e a imagem de inicialização \textbf{initrd-2.6.11.img}. Já o
+sistema Slackware utilizará seu raiz no IDE primário mestre na terceira partição (\textbf{rootnoverify (hd0,2)}, tentando
+achar a imagem de boot automaticamente (\textbf{chainloader +1}). E o Windows estará na quarta partição do IDE primário
+mestre tentando achar sua imagem de boot automaticamente. Bastando apenas atualizar o MBR com o comando:
+
+\begin{center}
+\fbox{\# grub-install /dev/hda}
+\end{center}
+
+\section{Usuários}
+
+Como o linux é um sistema multi-usuário é essencial que ele permita um controle total dos usuários
+e ele o permite, é crucial para um administrador de sistemas saber oferecer facilidades e pôr limites
+nos seus usuários de acordo com o que se precise. Nesta seção iremos abordar os comandos de controle
+de usuários e dar informações gerais sobre como manipulá-los.\\[3mm]
+
+No linux todo usuário têm um \emph{uid e gid} que são números inteiros únicos que identifica cada
+usuário e grupo, uma pasta que irá conter seus arquivos pessoais, uma shell para executar seus comandos
+ou não, um login e uma senha. Para adicionar um novo usuário o super usuário deve digitar:
+
+\begin{center}
+\fbox{\# useradd -d /home/billy -s /bin/bash -u 500 -g 500 billy}
+\end{center}
+
+Isto criará o usuário billy que terá pasta inicial \textsf{\emph{/home/billy}}, e ele usará a shell 
+\textsf{\emph{/bin/bash}}com seu uid (user id) e gid (group id) de número \textbf{$500$}, logo após
+aparecerá um prompt pedindo a senha do usuário. Já para deletar um usuário devemos utilizar o comando
+\textsf{\emph{userdel}} e deletar a pasta do usuário como abaixo:
+
+\begin{center}
+\fbox{\# userdel billy \&\& rm -rf /home/billy}
+\end{center}
+
+\subsection{Definindo Quotas para Usuários}
+
+O sistema de quotas de usuário é muito útil principalmente em servidores que contém dezenas ou centenas de usuários, ele
+poderá definir qual o tamanho que cada usuário dispões para transferir dados, imagine que o seu servidor ftp possua uns
+cem usuários e alguns comecem a baixar vídeos, mp3s e documentos entupindo o HD do servidor com arquivos que não são do
+interesse da empresa, para isso definimos quotas. Para se adicionar quotas é preciso que o kernel ofereça suporte à este
+tipo de operação, como módulo ou fixo dentro do kernel em si.\\[3mm]
+
+As quotas de usuários são utilizadas desde o início em sistemas de arquivos ext2 e ext3 porém a partir do kernel 2.6 
+também pode ser utilizado o ReiserFS. As quotas podem ter duas definições: \textsf{hard limit} e \textsf{soft limit}. O
+\textsf{hard limit} é utilizado para definir qual o espaço máximo que o usuário poderá utilizar no diretório, não podendo
+gravar nenhum dado à mais do que o definido, porém o \textsf{soft limit} serve para especificar um tamanho que quando
+atingido retornará ao usuário em questão uma advertência mas ainda permitindo que o usuário grave outros dados. Além de
+oferecer estes limites você pode especificar um \textsf{grace period}, que server como um período para que ele remova alguns
+de seus dados até que o tamanho da sua pasta seja inferior ao \textsf{soft limit}.\\[3mm]
+
+Vamos imaginar que temos um servidor FTP e queremos adicionar quotas dentro do diretório /var/ftp, a primeira coisa que
+nós devemos fazer é alterar o arquivo \textsf{\emph{/etc/fstab}} modificando a linha que contém a partição e o diretório
+e adicionar como opção \textbf{usrquota, grpquota}, como abaixo:
+
+\begin{center}
+\fbox{/dev/hda7		/var/ftp	ext3		defaults 0 0}
+\end{center}
+
+para:
+
+\begin{center}
+\fbox{/dev/hda7		/var/ftp	ext3		defaults,usrquota,grpquota 0 0}
+\end{center}
+
+E finalmente, para habilitar o sistema de quotas, digitar:
+
+\begin{center}
+\fbox{\# quotacheck -acug /var/ftp}
+\end{center}
+
+Feito isso já estamos com o sistema de quotas habilitado dentro do diretório /var/ftp, faltando apenas criarmos os
+arquivos de quotas e depois definirmos os usuários ou grupos que terão quotas, você pode por exemplo criar usuários que
+irão acessar o FTP com o grupo \textsf{\emph{ftpusers}} e depois setar a quota apenas pro grupo e todos terão que obedecer
+as normas ditadas por você. Para editar quotas de algum usuário digite \textbf{edquota \textsf{\emph{usuário}}}, já para
+editar a quota de um grupo: \textbf{edquota \textsf{\emph{-g grupo}}}.
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=8mm,xrightmargin=8mm]{txtz/ex082.txt}
+\end{center}
+
+Isto estaria informando ao sistema de arquivos que o usuário \textsf{\emph{billy}} poderá utilizar apenas 2MB do disco
+sem problemas e 4MB no máximo, e o grupo \textsf{\emph{ftpusers}} como um todo utilizará apenas 2GB sem problemas e 4GB
+no máximo.
+
+\section{Shell Scripting}
+
+A shell nos oferece uma porção de comandos que se executados em forma estruturada pode se tornar uma
+linguagem de programação, além de executáveis a shell nos fornece meios de aplicar condições, loops e
+criar variáveis recebendo valores ou até comandos, alguns destes pontos serão abordados neste texto,
+porém só veremos o básico por ser uma cadeira muito ampla.
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=8mm,xrightmargin=8mm]{txtz/ex085.txt}
+\end{center}
+
+A primeira linha de comandos está apenas utilizando o poder da shell com variáveis e informando que
+a variável \emph{\$FOO} recebe o número 1 (um) e a variável \emph{\$MSG} recebe a string "Valor: ", já a
+variável \emph{\$BAR} está recebendo um comando \textsf{\emph{expr}} que serve como uma calculadora somando
+o valor da variável \emph{\$FOO} que é igual a 1 (um) mais um, ou seja, 2. O comando echo finaliza mostrando
+o resultado que as duas variáveis \emph{\$MSG} e \emph{\$BAR}. Abaixo podemos vêr uma tabela de categorias
+e comandos e como são aplicados os operadores de condição:
+
+\begin{center}
+\begin{tabular}{c c}
+  \begin{tabular}{| c | l |}
+    \hline
+    \textbf{categoria} & \textbf{comandos} \\ \hline
+    condição & if, case e select \\ \hline
+    loops & while, until, for \\ 
+    \hline
+  \end{tabular}
+  &
+  \begin{tabular}{| c | l |}
+    \hline
+    \textbf{operador}  &  \textbf{expressão}  \\ \hline
+    and      & [ expr1 ] -a [ expr2 ]  ou  [ expr1 ] \&\& [ expr2 ] \\ \hline
+    or       & [ expr1 ] -o [ expr2 ]  ou  [ expr1 ] || [ expr2 ] \\ \hline
+    negative & [ ! expr1 ] \\
+    \hline
+  \end{tabular}
+\end{tabular}
+\end{center}
+
+Tudo bem, mas cadê a programação? Ok! Então vamos utilizar o código mais abaixo como exemplo de programação
+em shell, mas antes vejamos os conceitos básicos para utilização de scripts na shell:
+
+\begin{itemize}
+\item Todo script deve têr um interpretador de execução na primeira linha do script.
+\item Todo script deve têr permissão de execução dentro do sistema de arquivos do linux.
+\end{itemize}
+
+Exemplo:
+
+\begin{center}
+\small
+[quota.sh]
+\VerbatimInput[obeytabs=true,xleftmargin=3cm,xrightmargin=3cm,numbers=left]{ex1.sh}
+shell scripting para coletar quotas e setar permissões
+\end{center}
+
+Podemos observar logo de cara que a primeira linha contém o nosso interpretador de código, ou
+seja, o comando que irá ser utilizado para interpretar o pseudo-código criado pelo desenvolvedor,
+no caso utilizaremos a shell \emph{bash} que conta com uma linguagem como dito anteriormente. As
+linhas 2 e 3 são variáveis que recebem valores, a variável \emph{USERS} na verdade está recebendo
+a saída do comando executado entre crases, na linha 5 temos o nosso loop \emph{for} que vai fazer
+um loop a cada item que a variável \emph{USERS} estiver contendo, a linha 6 é um pouco mais
+complicada, ela contém uma expressão regular que irá ignorar todo o texto que aparecer depois
+do primeiro caracter '\textbf{:}', mas isso é uma lição para um próximo artigo, dentro do loop
+ele usará o comando \emph{du} que retorna o tamanho de um diretório e joga na saída do arquivo
+\emph{quota.log} especificado por nós, depois seta a permissão do diretório e seu dono e grupo.\\
+
+Exemplo no.2:
+
+\begin{center}
+\small
+[bakup]
+\VerbatimInput[xleftmargin=3cm,xrightmargin=3cm,obeytabs=true,numbers=left]{bakup}
+script para fazer backup dos diretorios de /projetos e /ftp
+\end{center}
+
+Definimos uma variável chamada \emph{\$BAKUPPATH} contendo duas strings que são dois diretórios: \textbf{/ftp} e \textbf{
+/projetos}, fazemos um loop for utilizando a variável como base, ou seja, ele irá entrar no loop duas vezes, e a variável
+\emph{\$x} conterá um valor de cada vez da \emph{\$BAKUPPATH}, já dentro do loop iremos criar um diretório \emph{/tmp/bakup}
+e atribuiremos a variável \emph{\$BAKUP} o retorno do comando entre crase que irá listar o diretório e retornar seus
+respectivos sub-diretórios, após isso criaremos um arquivo .tar.bz2 de cada sub-diretório usando o loop for, e depois
+usaremos expressões regulares para pegar o nome da variável \emph{\$x} sem o caracter '/' e utilizaremos esse nome para
+fazer o backup completo com todos os \emph{.tar.bz2} criados anteriormente, depois faremos o mesmo processo com o próximo
+diretório e assim consequentemente.
+
+\section{Adicionando Tarefas}
+
+Para adicionarmos tarefas no Linux utilizamos entre outros o serviço CROND, o cron trabalha com uma
+sintaxe de configuração que especifica desde o ano até o minuto em que o comando deve ser executado,
+digitando \textbf{crontab -e}, você verá algo assim:
+
+\begin{center}
+\small
+[arquivo com entradas do contrab]
+\VerbatimInput[xleftmargin=2mm,xrightmargin=2mm,frame=single]{txtz/ex86.txt}
+\end{center}
+
+Porém se quisermos apenas adicionar tarefas básicas para serem executadas dentro de poucos dias ou horas, e não
+constantemente numa semana, mês ou até todos os dias do mês, devemos utilizar a ferramenta \textsf{\emph{at}}.
+A sua sintaxe é bem simples: \textbf{at -f \textsf{\emph{/script2 6:00am}}}, isto diria ao serviço que às 6 (seis)
+da manhã ele deve executar o script \textsf{\emph{/script2}}.
+
+Exemplos:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=2mm,xrightmargin=2mm,frame=single]{txtz/ex861.txt}
+\end{center}
+
+Embora todas essas tarefas só serão de fato executadas se os respectivos serviços estiverem rodando no sistema,
+são eles o CROND e o ATD, para vêr se eles estão rodando ou não utilizamos os processos init dentro do diretório
+\textsf{\emph{/etc}}, para iniciarmos utilizamos como argumento o \textbf{start} e para parar o argumento utilizado
+é o \textbf{stop}.
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=2mm,xrightmargin=2mm,frame=single]{txtz/ex862.txt}
+\end{center}
+
+% uma visao do /dev , como listar dispositivos lspci, lsusb, dmesg, /proc
+\section{Coletando informações dos dispositivos}
+
+Dispositivo é uma unidade de hardware capaz de fornecer informações e trocar dados com a CPU, um
+teclado, um mouse, um pendrive, tudo isto são dispositivos computacionais e/ou periféricos, podemos
+têr uma lista completa suportados por nosso kernel atual dentro do diretório \textsf{\emph{/dev}}, porém
+muitas vezes compramos ou trocamos dispositivos por novos e talvez estes não tenham suporte no kernel,
+temos então que saber com precisão o que nosso sistema dispõe e como instalar tudo corretamente, o comando
+\textsf{\emph{lspci}} mostra o conteúdo de dispositivos PCI disponíveis no seu computador, vejamos um
+exemplo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=0mm,xrightmargin=0mm,frame=single]{txtz/ex87.txt}
+\end{center}
+
+Há vários macetes no Linux para coletar informações de hardware, veremos boa parte deles aqui que o auxiliarão
+para configurar alguns dispositivos mais tarde, apesar de hoje em dia grande parte dos equipamentos serem
+desenvolvidos utilizando barramento PCI. Podemos também vêr um relatório de mensagens enviadas pelo o sistema
+utilizando o comando \textsf{\emph{dmesg}} que nos mostra quais dispositivos foram reconhecidos diretamente na
+hora da inicialização, é um dos comandos de coleta mais utilizados no linux. Abaixo alguns comandos um pouco
+mais específicos para determinadas situações:
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=0mm,xrightmargin=0mm,frame=single]{txtz/ex871.txt}
+\end{center}
+
+\section{Compilando o Kernel}
+
+Aqui estamos falando essencialmente de hardware, ou seja, para re-compilar ou compilar uma nova
+versão do kernel deve-se têr um conhecimento aprofundado do inventário de hardware que você
+possui. Entre algumas coisas essencias podemos listar: processador, placas de vídeo, placas de
+rede, placas de som, barramentos pci ou isa, etc. O Kernel do Linux pode ser baixado no seu
+site oficial \url{www.kernel.org}, lá haverão diversas maneiras de se obter uma versão do
+código do kernel. Um detalhe importante que vale ser dito é que números ímpares na versão do
+Kernel indicam que ele está em fase de desenvolvimento, enquanto números pares indicam que a
+versão está estável, atualmente as versões do Kernel mais desenvolvidas são a 2.4 e a 2.6.
+
+\begin{center}
+\fbox{\# wget -c http://www.kernel.org/pub/linux/kernel/v2.4/linux-2.4.32.tar.bz2}
+\end{center}
+
+Após ter baixado o Kernel você precisa colocar ele no local padrão \textsf{\emph{/usr/src/}},
+para fazer isto precisamos de uid (user id) 0 (zero), ou root, a conta super usuário do linux.
+Vamos nos basear aqui no exemplo do kernel versão 2.4.32 e 2.6.12, vejamos abaixo como
+descompactar o kernel. O kernel do Linux utiliza dois formatos de empacotamento padrão, o bzip
+e o gzip, os dois são o mesmo só que em formatos diferentes. 
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex12.txt}
+\end{center}
+
+Antes de re-compilarmos o kernel atribuindo nossas necessidades precisamos, é claro, configurar
+estas opções decidindo quais drivers iremos colocar, quais suportes a sistemas de arquivos nós
+iremos ter, que tipo de controladoras vamos ativar, etc. Existem atualmente 3 (três) comandos
+básicos, são eles:
+
+\begin{center}
+\fbox{\# make config  ou  make menuconfig  ou  make xconfig}
+\end{center}
+
+O \textsf{make config} faz com que o kernel te envie dado por dado quais opções você deseja
+utilizar como módulo dinâmico, fixo no kernel ou simplesmente não utilizar o suporte, o 
+\textsf{make menuconfig} te permite visualizar um menu em ncurses (biblioteca gráfica do
+console do unix) e escolher que opções deseja para o seu kernel e o \textsf{make xconfig} faz
+com que você escolha as opções em modo gráfico no X. Após a configuração devemos compilar o
+kernel com os seguintes comandos no kernel 2.4:
+
+\begin{center}
+\fbox{\# make dep \&\& make bzImage \&\& make modules \&\& make modules\_install}
+\end{center}
+
+Já no kernel 2.6:
+
+\begin{center}
+\fbox{\# make \&\& make modules\_install}
+\end{center}
+
+Depois disso deve-se copiar a imagem do kernel para o diretório de boot, substituindo a antiga
+ou copiando uma nova para teste, após isso deve-se também executar o gerenciador de boot para
+atualizar a imagem que será carregada:
+
+\begin{center}
+\fbox{\# cp arch/i386/boot/bzImage /boot/bzImage-nova}
+\end{center}
+
+\chapter{Administrando Redes}
+
+Este tópicos pode assustar algumas pessoas por envolver conhecimentos um pouco mais técnicos, mas
+para se ter controle das ações executadas na internet e intranet deve-se têr um conhecimento básico
+de redes no linux. Veremos aqui conceitos básicos de redes no linux, o que não lhe torna um
+verdadeiro administrador, porém lhe da a base para todo o resto.\\[3mm]
+
+Basicamente no linux temos três tipos de conexões baseadas em sockets (descritores de arquivo que
+servem como apontadores para uma conexão criada), são elas: \textsf{\emph{TCP, UDP, RAW, UNIX sockets}}. Todas elas
+utilizam ainda outro protocolo que se chama IP, o IP é responsável por atribuir a usuários um
+endereço único na internet/intranet que tornará o usuário conhecido dentre os demais endereços
+existentes.
+
+\section{Configurando a Placa de Rede, Fax Modem ou ADSL}
+
+Para identificar o nosso dispositivo para conexão com a internet/intranet devemos fazer uma consulta
+a tabelas de dispositivos PCI. Toda vez que houver uma placa de rede instalada no hardware ela vai
+ser mostrada como "Ethernet" e toda vez que houver um fax modem será "Modem". Vejamos o exemplo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex13.txt}
+\end{center}
+
+O primeiro passo foi concluído com sucesso, coletamos as informações necessárias, o próximo passo
+será encontrar o módulo no kernel (uma parte do kernel que pode ser carregada/descarregada em tempo
+real) que no Windows chamariamos de driver e que será responsável por criar o nosso dispositivo
+do modem ou levantarmos a nossa placa de rede.
+
+\begin{quote}No linux todas as placas de rede tem como prefixo o dispositivo eth\textsf{\emph{N}}, onde 
+\textsf{\emph{N}} é a quantidade de placas de rede começando por 0 (zero), logo a primeira placa de
+rede do linux é a \textsf{\emph{eth0}}
+\end{quote}
+
+Para concluírmos o segundo passo então devemos acessar o diretório \textsf{\emph{/usr/src}} aonde fica
+o nosso kernel e acessarmos a pasta do kernel atual, este pode ser visto digitando:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex131.txt}
+\end{center}
+
+Após termos entrado no diretório do kernel atual digitaremos dentro dele o comando \textsf{\emph{make 
+menuconfig}} como se estivéssemos prontos para reconfigurar o kernel, porém aqui vamos apenas verificar
+se o drive está ativo além de obter conhecimento do nome do módulo em questão para ser carregado quando
+quisermos usar nossa placa de rede. 
+
+\begin{quote}
+1. Acesse o diretório do kernel atual dentro do /usr/src; 2. Digite 'make menuconfig'; 3. Vá até
+a seção de 'Device Drivers' e depois entre na parte de rede (Network), procure sua placa e descubra o 
+nome do módulo com sufixo .ko ou .o
+\end{quote}
+
+No meu caso temos uma bem genérica chamada 'Via Rhine II' geralmente grande parte dos computadores atuais
+vem com esta placa, depois de uma pesquisa no menu do kernel descobri que o nome do módulo dela é
+\textsf{\emph{via-rhine.ko}}, para utilizarmos a nossa placa de rede basta que este módulo esteja compilado
+como nativo no kernel ou carregado durante a inicialização como módulo, caso esteja como módulo podemos
+verificar se ele está ativo digitando \textsf{\emph{lsmod | grep via}}, caso não esteja basta carregá-lo
+com o comando \textsf{\emph{modprobe via-rhine}}.\\[3mm]
+
+Já o caso do Modem é um pouco mais complexo, devemos achar o driver dele na internet como no Windows,
+geralmente procurando-os no fabricante ou então no site do desenvolvedor, hoje em dia existe um site que
+você verifica se o seu modem tem suporte no linux e aonde procurar este suporte: \url{www.linmodems.org}
+ou mesmo uma pesquisadinha no \url{www.google.com} não faz mal! Geralmente o driver vem nos formatos
+'.tar.gz' ou '.tar.bz2' bastando apenas descompressar o arquivo e executar as operações abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex132.txt}
+\end{center}
+
+Voilá! Já deve ter sido criado um novo dispositivo dentro do diretório \textsf{\emph{/dev}}, este será
+a sua porta de conexão para acessar o modem e conectar-se a internet, agora basta utilizar o seu programa
+favorito pra se conectar a internet como o wvdial ou kppp. \textsf{\emph{Lembre-se sempre de lêr o
+README dentro do diretório criado pelo driver.}}\\[3mm]
+
+O ADSL normalmente relacionado à Velox já é um pouco diferente também, temos que pegar um pacote que vem
+em quase todas as distribuições chamado pppoe-tools, ou algo do tipo dependendo da distribuição, ele nos
+fornecerá vários scripts dentre os quais destacaremos três: \textsf{\emph{pppoe-setup ou adsl-setup,
+pppoe-start ou adsl-start e pppoe-stop ou adsl-stop}}. Para configurarmos nossa ADSL basta digitarmos o
+referente ao setup, e depois inicializarmos com o referente ao start, no setup ele irá lhe perguntar o 
+login do usuário, dispositivo de rede, DNS primario e secundario, senha, etc.
+
+\section{Configurando a Rota e a Ethernet}
+
+A internet é interligada à super computadores que são ligados a computadores menores, pra fazer esta
+ligação é necessário uma coisa chamada de rota, que nos informa qual o gateway que estamos usando e
+aonde ele se conectará para nos dar acesso a internet pra fora. Por quê existem rotas? Porque sem elas
+não conseguiriamos acessar a internet e/ou a intranet, utilizando protocolos como DHCP estas rotas são
+setadas automaticamente, porém se usarmos outro tipo de protocolo teremos que setá-las manualmente e
+este será nosso objetivo aqui. Também veremos como configurar um servidor DHCP pra alocar uma faixa de
+IPs determinda pelo administrador.\\[3mm]
+
+Utilizaremos aqui duas ferramentas, \textsf{\emph{route e ifconfig}}, para realizar todo o processo de
+configuração da rota e da ethernet. O comando \textsf{\emph{route}} é responsável por modificar a tabela
+de rota, adicionando ou deletando rotas de conexões e mostrando estatísticas da tabela. Já o comando
+\textsf{\emph{ifconfig}} é responsável por configurar a placa de rede a nível de modificação de IPs,
+máscaras e demais fatos relacionados ao protocolo IP. Vejamos um exemplo de informação da tabela de
+rota e do dispositivo de rede:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex14.txt}
+\end{center}
+
+Para entendermos a saída do primeiro comando route (que nos mostra a tabela de rota atual do sistema),
+devemos observar em primeiro lugar qual é a interface do dispositivo, no caso a eth0, e depois observarmos
+que rede se liga com qual. Na primeira linha podemos observar que o destino é 10.0.0.0 e o 'roteador' é
+a faixa 0.0.0.0 (local), traduzindo isto teriamos que tudo que for local deve ser redirecionado para a
+a rede 10.0.0.0 e na segunda linha temos o destino 0.0.0.0 (local) e o roteador 10.0.0.5, porém temos
+também uma flag \textbf{G} que indica que estamos utilizando um roteador de verdade, ou seja tudo que
+for enviado do 0.0.0.0 (local) será redirecionado para o 10.0.0.5 (roteador).\\[3mm]
+
+No caso do ifconfig estamos mostrando as informações da primeira placa de rede do hardware, que está nos
+informando a máscara de rede, o endereço MAC, o broadcast, o endereço IP e algumas estatística de entrada
+e saída de dados (RX e TX respectivamente).\\[3mm]
+
+Abaixo algumas flags de rota utilizadas pelo comando \textsf{\emph{route}}, que nos ajuda a entender
+melhor o que está sendo mostrada pela saída da instrução:
+
+\begin{center}
+  \begin{tabular}{ | c | l | }
+  \hline
+  \textbf{flag} & \textbf{descrição} \\ \hline
+  U & rota esta ativa. \\ \hline
+  H & alvo é uma máquina. \\ \hline
+  G & use roteador. \\ \hline
+  R & rota para roteamento dinâmico. \\ \hline
+  D & Instalada dinamicamente por um daemon ou por redirecionamento. \\ \hline
+  M & Modificada por daemon de roteamento ou redirecionamento. \\ \hline
+  ! & Rota rejeitada. \\
+  \hline
+  \end{tabular}
+\end{center}
+
+Joãozinho guardou uma máquina para ser um servidor WEB e Roteador com o IP 10.0.0.1, na sua empresa o
+Abelardo e a Maria estão numa intranet e precisam se conectar no servidor para programar o site e
+acessar a internet, além de conversarem entre si via intranet. O que eles devem fazer?
+
+\begin{enumerate}
+\item Joãozinho deve configurar sua máquina e adicionar uma rota de ips 10.0.0.0 (intranet).
+\item Abelardo e Maria devem utilizar a rota para o servidor e levantaram a sua ethernet com um IP
+na faixa 10.0.0.0 para poderem se conectar entre si e com o servidor.
+\end{enumerate}
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex141.txt}
+\end{center}
+
+\section{Configurando serviços DHCP}
+
+O protocolo DHCP (Dynamic Host Configuration Protocol) funciona como um servidor para servir IPs
+dinâmicos numa faixa especificada pelo servidor, ou seja, se o usuário estiver ligado a rede física
+do servidor e iniciar sua máquina utilizando o cliente DHCP ele receberá um IP automático do servidor
+e será configurado automaticamente sua rota e seu DNS (Domain Name Service).\\[3mm]
+
+Imagine que o chefe de Joãozinho o pediu para criar um servidor DHCP para sua empresa e atribuir a
+faixa de IPs 192.168.10.X para seus funcionários tendo em vista que a empresa tem menos de 255 usuários,
+o que Joãozinho deve fazer? Vejamos um exemplo abaixo do que ele fez:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex15.txt}
+\end{center}
+
+Vamos comentar o processo linha por linha, 1. definiu um tempo para que o IP seja liberado caso o usuário
+não defina um tempo para utilização do mesmo, 2. define o tempo máximo permitido, 3. define a máscara de
+rede, 4. o IP de broadcastin, 5. o IP que será o roteador padrão, 6. o IP que será o DNS da rede, 7. o nome
+do domínio DNS. Por fim teremos a nossa subnet que informa ao servidor DHCP que o mesmo deve fornecer
+IPs da rede \textsf{192.168.10.X} utilizando a máscara \textsf{255.255.255.0}, e todos os IPs do servidor
+serão fornecidos na faixa do 192.168.10.2 até a 192.168.10.254. Por último definimos um IP fixo
+\textsf{192.168.10.100} para uma placa de rede com o endereço MAC \textsf{08:00:2b:4c:59:23}.\\[3mm]
+
+Lembre-se sempre que toda vez que você altera alguma configuração de um serviço você tem que reiniciá-lo
+para fazer isso basta matar o pid (process id) do \textsf{dhcpd} e depois iniciar novamente:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex151.txt}
+\end{center}
+
+\section{Configurando Servidor de Páginas}
+
+O servidor de páginas é responsável por fornecer a você e a vários usuários uma conexão socket para lêr o
+conteúdo de um website, além de fornecer controle de acesso a certos diretórios. O primeiro servidor de páginas
+foi o Apache que hoje em dia é utilizado em 92\% da internet como padrão, aqui mostraremos como instalar o
+apache, configurar alguns metódos e instalar o PHP.\\[3mm]
+
+A primeira coisa a fazer é baixar uma versão do apache e do php para instalarmos no sistema, estes podem ser
+encontrados respectivamente em: \url{www.apache.org} e \url{www.php.net}, após isso:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex16.txt}
+\end{center}
+
+Como o arquivo de configuração do apache é muito grande e altamente padronizado vamos vêr aqui apenas o que
+de fato interessa, como mudar a porta do serviço, o diretório em que ficarão os códigos web, o acesso moderado...
+ Vejamos um exemplo do arquivo de configuração do apache, \textsf{httpd.conf}, com os padrões da instalação
+no campo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex161.txt}
+\end{center}
+
+Vamos novamente comentar linha por linha: 1. Diretório principal do servidor de páginas, 2. Máximo de clientes
+que poderão acessar simultaneamente o servidor, 3. A porta utilizada pelo servidor para receber conexões, 4. Onde
+ficarão os arquivos de códigos web. E por fim a estrutura do diretório de códigos \textsf{/usr/local/apache2/htdocs}
+que tem acesso total por qualquer usuário definido pela opção \textbf{Allow From All}.
+
+\subsection{Instalando o PHP}
+
+Pra configurar o PHP no apache é temos que seguir dois passos, o primeio passo é pegar o fonte do PHP e depois
+configura-lo e instala-lo, então vamos ver no campo abaixo como fariamos com o arquivo baixado:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex162.txt}
+\end{center}
+
+Agora temos que fazer com que o Apache reconheça o PHP, para isso devemos editar o arquivo de configuração do
+apache e adicionarmos algumas especificações nele, você precisará procurar pelas opções abaixo, caso não existam
+elas devem ser incluidas nos seus devidos locais:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex163.txt}
+\end{center}
+
+E pronto! Basta reiniciar o apache para que o seu PHP esteja funcionando corretamente e sem problemas, para
+fazer isto você deve executar os comandos listados no campo abaixo:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{txtz/ex164.txt}
+\end{center}
+
+\chapter{Epílogo}
+
+Agradeço a todos que me deram oportunidade para criar um documento como este, principalmente ao desenvolvedor
+do LaTeX (sem ele isso não seria possível), ao pessoal da EMPREL por ter me apoiado na criação do documento
+para servir como base introdutória de treinamento para usuários que irão utilizar Linux como seus desktops.\\[3mm]
+
+Todo este pequeno livro foi desenvolvido baseado em \textsf{\emph{software livre}}, ou seja, tudo de graça e
+sem precisar de muito quebra cabeça pois o LaTeX está bem documentado na internet, uma cópia do código-fonte
+deste livro será disponibilizada em breve no site do projeto Recife Livre. Esta é uma versão inicial, ou seja,
+haverão outras versões deste documento mais detalhadas e muito mais exemplificadas, porém nesta primeira edição
+isto não foi possível por motivos de tempo, precisávamos de um documento base para começar a dar aulas o quanto
+antes!\\[3mm]
+
+Qualquer dúvida, sugestão ou crítica deverá ser enviada ao autor do livro, \textsf{\emph{Alexandre Mulatinho}},
+que tentará reponder-lhe o mais breve possível, abaixo você poderá ver como entrar em contato com ele:
+
+\begin{center}
+\small
+\VerbatimInput[frame=single,xleftmargin=5mm,xrightmargin=5mm]{contact.txt}
+\end{center}
+
+O objetivo principal deste documento é desmistificar o uso do Linux como sistema operacional nativo, tudo que
+foi falado aqui pode ser feito por você de forma muito melhor, porém isso só é a realidade quando se anseia a
+busca pelo conhecimento. Lembre-se, apesar de isto tudo têr sido introdutório alguém o passou para mim e agora
+está sendo passado para você, não quebre essa corrente, a difusão do conhecimento é parte de uma jogada em que
+só você sairá ganhando.
+
+\begin{quote}
+"Talk is cheap, show me the code." Linus Torvalds
+\end{quote}
+
+\end{document}

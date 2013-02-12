@@ -1,0 +1,7 @@
+# /etc/init.d/crond start
+Iniciando crond:                              [  OK  ]
+
+ou
+
+# /etc/rc.d/rc.atd start
+atd started!

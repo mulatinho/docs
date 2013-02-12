@@ -1,0 +1,2 @@
+# uname -a
+Linux mulatinho 2.6.11 #1 Thu Jun 2 22:53:35 EDT 2005 i686 athlon i386 GNU/Linux

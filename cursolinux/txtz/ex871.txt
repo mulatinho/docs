@@ -1,0 +1,12 @@
+# dmesg                                
+(mostra informações gerais do sistema)
+# cat /proc/bus/usb/devices | more     
+(mostra as controladoras de dispositivos USB)
+# cat /proc/interrupts                 
+(mostra tabela de suas interrupções de hardware)
+# dmidecode                            
+(informações gerais da BIOS e da CPU)
+# xdpyinfo | grep dimensions           
+(pega resolução da interface gráfica)
+# fdisk -l /dev/hda                    
+(informações do tamanho e partições do HD)

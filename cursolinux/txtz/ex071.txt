@@ -1,0 +1,11 @@
+<DefaultPrinter Lexmark>
+DeviceURI smb://GOP/print_bloco_f/lex_optra
+Location
+Info
+State Idle
+Accepting Yes
+JobSheets none none
+QuotaPeriod 0
+PageLimit 0
+KLimit 0
+</Printer>

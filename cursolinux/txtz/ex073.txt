@@ -1,0 +1,2 @@
+/projetos       192.168.0.2             (rw,no_root_squash,sync)
+/docs           192.168.0.2,192.168.0.3 (rw,no_root_squash,sync)

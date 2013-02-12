@@ -1,0 +1,7 @@
+# mt -f /dev/nst0 status
+SCSI 2 tape drive:
+File number=44, block number=0, partition=0.
+Tape block size 1048576 bytes. Density code 0x26 (DDS-4 or QIC-4GB).
+Soft error count since last status=0
+General status bits on (89010000):
+EOF EOD ONLINE IM_REP_EN

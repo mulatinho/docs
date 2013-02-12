@@ -1,0 +1,21 @@
+# mtx -f /dev/sg0 status
+Storage Changer /dev/sg0:2 Drives, 38 Slots ( 0 Import/Export )
+Data Transfer Element 0:Empty
+Data Transfer Element 1:Empty
+Storage Element 1:Full
+Storage Element 2:Full
+Storage Element 3:Full
+Storage Element 4:Full
+Storage Element 5:Full
+Storage Element 6:Full
+Storage Element 7:Full
+Storage Element 8:Full 
+Storage Element 9:Full 
+Storage Element 10:Full 
+Storage Element 11:Full 
+Storage Element 12:Full 
+Storage Element 13:Full 
+Storage Element 14:Full 
+Storage Element 15:Full 
+Storage Element 16:Full 
+.....

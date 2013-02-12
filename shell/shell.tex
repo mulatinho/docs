@@ -1,0 +1,398 @@
+\documentclass{beamer}
+\usepackage{graphicx,url,verbatim,fancyvrb,ifpdf}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\mode<presentation>
+{ \usetheme{Warsaw} }
+
+\title[Programando na Shell]{Introdução a Shell e ao Shell-Scripting}
+\author{Alexandre Mulatinho}
+\institute{http://mulatinho.wordpress.com\\alexandre@mulatinho.net}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Introdução}
+  \framesubtitle{Visão dos principais conceitos}
+\begin{itemize}
+  \item<1-> Shell e shell-script são termos diferentes.
+  \item<2-> Shell é um software criado para interagir entre o usuário e o sistema operacional, aceitando comandos digitados pelo usuário e os interpretando/transformando numa forma em que o PC possa entender.
+  \item<3-> Shell-script é um conjunto de palavras específicas que fazem com que a shell transforme-se numa linguagem de programação interpretada. Exemplos dessas palavras chaves são: IF, WHILE, CASE, FOR, etc.
+  \item<4-> Há varias shell's diferentes como: SH, BASH, CSH, KSH, etc. A que usaremos é a mais comum nos dias atuais, o BASH. Conhecida como Bourne-Again Shell criada por Brian Fox e Chet Ramey da Free Software Foundation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Diferenças entre tipos de linguagens.}
+  \framesubtitle{Linguagem interpretada e compilada.}
+\begin{itemize}
+  \item<1-> Linguagem interpretada é aquela que não precisa ser transformada em binário de forma que o computador possa entender cada linha do programa, ela é processada por um software, no nosso caso a shell, e aí sim transformada numa forma em que o PC entenda.
+  \item<3-> Exemplos: Python, Shell-Script, PHP, Perl, etc.
+  \item<2-> Linguagem compilada é aquela que é lida linha por linha por um software compilador que aí então a transforma num binário para ser executado e entendido diretamente pelo sistema operacional.
+  \item<3-> Exemplos: Assembly, C, Pascal, etc. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Conceitos básicos pt.1}
+\begin{itemize}
+  \item<1-> Todo programa rodado pela shell deve ter permissão de 'execução' (modo +x) e ser um programa binário ou um script (conjunto de comandos ordenados corretamente) que deve ser interpretado pela shell.
+  \item<2-> A shell interage entre o usuário e o sistema operacional, servindo figuramente como uma ponte, ela não só é responsável por executar os programas mas também por interpretar uma série de comandos e 'coringas' em conjunto. (Ex: ls a* \&\& xargs rm -f)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Conceitos básicos pt.2}
+\begin{itemize}
+  \item<1-> A shell retorna verdadeiro caso um programa seja executado e retorne o valor 0, ou então retorna erro caso o valor retorna seja diferente de 0, por exemplo 1. Com isso voce pode testar se o comando anterior executado foi um sucesso ou não.
+  \item<2-> A shell difere o uso de ' (aspas simples), " (aspas dupla) e ` (crase) no uso da linha de comando e especialmente também em variáveis: aspas simples servem para indicar textos puros que nao devem ser interpretados, aspas duplas para indicar textos complexos com ou sem variáveis e comandos, já a crase serve para executar comandos em processos outros processos filhos. Também como no linux em geral, a shell difere letras maiúsculas de minúsculas, isso é o que chamamos de case-sensitive.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Então... resumindo os conceitos básicos}
+\begin{itemize}
+  \item Resumindo: A shell utiliza-se de \alert<1->{comandos ordenados escritos pelo usuário} que podem ser binários ou scripts e os processa de modo que o resultado final seja compreendido pelo sistema operacional e também torne-se claro para o operador do computador.
+  \item Todo script shell deve ser iniciado por interpretador e ser um executável, o interpretador é a primeira linha do script e pode ser uma shell ou outro software interpretador como o perl, afirmando que um script shell não depende de sufixos como o '.sh' e sim de um interpretador para ser considerado um shell-script.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Interpretadores e o 'She-bang!'}
+\begin{itemize}
+  \item<1-> Um interpretador é um software que será responsável por lêr todas as linhas de código do script e processá-las uma a uma transformando em linguagem de máquina.
+  \item<2-> Na linguagem dos programadores \alert<2-3>{she-bang} significa os caracteres \alert<3>{\#!} que são responsáveis por informar a shell qual o interpretador ela deve utilizar para processar o código, esta chamada deve aparecer na primeira linha do script.
+  \item<3-> Por padrão não é necessário colocar o she-bang em um script shell, porém é essencial informar ao script qual interpretador shell ou software ele deve utilizar para processar o código, \alert<3>{senão será utilizado o shell atual}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Escapes e Coringas}
+\begin{itemize}
+  \item<1-> A shell por padrão interpreta expressões regulares e coringas/escapes.
+  \item<2-> Um coringa geralmente é descrito por um caracter não alfa-numérico.
+  \item<3-> Os coringas mais conhecidos são: *, [], \{\}, ' e ". Porém há coringas bem mais complexos que veremos mais a frente e que são extremamente úteis.
+\end{itemize}
+\only<4-6>{
+\begin{exampleblock}{Exemplos}
+\$ ls\\ 
+alex.txt alessandra.txt adalberto.txt flavia.txt\\
+\$ ls al*\\
+\only<5-6>{alex.txt alessandra.txt\\
+\$ ls *\{a,o\}.txt\\}
+\only<6>{alessandra.txt adalberto.txt}
+\end{exampleblock}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shell}
+  \framesubtitle{Operadores da shell}
+\only<1>{
+\begin{itemize}
+  \item Operadores são responsáveis pelas atribuições de condições a execução, controle de processos, redirecionamento de descritores, operadores de testes e contas aritméticas em geral. Resumindo, são muitos operadores mas todos são extremamente úteis.
+\end{itemize}
+}
+ \only<2-4>{
+   \begin{block}{Operadores condicionais de execução}
+     \begin{tabular}{c l}
+       Operador & Função Principal \\
+       \&\& & AND condicional. Executa o comando da esquerda, e \\
+        & se verdadeiro, executa o da direita. \\
+       || & OR condicional. Executa o comando da direita apenas \\
+        & se o comando da esquerda não retornar verdadeiro.\\
+     \end{tabular}
+   \end{block}
+   \begin{exampleblock}{Exemplos}
+     \only<3-4>{\$ ls\\
+auditores.txt advogados.txt clientes.txt funcionarios.txt\\
+\$ ls a* \&\& rm -f a* \&\& ls}
+      \only<4>{clientes.txt funcionarios.txt\\
+\$ ls a* || rm -f \{c,f\}*\\ 
+\$ ls}
+   \end{exampleblock}
+}
+\only<5>{
+   \begin{alertblock}{Operadores de controle}
+      \begin{tabular}{c l}
+        Operador & Função Principal \\
+        \& & Envia jobs para background.\\
+        | & Envia saída da esquerda pra direita.
+      \end{tabular}
+   \end{alertblock}
+   \begin{exampleblock}{Exemplos}
+\$ ./meu\_server \&\\
+\$ ps ax | less
+   \end{exampleblock}
+}
+\only<6>{
+   \begin{block}{Operadores de redirecionamento}
+      \begin{tabular}{c l}
+        Operador & Função Principal \\
+        > & Redireciona a saída ao descritor da direita,\\
+          & Sobrescrevendo o descritor caso haja algum.\\
+        < & Redireciona a entrada ao descritor da esquerda.\\
+        << & Redireciona a entrada ao descritor da esquerda.\\
+        >> & Redireciona a entrada ao descritor da direita,\\
+	  & Adicionando os dados ao final, sem apagar o descritor.
+      \end{tabular}
+   \end{block}
+   \begin{exampleblock}{Exemplos}
+\$ echo "E ae meu querido" > saudacao.txt\\
+\$ echo "Tudo Beleza?" >> saudacao.txt\\
+\$ tail -n 1 < saudacao.txt
+   \end{exampleblock}
+}
+\only<7>{
+   \begin{block}{Operadores de Testes}
+      \begin{tabular}{c c l}
+        Op1 & Op2 & Função Principal \\
+        -gt & > & Maior que. 7 é maior que 5.\\
+        -ge & >= & Maior ou igual. 7 é Maior ou igual a 7.\\
+        -lt & < & Menor que.\\
+        -le & <= & Menor ou igual.\\
+        -eq & = & Igual a. 8 é igual a 8.\\
+	-ne & != & Não igual a. 8 não é igual a 7.\\
+      \end{tabular}
+
+      \begin{tabular}{c l}
+        Opção & Significado do teste \\
+        -f & testa se arquivo existe \\
+        -x & testa se arquivo é executavel \\
+        -d & testa se existe diretorio
+      \end{tabular}
+   \end{block}
+}
+\only<8>{
+   \begin{block}{Operadores Aritméticos}
+      \begin{tabular}{c l}
+        Operador & Função Principal \\
+        + & Soma. 5 + 7.\\
+        - & Subtração. 7 - 2.\\
+        * & Multiplicação. 5 * 9.\\
+        / & Divisão. 15 / 5. \\
+        \% & Módulo. 12 \% 2.
+%	 & Potênciação. 5 ^ 2.
+      \end{tabular}
+   \end{block}
+\$ expr 5 - 2\\
+3\\
+\$ expr 8 * 4\\
+expr: syntax error\\
+\$ echo \$((5*20))\\
+100\\
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Variáveis}
+  \framesubtitle{Criando e modificando variáveis simples e complexas}
+\only<1>{
+\begin{itemize}
+  \item Na shell variáveis são alfa-numéricas (letras e números). Então não há uma pré-definição do que a variável irá se tornar, ela pode ser qualquer coisa, obviamente fazer contas com variáveis alfas acarretam em problemas.
+  \item Podemos atribuir à variáveis não só outras variáveis como também saída de comandos simples e complexos.
+  \item As variáveis também tem coringas especiais que fazem manipulação de strings.
+\end{itemize}
+}
+\only<2>{
+  \begin{block}{Algumas variáveis especiais da shell}
+    \begin{tabular}{c l}
+      Variável & O que significa \\
+      HOME & Indica a pasta do usuário atual.\\
+      SHELL & Indica a shell que o usuário está usando.\\
+      PWD & Indica a pasta em que o usuário se encontra.\\
+      PATH & Pastas as quais o usuário tem acesso aos softwares.
+    \end{tabular}
+  \end{block}
+\$ echo \$SHELL\\
+/bin/bash\\[2mm]
+Para ver mais variáveis do sistema basta digitar na shell o comando \alert<2>{env} que mostra as variáveis locais e o comando \alert<2>{export} que mostra as variáveis globais.
+}
+\only<3>{
+\VerbatimInput[xleftmargin=2mm]{txtz/var01.txt}
+}
+\only<4>{
+\VerbatimInput[xleftmargin=2mm]{txtz/var02.txt}
+}
+\only<5>{
+\VerbatimInput[xleftmargin=2mm]{txtz/var03.txt}
+}
+\only<6>{
+\Large{Exercícios}\\
+\large{1. Digitando o comando \alert<6>{env} procure a variável que informa sua pasta, após isso crie uma variavel com o nome 'VAR' que diga exatamente isso: \textbf{"Minha pasta atual é: /home/usuario"} onde o diretório será substituido pela variavel que vc encontrou no \alert<6>{env}.\\
+2. Crie uma nova variavel com nome qualquer que contenha a quantidade de caracteres da sua pasta inicial, para isso utilize o comando \alert<6>{wc -c} que conta o numero de caracteres de um texto, lembre-se de usar o operador que passa um comando da direita (que sera a impressao da sua pasta) para o comando da esquerda (que sera o \alert<6>{wc -c})
+}
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Laços Condicionais}
+  \framesubtitle{O IF-THEN-ELSE no Shell-Script}
+\only<1>{
+  \begin{itemize}
+    \item Deve-se sempre pensar no algoritmo em si, abstrair-se do mundo real e pensar como um computador, IF = se, ELIF = ainda se, ELSE = senão, evite utilizar IF's desnecessários.
+    \item Deve-se sempre primar pelo código perfeito, utilize os operadores lógicos quando achar que deve testar mais de uma condição ao mesmo tempo.
+  \end{itemize}
+%Large{
+\VerbatimInput[xleftmargin=5mm]{txtz/con01.txt}
+}
+\only<2>{
+\LARGE{ 
+\VerbatimInput[xleftmargin=5mm]{txtz/con02.txt}
+}
+}
+\only<3>{
+\LARGE{
+\VerbatimInput[xleftmargin=2mm]{txtz/con03.txt}
+}
+}
+\only<4>{
+\LARGE{ 
+\VerbatimInput[xleftmargin=2mm]{txtz/con04.txt}
+}
+}
+\only<5>{
+\LARGE{Exercícios}\\
+\Large{1. O que tem de errado com o exemplo anterior?\\
+2. Crie duas variaveis com valores aleatorios que serão idades, e faça condições usando IF-THEN-ELSE comparando a idade de um com o outro e diga quem é mais velho e quem é o mais novo.}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Laços Condicionais}
+  \framesubtitle{O CASE no Shell-Script}
+\only<1>{
+\begin{itemize}
+  \item A palavra \alert<1>{case} trata variáveis de forma bastante semelhante ao IF-THEN-ELSE porém separando em casos, como o próprio nome diz, a sintaxe é simples mas deve-se ter bastante atenção ao separador de opções.
+\end{itemize}
+\VerbatimInput[xleftmargin=2mm]{txtz/con05.txt}
+}
+\only<2>{
+\VerbatimInput[xleftmargin=2mm]{txtz/con06.txt}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Loops no shell script}
+  \framesubtitle{O \textbf{WHILE} faz algo até que uma condição seja atingida}
+\only<1>{
+\begin{itemize}
+  \item A palavra \alert<1>{while} testa uma condição até que ela se torne verdadeira, enquanto a condição for falsa o loop executará o que estiver dentro do bloco de instrução criada pelo programador.
+\end{itemize}
+\VerbatimInput[xleftmargin=2mm]{txtz/whi01.txt}
+}
+\only<2>{
+\VerbatimInput[xleftmargin=2mm]{txtz/whi02.txt}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Loops no shell script}
+  \framesubtitle{Com o \textbf{FOR} não tem aperreio, ou voce controla ou deixa se controlar}
+\only<1>{
+\begin{itemize}
+  \item A palavra \alert<1>{for} pode criar uma variavel no bloco de código ou utilizar uma variável anterior para começar o loop, esta fica localizada no seu primeiro argumento, o segundo argumento é uma condição que será testada até que se torne verdadeira (enquanto não se tornar o loop continua), e por fim o último argumento indica geralmente uma iteração ou execução dependendo da função do loop.
+\end{itemize}
+\VerbatimInput[xleftmargin=2mm]{txtz/for01.txt}
+}
+\only<2>{
+\VerbatimInput[xleftmargin=2mm]{txtz/for02.txt}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Loops no shell script}
+  \framesubtitle{A hora da verdade: exercicios..}
+\large{1. Escreva um programa que utilize o while e incremente uma variavel de 0 a 10 imprimindo seu resultado.\\[2mm]
+2. Escreva um programa com o for que processe a variavel VAR="/var /home" e copie seus dados (cp -Rf) para o diretorio de backup /tmp.}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scripts na Shell}
+  \framesubtitle{Parâmetros}
+\only<1-2>{
+\begin{itemize}
+  \item Parâmetros são na verdade palavras/argumentos que colocamos depois de uma chamada de uma script, isso é bem usado quando um script precisa receber um dado para ser executado.
+\end{itemize}
+\only<1>{
+\begin{block}{Exemplo de uso de parametros}
+\$ cat script.sh\\
+\#!/bin/bash\\
+echo arg0: \$0\\
+echo arg1: \$1\\
+echo arg2: \$2 arg3: \$3
+\end{block}
+}
+\only<2>{
+\begin{alertblock}{Exemplo de uso de parametros}
+\$ ./script.sh Alex\\
+echo arg0: script.sh\\
+echo arg1: Alex\\
+echo arg2: arg3:\\
+\$ ./script.sh Alex Mostrando Shell-Script\\
+echo arg0: script.sh\\
+echo arg1: Alex\\
+echo arg2: Mostrando arg3: Shell-Script
+\end{alertblock}
+}
+}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scripts na Shell}
+  \framesubtitle{Status de saída}
+\begin{itemize}
+  \item Status de sáida é o que diz ao script se ele foi executado com sucesso, com problemas ou com erro total.
+\end{itemize}
+\begin{block}{Tabela simples de status de saída}
+  \begin{tabular}{c l}
+    Valor: \$? & Significado \\
+    0 & Sucesso, verdadeiro. \\
+    1 & Maioria dos erros comuns dos programas. \\
+    126 & Sem permissão de execução. \\
+    127 & Comando não encontrado. 
+  \end{tabular}
+\end{block}
+\$ ls > /dev/null; echo \$?\\
+0\\
+\$ lsss > /dev/null; echo \$?\\
+127\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scripts na Shell}
+  \framesubtitle{Notas de Segurança}
+\begin{itemize}
+  \item Deve-se ter cuidado antes de fazer scripts pois como são programas executáveis podem danificar o sistema se houver falhas ou erros humanos.
+  \item Deve-se dobrar o cuidado quando scripts forem executados como root (super-usuário) pois os mesmos poderão executrar em todo o sistema.
+\end{itemize}
+\begin{alertblock}{Erro humano}
+\VerbatimInput[xleftmargin=2mm]{txtz/shell01.txt}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Scripts na Shell}
+  \framesubtitle{E para finalizar...}
+\Large{Exercícios\\[2mm]}
+\large{1. Crie um script que receba como argumento dois numeros faça um loop nas quatro operações basicas da aritmética (soma, subtração, divisao e multiplicação) e teste o valor total com o segundo numero passado como argumento para ver se ele é maior ou menor e tambem se eh igual ou diferente\\[5mm]
+2. Faça um script shell que reuna as seguintes informações:\\
+\begin{itemize}
+\item Nome da maquina (hostname) e Endereço IP (ifconfig).
+\item Processador (/proc/cpuinfo) e memória da máquina (/proc/meminfo)
+\item Espaço livre ocupado das partições (df -Th).
+\item Lista de dispositivos PCI (lspci) 
+\end{itemize}
+Gere um arquivo que contenha o nome "Relatorio-MES-DIA.txt" e guarde todos os dados acima para serem enviados pro email do administrador da maquina (cat Relatorio-MES-DIA.txt | mail -s "Relatorio diario" root@localhost).
+}
+\end{frame}
+
+\end{document}

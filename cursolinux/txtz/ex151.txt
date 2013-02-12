@@ -1,0 +1,5 @@
+# ps ax | grep dhcpd
+2002 ?        Ss     0:00 dhcpd
+# kill -9 2002
+# dhcpd &
+[1] 3567

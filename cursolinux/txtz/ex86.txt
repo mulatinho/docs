@@ -1,0 +1,10 @@
+MINUTO HORA DIA MES SEMANA
+
+# Processo rodará todos os dias da semana e do mês 47 minutos após 1 hora têr se passado
+47 * * * * /usr/bin/run-parts /etc/cron.hourly 1> /dev/null
+# Processo rodará todo o dia da semana e do mês às 4:40 do dia.
+40 4 * * * /scripts/quota.sh 1> /var/log/quota_home.log
+# Processo rodará todo primeiro dia da semana em todos os meses às 4:30 do dia.
+30 4 * * 0 /scripts/backup-semanal 2> /var/backup/semana.err.log 1> /var/backup/semana.log
+# Processo rodará todo o primeiro dia do mês às 4:20 do dia.
+20 4 1 * * /scripts/backup-mensal 2> /var/backup/mensal.err.log 1> /var/backup/mensal.log

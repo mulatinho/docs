@@ -1,0 +1,12 @@
+AccessLog /var/log/cups/access_log
+<Location /admin>
+AuthType Basic
+AuthClass System
+Allow From All
+</Location>
+<Location /printers/Lexmark>
+Order Deny,Allow
+Allow From All
+AuthType None
+</Location>
+Listen 127.0.0.1:631

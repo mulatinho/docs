@@ -1,0 +1,9 @@
+/                  /                    ext3    defaults                       1 1
+/dev/devpts        /dev/pts             devpts  gid=5,mode=620                 0 0
+/dev/shm           /dev/shm             tmpfs   defaults                       0 0
+/dev/proc          /proc                proc    defaults                       0 0
+/dev/sys           /sys                 sysfs   defaults                       0 0
+/dev/hda2          swap                 swap    defaults                       0 0
+/dev/hda3          /mnt/fc4             ext3    defaults                       0 0
+/dev/hdd           /media/cdrom         auto    pamconsole,exec,noauto,managed 0 0
+/dev/fd0           /misc/floppy         auto    pamconsole,exec,noauto,managed 0 0

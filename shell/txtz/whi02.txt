@@ -1,0 +1,12 @@
+i=0
+while [ $i -lt 4 ] ; do
+  echo "loop numero: $i"
+  i=$(($i+1))
+done
+
+VAR=0
+while [ $VAR -ne 2 ] ; do
+  echo O arquivo nao tem 2 linhas
+  echo "teste" >> arquivo.txt
+  VAR=`wc -l arquivo.txt | cut -d' ' -f1` 
+done

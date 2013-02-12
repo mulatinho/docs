@@ -1,0 +1,11 @@
+ServerRoot "/usr/local/apache2"
+MaxClients 150
+Port 80
+DocumentRoot "/usr/local/apache2/htdocs"
+
+<Directory "/usr/local/apache2/htdocs">
+    Options FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+</Directory>

@@ -1,0 +1,16 @@
+boot = /dev/hda
+message = /boot/boot_message.txt
+prompt
+timeout = 200
+lba32
+# VESA framebuffer console @ 1024x768x256
+ vga=773
+
+image = /boot/bzImage
+  root = /dev/hda2
+  label = slackware-2.4
+  read-only
+image = /boot/bzImage-2.6
+  root = /dev/hda2
+  label = slackware-2.6
+  read-only

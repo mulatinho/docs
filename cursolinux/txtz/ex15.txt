@@ -1,0 +1,18 @@
+default-lease-time 36000;
+max-lease-time 36000;
+
+option subnet-mask 255.255.255.0;
+option broadcast-address 192.168.10.255;
+option routers 192.168.10.1;
+
+option domain-name-servers 201.200.5.11;
+option domain-name "proteus-br.com";
+
+subnet 192.168.10.0 netmask 255.255.225.0 {
+   range 192.168.10.2 192.168.0.254;
+}
+
+host billythekid {
+   hardware ethernet 08:00:2b:4c:59:23;
+   fixed-address 192.168.10.100;
+}

@@ -1,0 +1,4 @@
+$ FOO=1 && MSG="Valor: "
+$ BAR=`expr $FOO + 1`
+$ echo $MSG$BAR
+Valor: 2

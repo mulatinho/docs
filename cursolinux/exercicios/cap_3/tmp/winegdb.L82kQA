@@ -1,0 +1,7 @@
+file /usr/bin/wine-pthread
+target remote localhost:32775
+monitor trace=128
+set prompt Wine-gdb>\ 
+sharedlibrary
+set step-mode on
+shell rm -f "/tmp/winegdb.L82kQA"

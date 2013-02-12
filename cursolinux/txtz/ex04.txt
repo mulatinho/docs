@@ -1,0 +1,16 @@
+$ pwd
+/home/alexandre
+$ cd textos
+$ ls
+faq-emlurb.txt  gdb.pdf  netbsd-en.pdf  pauta-pslpe.txt  yeah.txt
+$ cat yeah.txt
+1.......2........3.........
+----ALEXANDRE MULATINHO----
+3.......2........1.........
+Isto é um arquivo texto!!!!
+$ cd ..
+$ pwd
+/home/alexandre
+$ cp textos/yeah.txt textos/novoyeah.txt
+$ ls textos/
+faq-emlurb.txt  gdb.pdf  netbsd-en.pdf  novoyeah.txt  pauta-pslpe.txt  yeah.txt

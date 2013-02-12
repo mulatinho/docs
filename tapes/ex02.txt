@@ -1,0 +1,20 @@
+# mtx -f /dev/sg0 load 1 0
+# mtx -f /dev/sg0 status
+  Storage Changer /dev/sg0:2 Drives, 38 Slots ( 0 Import/Export )
+Data Transfer Element 0:Full (Storage Element 1 Loaded):VolumeTag = L2000018
+Data Transfer Element 1:Empty
+      Storage Element 1:Empty
+      Storage Element 2:Full :VolumeTag=L2000002
+      Storage Element 3:Full :VolumeTag=L2000001
+......
+
+# mtx -f /dev/sg0 unload 1 0
+Unloading Data Transfer Element into Storage Element 1...done
+# mtx -f /dev/sg0 status
+  Storage Changer /dev/sg0:2 Drives, 38 Slots ( 0 Import/Export )
+Data Transfer Element 0:Empty
+Data Transfer Element 1:Empty
+      Storage Element 1:Full :VolumeTag=L2000018
+      Storage Element 2:Full :VolumeTag=L2000002
+      Storage Element 3:Full :VolumeTag=L2000001
+......

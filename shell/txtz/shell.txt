@@ -1,0 +1,58 @@
+Roteiro de Introdução ao Shell Script
+
+1. Introdução aos principais conceitos
+1.1. O que é um sistema operacional
+1.2. O que é uma shell
+1.3. Como a shell interage com o sistema operacional
+
+2. Diferenças entre linguagem interpretada e linguagem compilada
+2.1. O que significa dizer que uma linguagem é interpretada/compilada
+2.2. Exemplos teóricos e práticos {TALVEZ}
+
+3. Conceitos básicos de uma shell
+3.1. Como a shell funciona
+3.2. Principais caracteristicas para o funcionamento de um shell script
+3.3. Interpretadores
+3.4. Escapes e coringas.
+3.5. Operadores (&& > >> ...) e Aritmética
+
+EXEMPLO 1
+EXEMPLO 2
+
+4. Do conceito à prática: variáveis.
+4.1. Variáveis simples.
+4.2. Variáveis compostas.
+4.3. Variáveis complexas.
+
+EXEMPLO 1
+EXEMPLO 2
+EXERCICIO 1
+EXERCICIO 2
+
+5. Laços condicionais
+5.1. If-then-else
+5.2. Case
+
+EXEMPLO 1 IF THEN ELSE
+EXEMPLO 2 CASE
+EXERCICIO 1
+
+6. Loops
+6.1. While
+6.2. Until
+6.3. For i e tambem for ((
+
+EXEMPLO 1 WHILE
+EXEMPLO 2 UNTIL
+EXEMPLO 3 FOR
+EXERCICIO 1
+
+7. Scripts
+7.1. Parametros
+7.2. Status de saída $?
+
+EXEMPLO 1
+EXERCICIO 1
+EXERCICIO 2
+EXERCICIO 3
+

@@ -1,0 +1,217 @@
+Controladores de Versões
+Um estudo sobre o CVS, Subversion e o GIT
+Alexandre Mulatinho <alex at infinitus-systems.com>
+
+1. Introdução
+1.1. Princípios do Desenvolvimento Colaborativo.
+1.2. O que é um Controlador de Versão?
+1.3. Por quê utilizar um controlador de versões pode me ajudar?
+1.4. Fundamentos e operações básicas de um Controlador de Versões.
+1.6. Visão de um servidor de controle de versões processando códigos.
+2. O CVS
+2.1. História e seus diferenciais.
+2.2. Utilizaçào em grandes projetos.
+2.3. Diferenças entre desenvolvedores e mantenedores.
+2.4. Comandos básicos para desenvolvedores.
+2.5. Administração de um servidor CVS.
+3.  O Subversion
+3.1. História e seus diferenciais.
+3.2. Utilizaçào em grandes projetos.
+3.3. Diferenças entre desenvolvedores e mantenedores.
+3.4. Comandos básicos para desenvolvedores.
+3.5. Administração de um servidor Subversion.
+
+
+1. Introdução
+
+  No princípio os desenvolvedores faziam seus códigos quase que em todas as 
+vezes sozinhos, cabendo a apenas uma pessoa desenvolver um software completo
+sem bugs e com todas as necessidades requisitadas pelos clientes, claro que
+isso não acontecia sempre, geralmente nas grandes empresas havia todo aquele
+processo de engenharia de software e desenvolvimento, hoje uma das práticas
+mais adotadas é a modelagem de software tais como UML, XP, etc.
+
+  Depois do sucesso no metódo de desenvolvimento colaborativo que ocorreu em
+1991 com o Kernel do Linux, pelo o menos quando realmente houve números de
+contribuições gratuitas nunca vistas antes, muitas empresas passaram a adotar
+controladores de versões para que mais de uma pessoa se envolvesse num projeto
+e pudesse de alguma forma fornecer uma colaboração dentro de sua àrea.
+
+1.1. Princípios do Desenvolvimento Colaborativo
+
+  Como o próprio "termo" nos diz o desenvolvimento colaborativo tem como meta
+principal reunir pessoas interessadas num mesmo projeto mas sem a obrigação de
+fazer algo por ele, o que difere dos metódos adotados por empresas comerciais
+que atribuem a programadores a responsabilidade de terminar determinado módulo
+do software em determinado prazo, no projeto colaborativo qualquer pessoa que
+tenha interesse em participar pode ajudar no projeto com uma pequena ação, que
+pode ser desde uma adição realmente importante até uma simples tradução de
+palavra ou uma descoberta de um bug. O que torna um projeto desse tipo 
+eficiente é simplesmente a vontade dos usuários/desenvolvedores em se atingir
+um objetivo em comum. Podemos citar alguns pontos que tornam esse tipo de
+desenvolvimento forte, são eles:
+
+-
+-
+-
+
+1.2. O que é um controlador de versões?
+
+  Como este texto trata de três controladores de versões conhecidos por grande
+parte dos desenvolvedores é crucial para os iniciantes neste mundo saber o que
+significa um controlador de versão, então para uma melhor compreensão vamos
+começar com alguns exemplos abaixo:
+
+1. Crudo e Yzak estão iniciando um novo projeto de website de um cliente que
+está querendo a homepage de sua empresa para ontem, Crudo é muito bom com uma
+linguagem de web chamada PHP e o Yzak é muito bom em design de websites, os 
+dois tendo em vista o prazo do cliente decidem se juntar para criar o website
+o mais rápido possível.
+
+2. A empresa de Crudo e Yzak está tendo que produzir uma documentação de um
+software e novos contratos comerciais para alguns clientes, a empresa manda-os
+usar um metódo de escrita e auditação em conjunto para produzir o texto o mais
+rápido possível.
+
+  Um controlador de versão é um software que fica entre o homem e a máquina
+cuidando da organização de documentos ou cópias de código-fonte de um projeto
+de software, documentações importantes, pesquisas em grupo e até meche com os
+arquivos binários, ou seja como o próprio nome diz, ele gerencia versões de um
+ou vários arquivo(s).
+
+  Nas duas situações anteriores (exemplos 1 e 2) organizar uma documentação
+detalhada em pouco tempo se torna difícil e pouco produtivo, um controlador de
+versões fica justamente cuidando desta e tudo que você tem que fazer é estar
+atualizado com versões atuais para usufruir de novos benefícios e/ou correções
+
+1.3. Por quê utilizar um controlador de versões pode me ajudar?
+
+1.4. Fundamentos e operações básicas de um Controlador de Versões.
+
+1.5. Visão de um servidor de controle de versões processando códigos.
+
+    (REVISÃO 1)                              (REVISÃO 2)
+ - OPERAÇÃO NR 1 -   - OPERAÇÃO NR 2 -    - OPERAÇÃO NR 3 -  
+        |                   |                     |
+   * adiciona        ** modifica o           * altera o  
+   'file.c' ao       arquivo 'file.c'    'file.c' aceitando
+     projeto            do projeto         as modificações
+        |                   |                     |
+         \                   \                   /
+          '-- ** copia a      \__ * mantenedor _/
+              revisão nr 1       avalia o código
+               do projeto       e decide inclui-lo
+
+1. crudo inicia um projeto e adiciona 'file.c' ao mesmo e yzak faz uma cópia.
+2. yzak faz uma modificação e envia o código para o projeto.
+3. crudo observa a modificação de yzak e a aceita incluindo ao projeto.
+
+*  crudo, o mantenedor do projeto
+** yzak, o desenvolvedor do projeto junto ao mantenedor.
+
+OBS: A operação NR 2 deve ser sempre executada localmente e enviada ao projeto
+     quando se tem 100% de certeza de que a mesma está finalizada.
+
+3. O Subversion
+
+O Subversion é uma ferramenta de controle de versões usada para projetos que
+utilizam colaboração de várias pessoas ou apenas uma em busca de um mesmo 
+objetivo, um programa estável, fontes de código de projetos livres e fechados,
+muito embora o subversion possa ser usado para edição de documentos de texto
+simples, etc.
+
+3.4. Comandos básicos para desenvolvedores.
+
+Sintaxe Básica
+svn [--extras] <opcoes> [link-para-repositorio]
+
+exemplos:
+$ svn checkout svn://infinitus.homeunix.org/protheus
+(baixa a pasta 'protheus' do repositorio svn e coloca-a no seu pc.)
+$ cd protheus && echo "int main(void) { fprintf(stderr, \"helloworld\");
+}" > file.c
+$ svn --username crudo add file.c
+(adciona como usuario 'crudo' o arquivo file.c ao projeto 'protheus')
+$ rm file.c && svn delete file.c
+(deleta o arquivo 'file.c' do projeto) 
+$ svn diff -r HEAD:17 file.c
+(verifica a diferença (diff) da última revisão com a número '17')
+$ svn commit
+(confirma uma alteracao no servidor, imprecendivel depois do 'add', 
+'delete', 'update', etc)
+
+opções:
+    add    -> adicionar arquivos ao projeto
+    commit -> confirmando alterações 
+    delete -> deletando arquivos de um projeto
+    diff   -> vêr as diferenças entre as revisões
+    update -> atualizar um arquivo, pasta
+
+Visão do servidor Subversion quando se tratando de controlar versões:
+
+   (REVISÃO 1)                                                     
+(REVISÃO 2)
+- OPERAÇÃO NR 1 -             - OPERAÇÃO NR 2 -                 - OPERAÇÃO 
+NR 3 -
+       
+                                                                Arthur 
+<------.
+                                                          (faz checkout 
+rev2)  \
+                     _____                            _____                   
+__\__
+     crudo ----->   | A:1 |-------->  Joe  --------> | A:1 | ----> Joe 
+----> | A:2 |
+('add' A, 'commit')  -----  ('checkout', 'update' A)  -----     ('commit')    
+-----
+                        \
+                         '------------------> Beline
+                              (faz checkout da revisão 1, pois não
+                           houve 'commit' da modificação que o Joe fez)
+
+[edit] Conceitos básicos
+
+A estrutura do diretório do projeto é muito útil para organizar as coisas, 
+recomendamos esta:
+
+projeto1/
+  projeto1/trunk    -> diretório onde está ocorrendo o desenvolvimento 
+mais recente
+  projeto1/tags     -> cópias de versões do projeto considerada 'estáveis' 
+ou não.
+  projeto1/branches -> onde os desenvolvedores fazem novos modulos ainda 
+em desenvolvimento, etc
+
+[edit] Importando Projetos
+
+Setando um editor numa variável ambiente necessária no Subversion, 
+'SVN_EDITOR'
+
+$ export SVN_EDITOR=vim
+
+A primeira coisa a se fazer é criar o nome do projeto (projeto1) e a 
+estrutura dentro dele.
+
+$ mkdir projeto1 && mkdir projeto1/{trunk,tags,branches}
+$ echo "int main(void) { fprintf(stderr, \"helloworld\"); }" > 
+projeto1/trunk/file.c
+
+Importando todo o projeto para o servidor
+
+$ svn import projeto1 svn://infinitus.homeunix.org
+
+[edit] Checkout, Diff e Logs
+
+O comando 'checkout' faz uma cópia da última revisão de um arquivo ou 
+diretório listado no servidor, é um dos comandos mais utilizados e deve 
+ser sempre rodado/checkado antes de fazer uma eventual modificação no dado 
+para evitar conflitos de arquivo.
+
+svn checkout http://yourepository.repo.com/svn/
+(faz uma cópia de toda a pasta 'svn' no repositório 
+'yourepository.repo.com')
+svn checkout svn://svn.myrepository.net/project1/file.c
+(faz uma copia do arquivo 'file.c' em 'svn.myrepository.net')
+
+Toda vez em que houver um
+[edit] Modificando e Atualizando: Commit

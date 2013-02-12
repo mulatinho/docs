@@ -1,0 +1,4 @@
+# tar xfz intel-driver.tar.gz
+# cd intel-driver
+# ./configure (se tiver um configure)
+# make && make install

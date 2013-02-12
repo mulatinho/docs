@@ -1,0 +1,16 @@
+# route -n
+Tabela de Roteamento IP do Kernel
+Destino         Roteador        MáscaraGen.    Opções Métrica Ref   Uso Iface
+10.0.0.0        0.0.0.0         255.0.0.0       U     0      0        0 eth0
+0.0.0.0         10.0.0.5        0.0.0.0         UG    0      0        0 eth0
+
+# ifconfig eth0
+eth0      Link encap:Ethernet  Endereço de HW 00:20:ED:45:E5:FA
+          inet end.: 10.220.220.9  Bcast:10.255.255.255  Masc:255.0.0.0
+          endereço inet6: fe80::220:edff:fe45:e5fa/64 Escopo:Link
+          UP BROADCASTRUNNING MULTICAST  MTU:1500  Métrica:1
+          RX packets:413497 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1540 errors:0 dropped:0 overruns:0 carrier:0
+          colisões:0 txqueuelen:1000
+          RX bytes:32584316 (31.0 MiB)  TX bytes:142603 (139.2 KiB)
+          IRQ:11 Endereço de E/S:0xe000

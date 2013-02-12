@@ -1,0 +1,21 @@
+#!/bin/bash
+BAKUPPATH="/ftp /projetos"
+
+for x in $BAKUPPATH; do
+	mkdir -p /tmp/bakup
+
+	BAKUP=`(cd $x && ls)`
+
+	for i in $BAKUP ; do
+		tar cfj /tmp/bakup/$i.tar.bz2 $x/$i
+	done
+
+	BAKUPNAME=`echo $x | sed -n 's/.*\///p'`
+	BAKUPFILEZ=`ls /tmp/bakup/*`
+	
+	tar cfj $BAKUPNAME.tar.bz2 $BAKUPFILEZ
+
+	if [ -d /tmp/bakup ] ; then
+		rm -rf /tmp/bakup
+	fi
+done

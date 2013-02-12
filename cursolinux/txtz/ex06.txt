@@ -1,0 +1,11 @@
+$ mount
+/dev/hda1 on / type ext3 (rw)
+/dev/proc on /proc type proc (rw)
+/dev/hda3 on /mnt/fc4 type ext3 (rw)
+automount(pid1817) on /misc type autofs (rw,fd=4,pgrp=1817,minproto=2,maxproto=4)
+
+$ mount -t vfat /dev/sda1 /mnt/usbdisk
+$ mount -t ntfs /dev/hda4 /mnt/windows
+
+$ umount /mnt/usbdisk
+$ umount /mnt/windows

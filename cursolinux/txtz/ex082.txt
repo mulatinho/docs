@@ -1,0 +1,9 @@
+# edquota billy
+Disk quotas for user billy (uid 501):
+  Filesystem          blocks       soft       hard     inodes     soft     hard
+  /dev/hda3           440436       2000       4000      37418        0        0
+
+# edquota -g ftpusers
+Disk quotas for group ftpusers (uid 510):
+  Filesystem          blocks       soft       hard     inodes     soft     hard
+  /dev/hda3           440436      20000      40000      37418        0        0
