@@ -1,8 +1,0 @@
-if [ teste ] ; then
-  execute isto..
-fi
-
-if (( teste mais aritmetico ))
-then
-  execute isto filhote
-fi

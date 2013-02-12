@@ -1,8 +1,0 @@
-$ VAR=Hello World
-$ echo $VAR
-Hello
-
-$ TESTE = Hello World
-bash: VAR: command not found
-$ echo TESTE
-

@@ -1,6 +1,0 @@
-#!/bin/bash
-DIRS="/tmp /home/zigfrido / pst"
-for i in $DIRS; do
-  echo executando limpeza em "$i"..
-  rm -f $i/*
-done

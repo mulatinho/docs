@@ -1,7 +1,0 @@
-if [ $user_age -lt 18 ] ; then
-  echo Voce nao tem idade suficiente
-  exit
-else
-  echo Ja es um homem!
-  do_option;
-fi
