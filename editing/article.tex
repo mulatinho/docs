@@ -1,0 +1,235 @@
+\documentclass[10pt,a4paper,oneside,twocolumn]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx,url,hyperref,geometry,verbatim,fancyvrb,ifpdf,wrapfig}
+
+\geometry{verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headsep=5mm,footskip=0cm}
+
+\parskip 5pt
+\parindent 0pt
+
+\begin{document}
+
+\noindent
+
+\title{
+\textsc{\Huge{Editando textos como um guru}}\\
+\textsf{\large{Como se tornar mais eficiente usando o VIM, GNU Screen e LaTeX no Linux}}
+}
+
+\author{
+\normalsize Alexandre Mulatinho\\
+<alex@mulatinho.net>
+}
+
+\maketitle
+
+\LARGE GNU Screen\\\\
+\normalsize
+Se você gosta de utilizar o terminal de comandos do linux sabe que é necessário 
+gastar alguns minutos o personalizando, também é muito útil usar o recurso de 
+abas para poder fazer várias atividades ao mesmo tempo, o que muitas pessoas não
+sabem é que existe o recurso do comando 'screen' criado pelo projeto GNU que
+fornece o recurso de múltiplas janelas sem a necessidade da intervenção de um 
+terminal com suporte a abas.
+
+- O que é o screen?
+
+O screen é um multiplexador de terminais que permite ao usuário em uma mesma 
+sessão abrir várias janelas e realizar atividades paralelas, este recurso é um 
+pouco subestimado pois a maioria das atividades de usuários comuns são feitas 
+na sua máquina local e então basta utilizar um terminal com suporte a abas para 
+se obtêr o mesmo efeito: vários terminais com diferentes sessões e atalhos que
+permitem a movimentação entre si afim de se realizar várias atividades;
+
+A diferença do GNU screen é que as janelas que ele cria são dentro de uma mesma
+sessão e isso é muito útil por exemplo numa sessão remota via SSH, em vez de o
+usuário acessar várias vezes o servidor para realizar atividades paralelas como
+faria normalmente, o GNU screen permite um único acesso e várias janelas
+diferentes onde é possível realizar várias atividades em conjunto na mesma
+sessão.
+
+- Parece bom! Como uso o GNU Screen?
+É fácil, basta digitar 'screen' e ele já começa a rodar, abaixo veremos alguns
+argumentos interessantes que tornam ainda mais eficiente essa solução.
+
+
+\framebox{\parbox{\hsize}{%
+\$ screen\\
+(inicia a sessão screen multiplexada)\\
+\\
+\$ screen -ls\\
+There is a screen on:\\
+31248.pts-2.sf064515 (Attached)\\
+1 Socket in /var/run/screen/S-mulatinho.\\
+(lista as sessões screen rodando)\\
+\\
+\$ screen -r NomeDaSessao\\
+(puxa uma sessão que está solta)
+}}
+
+- Ótimo! Funcionou, mas onde está a multiplexação?
+Apartir do momento em que você está dentro do multiplexador screen as coisas 
+mudam um pouco de figura e todo o gerenciamento de janelas e comandos é feito
+utilizando a sequência de caracteres "CTRL + A + <OPÇÃO>", abaixo nós veremos 
+algumas opções e sua descrições mas elas só se tornarão de fato entendíveis 
+para o usuário final com a prática, vejamos:
+
+\begin{tabular}{ | c | p{6cm} | }
+\hline
+\textbf{opção} & \textbf{descrição} \\ \hline
+c & [create] cria uma nova janela \\ \hline
+n & [next] modifica a janela para a próxima da lista \\ \hline
+X & [delete] deleta uma janela \\ \hline
+A & [rename] renomeia uma janela \\ \hline
+S & [split] divide janelas na mesma tela (várias janelas na tela atual) \\ \hline
+TAB & [split next] alterna entre as janelas dividas \\ \hline
+[ & [scrollback] permite subir a tela para vêr mais acima e copiar dados \\ \hline
+ESC & [cancel] cancela alguma opção \\ \hline
+: & [two points] permite digitar comandos (man screen) \\ \hline
+:resize & [resize] permite redefinir o tamanho da janela \\ \hline
+\end{tabular}
+
+Então ao rodar o comando 'screen' você receberá um novo prompt de comando e só 
+então poderá digitar no seu teclado a sequência 'CTRL + A + c' e vêr que uma 
+nova janela foi criada e depois 'CTRL + A + n' para navegar entre as janelas e 
+poder realizar várias atividades. Você verá que utilizando as opções acima e 
+com um pouco de prática o uso do GNU Screen te tornará muito mais eficiente no 
+terminal. Tente um pouco e veja você também!!
+
+\begin{center}
+\includegraphics[width=7.5cm, height=4.5cm]{screen02.png}
+\end{center}
+
+\LARGE Editando com o VIM\\\\
+\normalsize
+O editor VIM é uma versão mais avançada daquele velho VI usado há pelo o menos
+duas décadas, ele permite que você utilize expressões regulares, destaca e 
+indenta mais de 100 linguagens muito bem, além é claro de praticamente todas 
+as funcionalidades comuns a todos os outros editores. O VIM também suporta a
+utilização de plugins personalizados (\url{http://www.vim.org/scripts/}) e isso
+fornece possibilidades inimagináveis. Neste artigo em especial iremos descrever
+alguns conceitos básicos e mostrar como fazer uso dos atalhos e comandos que
+tornam este editor tão especial.
+
+O conceito mais básico que temos que aprender logo no início é que no VIM você
+tem dois modos de exibição de texto: o modo de inserção e o modo de comandos.
+
+\begin{description}
+\smallskip
+\item[MODO DE INSERÇÃO:] Processo normal de digitação de textos iniciado ao se
+    pressionar a tecla 'i' ou 'INSERT'. É nele onde escrevemos de fato.
+\item[MODO DE COMANDO:] Quando você utiliza de teclas de atalho para aplicar
+    modificações diretas no texto ou quando insere comandos conhecidos pelo
+    software para alterar a interface e gerenciar a aplicação.
+\end{description}
+
+Editar múltiplos arquivos ao mesmo tempo é uma tarefa comum para quem trabalha
+com código ou até gosta de escrever e o VIM faz isso com muita propriedade, 
+embora algumas pessoas não gostem de terminais é possível aprender facilmente
+dois ou três comando que permitirão você editar facilmente seus documentos.
+Vamos tentar:
+
+\framebox{\parbox{\hsize}{%
+\$ vim file.txt\\
+abre o arquivo "file.txt" para edita-lo\\
+\$ ls *.\{ch\}\\
+main.c callback.c main.h\\
+\$ vim main.h main.c callback.c\\
+abre todos os arquivos: main.h, main.c e callback.c
+}}
+
+Ao se entrar na interface do VIM com o arquivo desejado aberto iniciamos no
+modo de comando onde é permitido executar atalhos com o teclado e também 
+digitar comandos bastando apenas começa-los com o caracter ':' (dois pontos).
+
+Sempre que quiser editar um texto pressione 'i' ou 'INSERT' e quando quiser
+voltar ao modo de comandos pressione 'ESC', com esses dois atalhos você já
+pode utilizar este editor para redigir textos simples. Abaixo alguns atalhos
+importantes:
+
+\begin{tabular}{ | c | p{6cm} |}
+\hline
+\textsc AÇÃO & DESCRIÇÃO \\ \hline
+\hline
+\textmd ESC & a qualquer momento cancela ou volta ao modo de comando.\\ \hline
+i & insere texto a partir do cursor. \\ \hline
+o & insere texto na proxima linha a partir do cursor. \\ \hline
+dd & deleta uma linha completa. \\ \hline
+\# & marca e destaca a palavra que esta em cima do cursor em todo o texto.\\ \hline
+yy & copia linha do cursor \\ \hline
+p & cola as linhas copiadas pelo vim.\\ \hline
+/ & procura e marca uma palavra em todo o texto.\\ \hline
+u & desfaz a ultima alteração.\\ \hline
+<C>+r & refaz uma operação.\\ \hline
+\hline
+<C>+w s & divide uma janela horizontalmente.\\ \hline
+<C>+w v & divide uma janela verticalmente.\\ \hline
+<C>+w w & movimenta-se entre as janelas.\\ \hline
+<C>+w c & fecha a janela onde o cursor esta.\\ 
+\hline
+\end{tabular}
+
+Com estes atalhos já dá para fazer bastante coisa no VIM mas também é 
+importante nos acostumarmos a utilizar comandos de controle básicos para
+por exemplo salvar um arquivo, sair, executar comandos na shell, lêr saida
+de comandos e arquivos.
+
+\begin{tabular}{ | c | p{5cm} |}
+\hline
+\textsc ENTRADA & FUNÇÃO \\ \hline
+\hline
+\textmd :w & salva arquivo atual.\\ \hline
+:wq & sai do vim, salvando o arquivo.\\ \hline
+:q! & sai do vim, sem salvar o arquivo.\\ \hline
+:set number & adiciona contagem de linhas a esquerda do editor.\\ \hline
+:split arqv & quebra a janela horizontalmente e abre um novo arquivo <arqv>.\\ \hline
+:vsplit arqv & da mesma forma que acima só que a quebra é vertical.\\ \hline
+:s/o1/n1/g & substitui "todas" as ocorrencias de "o1" por "n1".\\ \hline
+:r <arqv> & le o conteudo de <arqv> e o adiciona no editor.\\ \hline
+:colorscheme & muda o tema do vim e suas cores.\\ \hline
+:r !date & le o conteudo do comando date.\\
+\hline
+\end{tabular}
+
+Ah  entao voce  continua  achando  pouco o  que  o  VIM  pode fazer? Que tal
+experimentar comandos remotos? tente isto PRESSIONE "ESC"
+
+:!cp file.txt filenew.txt (copia file.txt para filenew.txt)
+:r !date (coloca a saida do comando date no texto)
+
+\begin{wrapfigure}{r}{0.5\hsize}
+    \vspace{-20pt}
+    \begin{center}
+        \includegraphics[width=4cm,height=3cm]{vim01.png}
+    \end{center}
+    \vspace{-20pt}
+\end{wrapfigure}
+
+  Voce ve que alem de uma interface para edicao de textos o VIM também permite
+executar comandos remotos na  SHELL, isso pode ser muito útil  para o programa
+podemos por exemplo fazer calculos mais complexos sem maiores problemas, como:
+
+VALOR DA SUA LIGACAO PARA O BIG BROTHER BRASIL: 0.39 ?
+      QUANTIDADE DE PESSOAS QUE LIGAM EM MÉDIA: 12.000.000 ? (teve mais) :P
+
+Executando o seguinte comando:
+:r !echo "0.39*12000000" | bc 
+
+Obtemos o resultado de:
+4680000.00 ou seja, 4.680.000 (4 Milhões, 680 Mil reais jogados fora num dia.)
+
+  Isso e apenas algumas poucas possibilidades do uso do VIM, podemos  compilar
+codigos sem sair do editor e fazer operacoes complexas nao so de aritmetica.  
+  O VIM pode ser fantastico  basta apenas  um pouco de interesse e aprendizado
+sobre suas  funcionalidades e ai talvez,  como eu, voce nunca mais  edite seus
+arquivos sem usar o VIM, porque o VIM pode tornar sua maneira de editar textos
+e codigo divertida, simples e eficiente! :)
+
+\begin{center}
+\small
+\VerbatimInput[xleftmargin=8mm,xrightmargin=8mm]{ex01.txt}
+\end{center}
+
+\end{document}
