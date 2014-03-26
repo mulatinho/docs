@@ -1,0 +1,337 @@
+\documentclass{beamer}
+\usepackage{graphicx,url,verbatim,fancyvrb,ifpdf}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage[brazil]{babel}
+
+\mode<presentation>
+{ \usetheme{Warsaw} }
+
+\title[Introdução ao desenvolvimento em C]{Conceitos básicos para desenvolvimento em ambiente Linux}
+\author{Alexandre Mulatinho\\ E-mail: alex@mulatinho.net}
+\institute{Mulatinho's Weblog\\ http://alex.mulatinho.net\\ Twitter: @alexmulatinho}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{\textbf{Conceitos Básicos}}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Desenvolvendo primeiro programa}
+	\item \Large{Programando com autotools}
+	\item \Large{Adicionando bibliotecas}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+%\begin{frame}
+%	\frametitle{Conceitos Básicos}
+%	\begin{enumerate}
+%		\item<1-| alert@2> Suppose $p$ were the largest prime number.
+%		\item<2-> Let $q$ be the product of the first $p$ numbers.
+%		\item<3-> Then $q+1$ is not divisible by any of them.
+%	\end{enumerate}
+%\end{frame}
+
+\begin{frame}
+	\frametitle{Conceitos Básicos}
+	\begin{itemize}
+		\item<1->\Large{O que é um programa?}
+		\begin{itemize}
+			\item<2-| alert@2> Uma série de instruções utilizando uma linguagem 
+			de programação dentro de uma máquina capaz de interpretá-las e 
+			processá-las com um intuito específico.
+		\end{itemize}
+		\item<1->\Large{Como ele é feito?}
+		\begin{itemize}
+			\item<3-| alert@3> No final um programa é constituído de "0"s e "1"s
+			e só é entendido pelo computador, seria inviável desenvolvermos algo
+			assim e por isso foram definidas palavras por programadores que contendo
+			uma lógica adequada constroem um programa de computador.
+		\end{itemize}
+		\item<1->\Large{Quais ferramentas utilizo para desenvolvê-lo?}
+		\begin{itemize}
+			\item<4-| alert@4> Basicamente você precisa de três coisas: um editor,
+			um compilador que transformará o seu texto editado em um objeto	e um 
+			linker que ira traduzir o objeto gerado para um binário entendido pela
+			a arquitetura do seu computador.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conceitos Básicos}
+	Então já sabemos o que é um programa de computador, agora devemos definir que
+	tipos de programa existem e para quê propósito eles foram criados, tendo como
+	base estas afirmações podemos classificar os programas em dois tipos:
+	
+	\begin{itemize}
+		\item<1-> Software de sistema: são programas de computadores críticos e que
+		trabalham entre a camada de hardware e software, eles são utilizados pelo 
+		usuário constantemente, embora usuários leigos não tenham ciência disso 
+		pois é necessário que os softwares de aplicativo façam a ponte entre eles. 
+		\begin{itemize}
+			\item<2-| alert@2> Exemplos: Firmwares, RTOS, drivers de dispositivos.
+		\end{itemize}
+		\item<1-> Software aplicativo: esses são os nossos softwares do dia a dia,
+		que todo o usuário gosta de usar e hoje devido a necessidade de tecnologia
+		nós seres humanos não vivemos sem eles.
+		\begin{itemize}
+			\item<3-| alert@3> Exemplos: VIM, AWK, Firefox, Eclipse, Java, C, 
+		\end{itemize}
+	\end{itemize}
+	
+	\onslide<3>{Nesta apresentação iremos focar apenas no segundo tipo.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{\textbf{Um pouco de história}}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Desenvolvendo primeiro programa}
+	\item \Large{Programando com autotools}
+	\item \Large{Adicionando bibliotecas}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Um pouco de história}
+	Talvez seja difícil de imaginar para alguns mas até 1970, exceto alguns programas
+	específicos escritos nas linguagens "modernas" da epóca BASIC, COBOL, BCPL, etc., 
+	todos os outros eram escritos em Assembly, mais ou menos assim:
+	
+	\VerbatimInput[xleftmargin=15mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex01.txt}
+	
+	Na epóca em que desenvolver era função de programadores de verdade que tinham que
+	lêr os manuais de arquitetura do processador, gerenciar a memória de seus programas, etc.
+	Hoje a realidade é bem diferente, utilizamos bibliotecas e funções desenvolvidas
+	por terceiros e adequamos aos nossos programas.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Um pouco de história}
+	\begin{columns}[T]
+		\begin{column}{0.5\linewidth}
+			\begin{itemize}
+				\item Criado por Dennis Ritchie e Ken Thompson no período dos anos 
+				de 1969 até 1972.
+				\item Estruturada, imperativa, procedural e padronizada pela ISO.
+				\item Utilizada em baixo nível e alto nível.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{figure}
+				\includegraphics[width=150px]{imgs/pdp11-70-front.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	
+	\vskip 5mm
+	
+	A maioria dos sistemas operacionais modernos são escritos em C, por ser capaz
+	de realizar abstrações, mexer com bits e bytes e controlar de forma eficiente
+	a memória, C é simplesmente a linguagem que criou o Unix, o Linux, o Windows, 
+	o Java e vários outros programas utilizados até hoje.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{\textbf{Ferramentas importantes}}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Desenvolvendo primeiro programa}
+	\item \Large{Programando com autotools}
+	\item \Large{Adicionando bibliotecas}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ferramentas importantes}
+	
+	Para que você seja eficiente desenvolvendo uma aplicação você deve obtêr 
+	algumas ferramentas que serão úteis durante todo o processo, algumas delas
+	vamos discutir mais a frente, outras não, eis aqui algumas delas:
+	
+	\only<1>{
+	\begin{description}
+		\item[Editor de texto] Aqui vale a pena perder algumas horas escolhendo
+		um editor que mais se adeque ao seu estilo, hoje em dia com a febre dos
+		IDEs é difícil encontrar quem consiga programar sem um deles, aqui 
+		particularmente eu utilizo o VIM e algumas vezes o Geany.
+		\item[Compilador] Para que seu código depois de editado se transforme em
+		um binário e você possa executá-lo é crítico escolher o compilador adequado,
+		infelizmente muitas vezes aqui você não terá opção, principalmente se 
+		estiver trabalhando com sistemas embarcados.
+	\end{description}
+	}
+	\only<2>{
+	\begin{description}
+		\item[Controle de versão] Muitas vezes iniciantes de programação ou até 
+		programadores experientes ignoram o fato de que devem ter controle sobre
+		suas versões de desenvolvimento, quando percebem que isto é muito importante
+		já estão com o projeto todo bagunçado e é muito pior corrigir depois.
+		\item[Auxiliares] Ferramentas de auxílio como o autotools que geram para
+		você scripts de configuração, compilação, etc. são cruciais para fazer você
+		não perder tempo com rotinas mecânicas.
+		\end{description}
+	}
+	\only<3>{
+	\begin{itemize}
+		\item Editores de texto
+		\begin{itemize}
+			\item<alert@3> VIM, LaTeX, Eclipse, Geany, Emacs, MS Visual C++, etc.
+		\end{itemize}
+		\item Compiladores
+		\begin{itemize}
+			\item<alert@3> GCC, Visual C++, TinyC, LLVM-Clang, etc.
+		\end{itemize}
+		\item Controles de Versão
+		\begin{itemize}
+			\item<alert@3> Git, Subversion, Mercurial, CVS, etc.
+		\end{itemize}
+		\item Auxiliares
+		\begin{itemize}
+			\item<alert@3> Autoconf, Automake, Scripts Shell ou Batch, QMake, etc.
+		\end{itemize}
+	\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{\textbf{Utilizando controle de versões}}
+	\item \Large{Desenvolvendo primeiro programa}
+	\item \Large{Programando com autotools}
+	\item \Large{Adicionando bibliotecas}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Utilizando controle de versões}
+	\only<1>{
+	Hoje em dia desenvolver qualquer coisa com mais de mil linhas de código sem
+	um controlador de versões é confusão na certa, ainda mais se esse código 
+	precisa ser compartilhado e desenvolvido por mais de uma pessoa. 
+	
+	\begin{block}{Definição}
+	Como o próprio nome diz ele serve para guardar informações (autor, o que foi
+	modificado, quando foi modificado, comentários de porque houve a modificação)
+	sobre um determinado arquivo ou projeto em um intervalo de tempo, dando 
+	possibilidade aos integradores de juntar versões diferentes ou voltar a uma
+	determinada versão gerada em uma linha de tempo.
+	\end{block}
+	
+	Imagine um projeto do tamanho do Linux com mais de 5 milhões de linhas sem um
+	controlador de versão para mandar pra dentro o que a galera adiciona ao código!?!?
+	}
+	
+	\only<2>{
+	Principais características encontradas nos controladores de versão
+	
+	\begin{itemize}
+		\item Desenvolvimento descentralizado.
+		\item Marcações de momentos importantes.
+		\item Controle de histórico dos arquivos do projeto.
+		\item Linhas de desenvolvimento paralelas(estável, instável) ou branches 
+		para adição de novas funcionalidades.
+		\item Otimização de espaço, velocidade de transações, locks exclusivos.
+	\end{itemize}
+	
+	Infelizmente não poderemos vêr todas as vantagens aqui, o assunto sobre 
+	controle de versões é bastante amplo e deve ficar para uma apresentação 
+	específica. Mas vamos a algumas dicas....
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Utilizando controle de versões}
+	
+	GIT, criado por Linus Torvalds.
+	
+	\begin{columns}[T]
+		\tiny
+		\begin{column}{0.5\linewidth}
+			\begin{block}{Cria um repositório GIT}
+			\$ cd projetos/super-secreto \&\& git init
+			\end{block}
+			
+			\begin{block}{Clona um repositório remoto para a máquina local}
+			\$ git clone https://github.com/mulatinho/sfm.git 
+			\end{block}
+			
+			\begin{block}{Verifica as mudanças feitas no diretório local}
+			\$ git status 
+			\end{block}
+			
+			\begin{block}{Pega as atualizações do repositório original}
+			\$ git pull 
+			\end{block}
+			
+			\begin{block}{Mostra as diferenças feitas no arquivo "libsmb.c"}
+			\$ git diff libsmb.c 
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{block}{Faz commit do arquivo "libsmb.c"}
+			\$ git commit -m '2 novas funcoes' libsmb.c 
+			\end{block}
+			
+			\begin{block}{Envia suas modificações ao repositório remoto}
+			\$ git push origin master 
+			\end{block}
+			
+			\begin{block}{Lista branchs criadas}
+			\$ git branch 
+			\end{block}
+			
+			\begin{block}{Cria branch "cpp-list"}
+			\$ git branch cpp-list 
+			\end{block}
+			
+			\begin{block}{Lista todas as tags do repositório}
+			\$ git tag -l 
+			\end{block}
+		\end{column}
+	\end{columns}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Desenvolvendo primeiro programa}
+	
+	Vamos fazer o clássico "Hello World" para começar, que simplesmente imprime
+	o texto na saída do monitor, aqui veremos como é a estrutura básica de um
+	programa em C e como compilamos ele para rodá-lo.
+	
+	\VerbatimInput[xleftmargin=15mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex02.txt}
+	
+	\begin{block}{Compilando e rodando o programa.}
+	\$ gcc -o prog1 prog1.c\\
+	\$ ./prog1\\
+	Ola meu jovem!
+	\end{block}
+\end{frame}
+
+\end{document}

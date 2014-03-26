@@ -1,0 +1,10 @@
+movl %eax, -44(%rbp)
+movl $0, %edx
+movl $1, %esi
+movl $2, %edi
+call socket
+movl %eax, -4(%rbp)
+cmpl $-1, -4(%rbp)
+jne .L2 
+movl $1, %eax
+jmp .L8 
