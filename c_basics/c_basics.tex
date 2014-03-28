@@ -3,18 +3,60 @@
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
 \usepackage[brazil]{babel}
+\usepackage{draftwatermark}
+
+\setbeamercolor{background canvas}{bg=}
 
 \mode<presentation>
 { \usetheme{Warsaw} }
 
-\title[Introdução ao desenvolvimento em C]{Conceitos básicos para desenvolvimento em ambiente Linux}
+\title[Introdução ao desenvolvimento em ambientes Unix]{Conceitos básicos para desenvolvimento de sistemas em ambiente Linux}
 \author{Alexandre Mulatinho\\ E-mail: alex@mulatinho.net}
 \institute{Mulatinho's Weblog\\ http://alex.mulatinho.net\\ Twitter: @alexmulatinho}
 
 
 \begin{document}
 
+\SetWatermarkText{http://alex.mulatinho.net}
+\SetWatermarkLightness{0.85}
+\SetWatermarkScale{0.5}
+
 \maketitle
+
+\begin{frame}
+	\frametitle{Antes de mais nada...}
+	\begin{columns}[T]
+		\begin{column}{0.3\linewidth}
+			\Large{\textbf{Há quem se destina estes slides?}}
+		\end{column}
+		\begin{column}{0.7\linewidth}
+			\normalsize
+			\begin{itemize}
+				\item Iniciantes no mundo Unix/Linux.
+				\item Profissionais em busca de mais conhecimento
+				em desenvolvimento utilizando ferramentas da GNU.
+				\item Quem quer aprender o básico sobre controle de
+				versões e debug em sistemas Unix.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
+	\vskip 8mm
+	
+	\begin{columns}[T]
+		\begin{column}{0.3\linewidth}
+			\Large{\textbf{Quem não deve gostar muito destes slides?}}
+		\end{column}
+		\begin{column}{0.7\linewidth}
+			\normalsize
+			\begin{itemize}
+				\item Quem já tem bastante experiência em C.
+				\item Profissionais que não trabalham com sistemas Unix, Linux, 
+				MacOS, *BSD.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Agenda}
@@ -22,23 +64,13 @@
 	\item \Large{\textbf{Conceitos Básicos}}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Desenvolvendo primeiro programa}
 	\item \Large{Programando com autotools}
-	\item \Large{Adicionando bibliotecas}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
 \end{frame}
-
-%\begin{frame}
-%	\frametitle{Conceitos Básicos}
-%	\begin{enumerate}
-%		\item<1-| alert@2> Suppose $p$ were the largest prime number.
-%		\item<2-> Let $q$ be the product of the first $p$ numbers.
-%		\item<3-> Then $q+1$ is not divisible by any of them.
-%	\end{enumerate}
-%\end{frame}
 
 \begin{frame}
 	\frametitle{Conceitos Básicos}
@@ -97,10 +129,9 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{\textbf{Um pouco de história}}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Desenvolvendo primeiro programa}
 	\item \Large{Programando com autotools}
-	\item \Large{Adicionando bibliotecas}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -152,10 +183,9 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{\textbf{Ferramentas importantes}}
+	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Desenvolvendo primeiro programa}
 	\item \Large{Programando com autotools}
-	\item \Large{Adicionando bibliotecas}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -219,10 +249,107 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
-	\item \Large{\textbf{Utilizando controle de versões}}
-	\item \Large{Desenvolvendo primeiro programa}
+	\item \Large{\textbf{Desenvolvendo programas simples}}
+	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
-	\item \Large{Adicionando bibliotecas}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Desenvolvendo programas simples}
+	
+	\only<1>{
+	Vamos fazer o clássico "Hello World" para começar, ele simplesmente imprime
+	o texto na saída do monitor, podemos vêr a estrutura básica de um programa 
+	em C e como o compilamos.
+	
+	\VerbatimInput[xleftmargin=15mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex02.txt}
+	
+	Duas coisas a comentar aqui: 
+	
+	\begin{itemize}
+	\item A palavra \#include é utilizada para incluir bibliotecas.
+	\item Palavras em C terminam suas declarações com um ';' (ponto e 
+	virgula) exceto alguns fluxos de controles como: if, while, else.
+	\end{itemize}
+	
+	\begin{block}{Compilando e rodando o programa}
+	\$ gcc -o prog1 prog1.c\\
+	\$ ./prog1\\
+	Ola meu jovem!
+	\end{block}
+	}
+	
+	\only<2>{
+	Dessa vez vamos complicar um pouquinho mais, o objetivo do programa é encontrar
+	entre dois números qual é o maior, para isso separamos o programa em três 
+	arquivos distintos:
+	\begin{columns}[T]
+		\tiny
+		\begin{column}{0.5\linewidth}
+			\begin{block}{func01.c}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/func01.c}
+			\end{block}
+			\begin{block}{Como compilar}
+				\$ gcc -o func01.o -c func01.c\\
+				\$ gcc -o func02.o -c func02.c\\
+				\$ gcc -o func func01.o func02.o
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{block}{headers.h}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/headers.h}
+			\end{block}
+			\begin{block}{func02.c}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/func02.c}
+			\end{block}
+		\end{column}
+	\end{columns}
+	}
+	
+	\only<3>{
+	\framesubtitle{Um simples Makefile para projetos pequenos}
+	
+	Algumas vezes queremos apenas automatizar nosso processo de compilação para
+	projetos pequenos, utilizar o autotools então torna-se bastante custoso nesses
+	casos e precisamos apenas fazer um arquivo chamado Makefile.
+	
+	\begin{block}{Makefile}
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/Makefile}
+	\end{block}
+	
+	Vemos aí quatro arquivos fontes distintos e três alvos para o comando 'make',
+	se prestarmos atenção veremos uma lógica e entenderemos facilmente como executá-la.
+	}
+	
+	\only<4>{
+	\begin{columns}[T]
+		\tiny
+		\begin{column}{0.5\linewidth}
+			\begin{exampleblock}{O que este alvo faz?}
+				\$ make clean
+			\end{exampleblock}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{exampleblock}{O que este alvo faz?}
+				\$ make test
+			\end{exampleblock}
+		\end{column}
+	\end{columns}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Desenvolvendo programas simples}
+	\item \Large{\textbf{Utilizando controle de versões}}
+	\item \Large{Programando com autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -319,19 +446,76 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Desenvolvendo primeiro programa}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{\textbf{Programando com autotools}}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Programando com autotools}
 	
-	Vamos fazer o clássico "Hello World" para começar, que simplesmente imprime
-	o texto na saída do monitor, aqui veremos como é a estrutura básica de um
-	programa em C e como compilamos ele para rodá-lo.
+	\only<1>{
+	Agora imagine se você tivesse que compilar mais de vinte arquivos um a um e 
+	depois fazer o link dos objetos na mão, centenas de vezes, quantas vezes você
+	erraria a ordem de compilação? esqueceria um ou outro fonte/objeto? Para evitar
+	que isso aconteça e que você não precise sempre realizar esse trabalho de 
+	maluco, a GNU desenvolveu a ferramenta chamada \textbf{autotools}.
 	
-	\VerbatimInput[xleftmargin=15mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex02.txt}
-	
-	\begin{block}{Compilando e rodando o programa.}
-	\$ gcc -o prog1 prog1.c\\
-	\$ ./prog1\\
-	Ola meu jovem!
+	\begin{block}{Quem nunca fez!?}
+		\$ ./configure\\
+		\$ make\\
+		\$ make install
 	\end{block}
+	
+	Apesar de eles serem scripts shell que auxiliam o usuário a gerar o binário
+	apartir dos códigos de fonte, eles não são gerados manualmente pelos programadores
+	do projeto.
+	}
+	
+	\only<2>{
+	Principais módulos da ferramenta autotools
+	
+	\begin{description}
+		\item[Autoconf] Responsável por gerar o arquivo 'configure', muito útil
+		na hora de compilar o projeto pois ele checa se todos os pré-requisitos
+		foram atentidos, caso não tenham sido ele geralmente retorna ao usuário
+		o software, função, etc. que está faltando para compilar o projeto.
+		\item[Automake] Apartir dos arquivos de entrada do \texttt{'Makefile.am'}
+		ele gera o famoso 'Makefile' que é responsável por processar os comandos
+		do usuário 'make' e 'make install'.
+		\item[Libtool] Geralmente utilizado em conjunto com o autoconf e o automake,
+		o libtool faz a função de cross compiler, apartir das entradas do 
+		\texttt{'./configure'} e passando argumentos como \texttt{'--arch'} é
+		possível especificar para que arquitetura será compilado o projeto.
+	\end{description}
+	
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Programando com autotools}
+	\item \Large{\textbf{Debugando seu código}}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Debugando seu código}
 \end{frame}
 
 \end{document}
