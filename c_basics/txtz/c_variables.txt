@@ -1,0 +1,4 @@
+int i; int j = 10;
+char c = 'j';
+char ola[5] = { 'h', 'e', 'l', 'l', 'o' };
+float pi = 3.14;

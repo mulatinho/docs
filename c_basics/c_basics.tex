@@ -4,6 +4,7 @@
 \usepackage[latin1]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{draftwatermark}
+%\usepackage[inline]{enumitem}
 
 \setbeamercolor{background canvas}{bg=}
 
@@ -64,6 +65,7 @@
 	\item \Large{\textbf{Conceitos Básicos}}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -100,7 +102,7 @@
 
 \begin{frame}
 	\frametitle{Conceitos Básicos}
-	Então já sabemos o que é um programa de computador, agora devemos definir que
+	Então agora que já sabemos o que é um programa de computador devemos definir que
 	tipos de programa existem e para quê propósito eles foram criados, tendo como
 	base estas afirmações podemos classificar os programas em dois tipos:
 	
@@ -129,6 +131,7 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{\textbf{Um pouco de história}}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -183,6 +186,7 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{\textbf{Ferramentas importantes}}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -249,6 +253,91 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+    \item \Large{\textbf{Uma rápida introdução ao C}}
+	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Programando com autotools}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Uma rápida introdução ao C}
+    \only<1> {
+    A linguagem de programação C, diferente das linguagens modernas, possui
+    apenas 32 (trinta e duas) palavras reservadas por padrão. São elas:
+
+    \begin{center}
+    \begin{tabular}{c c c c c c}
+        auto & break & case & char & const & continue \\
+        default & do & double & else & enum & extern \\
+        float & for & goto & if & int & long \\
+        register & return & short & signed & sizeof & static \\
+        struct & switch & typedef & union & unsigned & void \\
+        volatile & while
+    \end{tabular}
+    \end{center}
+
+    Destas palavras cinco delas são tipos de dados:
+
+    \begin{center}
+    \begin{tabular}{c c c c c}
+        char & int & float & void & double
+    \end{tabular}
+    \end{center}
+
+    Para cada tipo de dado também existem modificadores como:
+
+    \begin{center}
+    \begin{tabular}{c c c c}
+        signed & unsigned & long & short \\
+        \color{red} volatile & \color{red} extern & \color{red} register & \color{red} auto \\
+        \color{red} const & \color{red} static
+    \end{tabular}
+    \end{center}
+    }
+
+    \only<2> {
+    Declarações simples
+
+	\begin{columns}[T]
+		\scriptsize
+		\begin{column}{0.5\linewidth}
+            \VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_variables.txt}
+        \end{column}
+		\begin{column}{0.5\linewidth}
+            \VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_sizeof.txt}
+        \end{column}
+    \end{columns}
+
+    Como pode ser visto
+    }
+
+    \only<3>{
+    Fluxos de controle em C
+
+    Condicionais
+    Loops e iterações
+
+    }
+    \only<4>{
+    Funções
+    Estruturas
+    }
+    \only<5>{
+    Ponteiros
+    Alocação Dinamica de Memória
+    }
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
+	\item \Large{Um pouco de história}
+	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{\textbf{Desenvolvendo programas simples}}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -347,6 +436,7 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{\textbf{Utilizando controle de versões}}
 	\item \Large{Programando com autotools}
@@ -451,6 +541,7 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{\textbf{Programando com autotools}}
@@ -506,6 +597,7 @@
 	\item \Large{Conceitos Básicos}
 	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -516,6 +608,18 @@
 
 \begin{frame}
 	\frametitle{Debugando seu código}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Isso é tudo pessoal!}
+    \Huge
+    \textbf{Dúvidas?}
+    \vskip 10mm
+    \normalsize
+    Alexandre Mulatinho\\
+    Twitter: @alexmulatinho\\
+    \space E-mail: alex@mulatinho.net\\
+    \space Weblog: http://alex.mulatinho.net\\
 \end{frame}
 
 \end{document}
