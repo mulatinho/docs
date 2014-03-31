@@ -1,0 +1,12 @@
+switch (var) {
+	case 1:
+		total += var;
+		break;
+		
+	case 2:
+		total *= var;
+		break;
+	
+	default:
+		total++;
+}

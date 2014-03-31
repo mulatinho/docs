@@ -1,0 +1,7 @@
+  sizeof(void): 1 byte  // tipo de dado
+  sizeof(char): 1 byte  // tipo de dado
+ sizeof(short): 2 bytes // modificador
+   sizeof(int): 4 bytes // tipo de dado
+ sizeof(float): 4 bytes // tipo de dado
+sizeof(double): 8 bytes // tipo de dado
+  sizeof(long): 8 bytes // modificador

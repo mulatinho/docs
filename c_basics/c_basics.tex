@@ -60,11 +60,32 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{\$ whoami}
+	\begin{columns}[T]
+		\begin{column}{0.6\linewidth}
+			\begin{itemize}
+				\item Analista de Suporte
+				\item 10 (dez) anos trabalhando no mercado de TI como desenvolvedor,
+				administrador de sistemas e analista de suporte em geral.
+				\item Certificado Linux - LPIC-1 / LPIC-2
+				\item Ativista no uso de Software Livre
+				\item Desenvolvedor C, PHP e Shell script. Bom interpretador de outras linguagens ;)
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\linewidth}
+			\begin{figure}
+				\includegraphics[width=120px]{imgs/mlt.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{\textbf{Conceitos Básicos}}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
@@ -129,8 +150,78 @@
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{\textbf{Um pouco de história}}
+	\item \Large{\textbf{Ferramentas importantes}}
+	\item \Large{Um pouco de história}
+	\item \Large{Uma rápida introdução ao C}
+	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Utilizando controle de versões}
+	\item \Large{Programando com autotools}
+	\item \Large{Debugando seu código}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ferramentas importantes}
+	
+	\only<1>{
+	Para que você seja eficiente desenvolvendo uma aplicação você deve obtêr 
+	algumas ferramentas que serão úteis durante todo o processo, algumas delas
+	vamos discutir mais a frente, outras não, eis aqui algumas delas:
+	
+	\begin{description}
+		\item[Editor de texto] Aqui vale a pena perder algumas horas escolhendo
+		um editor que mais se adeque ao seu estilo, hoje em dia com a febre dos
+		IDEs é difícil encontrar quem consiga programar sem um deles, aqui 
+		particularmente eu utilizo o VIM e algumas vezes o Geany.
+		\item[Compilador] Para que seu código depois de editado se transforme em
+		um binário e você possa executá-lo é crítico escolher o compilador adequado,
+		infelizmente muitas vezes aqui você não terá opção, principalmente se 
+		estiver trabalhando com sistemas embarcados.
+	\end{description}
+	}
+	\only<2>{
+	\begin{description}
+		\item[Controle de versão] Muitas vezes iniciantes de programação ou até 
+		programadores experientes ignoram o fato de que devem ter controle sobre
+		suas versões de desenvolvimento, quando percebem que isto é muito importante
+		já estão com o projeto todo bagunçado e é muito pior corrigir depois.
+		\item[Diagnóstico] Muito úteis para analisar os binários como os debuggers,
+		aqui também se encaixariam ferramentas de trace como o strace, ltrace. E até
+		quem sabe de áreas específicas como 
+		\item[Auxiliares] Ferramentas de auxílio como o autotools que geram para
+		você scripts de configuração, compilação, etc. são cruciais para fazer você
+		não perder tempo com rotinas mecânicas.
+		\end{description}
+	}
+	\only<3>{
+	\begin{itemize}
+		\item Editores de texto
+		\begin{itemize}
+			\item<alert@3> VIM, LaTeX, Eclipse, Geany, Emacs, MS Visual C++, etc.
+		\end{itemize}
+		\item Compiladores
+		\begin{itemize}
+			\item<alert@3> GCC, Visual C++, TinyC, LLVM-Clang, etc.
+		\end{itemize}
+		\item Controles de Versão
+		\begin{itemize}
+			\item<alert@3> Git, Subversion, Mercurial, CVS, etc.
+		\end{itemize}
+		\item Auxiliares
+		\begin{itemize}
+			\item<alert@3> Autoconf, Automake, Scripts Shell ou Batch, QMake, etc.
+		\end{itemize}
+	\end{itemize}
+	}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \Large{Conceitos Básicos}
 	\item \Large{Ferramentas importantes}
+	\item \Large{\textbf{Um pouco de história}}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
@@ -184,76 +275,9 @@
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
-	\item \Large{\textbf{Ferramentas importantes}}
-	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
-	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
-	\item \Large{Debugando seu código}
-	\end{itemize}
-	\normalsize
-\end{frame}
-
-\begin{frame}
-	\frametitle{Ferramentas importantes}
-	
-	Para que você seja eficiente desenvolvendo uma aplicação você deve obtêr 
-	algumas ferramentas que serão úteis durante todo o processo, algumas delas
-	vamos discutir mais a frente, outras não, eis aqui algumas delas:
-	
-	\only<1>{
-	\begin{description}
-		\item[Editor de texto] Aqui vale a pena perder algumas horas escolhendo
-		um editor que mais se adeque ao seu estilo, hoje em dia com a febre dos
-		IDEs é difícil encontrar quem consiga programar sem um deles, aqui 
-		particularmente eu utilizo o VIM e algumas vezes o Geany.
-		\item[Compilador] Para que seu código depois de editado se transforme em
-		um binário e você possa executá-lo é crítico escolher o compilador adequado,
-		infelizmente muitas vezes aqui você não terá opção, principalmente se 
-		estiver trabalhando com sistemas embarcados.
-	\end{description}
-	}
-	\only<2>{
-	\begin{description}
-		\item[Controle de versão] Muitas vezes iniciantes de programação ou até 
-		programadores experientes ignoram o fato de que devem ter controle sobre
-		suas versões de desenvolvimento, quando percebem que isto é muito importante
-		já estão com o projeto todo bagunçado e é muito pior corrigir depois.
-		\item[Auxiliares] Ferramentas de auxílio como o autotools que geram para
-		você scripts de configuração, compilação, etc. são cruciais para fazer você
-		não perder tempo com rotinas mecânicas.
-		\end{description}
-	}
-	\only<3>{
-	\begin{itemize}
-		\item Editores de texto
-		\begin{itemize}
-			\item<alert@3> VIM, LaTeX, Eclipse, Geany, Emacs, MS Visual C++, etc.
-		\end{itemize}
-		\item Compiladores
-		\begin{itemize}
-			\item<alert@3> GCC, Visual C++, TinyC, LLVM-Clang, etc.
-		\end{itemize}
-		\item Controles de Versão
-		\begin{itemize}
-			\item<alert@3> Git, Subversion, Mercurial, CVS, etc.
-		\end{itemize}
-		\item Auxiliares
-		\begin{itemize}
-			\item<alert@3> Autoconf, Automake, Scripts Shell ou Batch, QMake, etc.
-		\end{itemize}
-	\end{itemize}
-	}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Agenda}
-	\begin{itemize}
-	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
-    \item \Large{\textbf{Uma rápida introdução ao C}}
+	\item \Large{Um pouco de história}
+	\item \Large{\textbf{Uma rápida introdução ao C}}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Programando com autotools}
@@ -265,6 +289,7 @@
 \begin{frame}
 	\frametitle{Uma rápida introdução ao C}
     \only<1> {
+    \framesubtitle{Tipos de dados}
     A linguagem de programação C, diferente das linguagens modernas, possui
     apenas 32 (trinta e duas) palavras reservadas por padrão. São elas:
 
@@ -290,53 +315,94 @@
     Para cada tipo de dado também existem modificadores como:
 
     \begin{center}
-    \begin{tabular}{c c c c}
-        signed & unsigned & long & short \\
-        \color{red} volatile & \color{red} extern & \color{red} register & \color{red} auto \\
-        \color{red} const & \color{red} static
+    \begin{tabular}{c c c c c c}
+        . & signed & unsigned & long & short & .\\
+        \color{red} volatile & \color{red} extern & \color{red} register & 
+        \color{red} auto & \color{red} const & \color{red} static
     \end{tabular}
     \end{center}
     }
 
     \only<2> {
-    Declarações simples
-
+    \framesubtitle{Estrutura básica e declarações de variáveis}
+	Um programa em C comum contém a seguinte estrutura
+	
+	\begin{enumerate}
+		\item Comando do pré processador.
+		\item Tipos de dados definidos globalmente.
+		\item Protótipos de funções.
+		\item Funções e variáveis locais das funções.
+	\end{enumerate}
+	
+	Definição de variáveis em C e seus tamanhos reais em bytes
+	
 	\begin{columns}[T]
 		\scriptsize
 		\begin{column}{0.5\linewidth}
-            \VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_variables.txt}
+			\begin{block}{Declarações simples}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_variables.txt}
+			\end{block}
         \end{column}
 		\begin{column}{0.5\linewidth}
-            \VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_sizeof.txt}
-        \end{column}
-    \end{columns}
+			\begin{block}{Tamanho de tipos de dados}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/c_sizeof.txt}
+			\end{block}
+		\end{column}
+	\end{columns}
+	}
 
-    Como pode ser visto
-    }
+	\only<3>{
+	\framesubtitle{Fluxos de controle em C}
 
-    \only<3>{
-    Fluxos de controle em C
+	Fluxos de controle são comandos que desviam o programa dependendo de alguma
+	condição ou iteração, em C existem cinco palavras chamas que e
+	
 
-    Condicionais
-    Loops e iterações
-
-    }
-    \only<4>{
-    Funções
-    Estruturas
-    }
-    \only<5>{
-    Ponteiros
-    Alocação Dinamica de Memória
-    }
+	}
+	
+	\only<4> {
+	\framesubtitle{If-then-else e o operador '?'}
+	
+	As formas mais simples de criar condições em C são através do if-else e do
+	operador '?', abaixo podemos ver exemplos de suas declarações.
+	
+	\begin{block}{If-then-else e o operador '?'}
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/condicoes.txt}
+	\end{block}
+	}
+	
+	\only<5> {
+	\framesubtitle{O comando switch}
+	
+	\begin{block}{Switch}
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/condicoes02.txt}
+	\end{block}
+	}
+	
+	\only<6> {
+	\framesubtitle{Loops e iterações}
+	
+	\begin{block}{Switch}
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops02.txt}
+	\end{block}
+	}
+	
+	\only<7>{
+		Funções
+		Estruturas
+	}
+	\only<8>{
+		Ponteiros
+		Alocação Dinamica de Memória
+	}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{\textbf{Desenvolvendo programas simples}}
 	\item \Large{Utilizando controle de versões}
@@ -365,6 +431,7 @@
 	\end{itemize}
 	
 	\begin{block}{Compilando e rodando o programa}
+	\scriptsize
 	\$ gcc -o prog1 prog1.c\\
 	\$ ./prog1\\
 	Ola meu jovem!
@@ -401,29 +468,31 @@
 	\only<3>{
 	\framesubtitle{Um simples Makefile para projetos pequenos}
 	
-	Algumas vezes queremos apenas automatizar nosso processo de compilação para
-	projetos pequenos, utilizar o autotools então torna-se bastante custoso nesses
-	casos e precisamos apenas fazer um arquivo chamado Makefile.
+	Para automatizar nosso processo de compilação em projetos pequenos nós criamos
+	um arquivo chamado Makefile. Abaixo podemos ver um exemplo com quatro fontes 
+	distintos e três alvos diferentes para o comando 'make'
 	
 	\begin{block}{Makefile}
+		\scriptsize
 		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/Makefile}
 	\end{block}
 	
-	Vemos aí quatro arquivos fontes distintos e três alvos para o comando 'make',
-	se prestarmos atenção veremos uma lógica e entenderemos facilmente como executá-la.
-	}
-	
-	\only<4>{
+	\vspace{-\baselineskip}
 	\begin{columns}[T]
 		\tiny
-		\begin{column}{0.5\linewidth}
+		\begin{column}{0.33\linewidth}
 			\begin{exampleblock}{O que este alvo faz?}
 				\$ make clean
 			\end{exampleblock}
 		\end{column}
-		\begin{column}{0.5\linewidth}
+		\begin{column}{0.33\linewidth}
 			\begin{exampleblock}{O que este alvo faz?}
 				\$ make test
+			\end{exampleblock}
+		\end{column}
+		\begin{column}{0.33\linewidth}
+			\begin{exampleblock}{O que este alvo faz?}
+				\$ make
 			\end{exampleblock}
 		\end{column}
 	\end{columns}
@@ -434,8 +503,8 @@
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{\textbf{Utilizando controle de versões}}
@@ -539,8 +608,8 @@
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
@@ -595,8 +664,8 @@
 	\frametitle{Agenda}
 	\begin{itemize}
 	\item \Large{Conceitos Básicos}
-	\item \Large{Um pouco de história}
 	\item \Large{Ferramentas importantes}
+	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}

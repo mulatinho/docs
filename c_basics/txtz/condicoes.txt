@@ -1,0 +1,10 @@
+if (loop < 10)
+	do_math_things();
+else if (!strncmp(string, "recv from:", 10)) {
+	add_mail_from(string);
+	from++;
+} 
+else 
+	return -1;
+
+ab = (a>b) ? a : b;
