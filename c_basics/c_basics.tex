@@ -35,9 +35,9 @@
 			\begin{itemize}
 				\item Iniciantes no mundo Unix/Linux.
 				\item Profissionais em busca de mais conhecimento
-				em desenvolvimento utilizando ferramentas da GNU.
-				\item Quem quer aprender o básico sobre controle de
-				versões e debug em sistemas Unix.
+				em desenvolvimento utilizando ferramentas livres.
+				\item Quem quer aprender o básico sobre desenvolvimento,
+				controle de versões e debug em sistemas Unix.
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -53,7 +53,7 @@
 			\begin{itemize}
 				\item Quem já tem bastante experiência em C.
 				\item Profissionais que não trabalham com sistemas Unix, Linux, 
-				MacOS, *BSD.
+				MacOS, *BSD. E nem querem trabalhar!
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -89,7 +89,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -155,7 +155,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -208,6 +208,10 @@
 		\begin{itemize}
 			\item<alert@3> Git, Subversion, Mercurial, CVS, etc.
 		\end{itemize}
+		\item Diagnóstico
+		\begin{itemize}
+			\item<alert@3> GDB, binutils, strace, ltrace, etc.
+		\end{itemize}
 		\item Auxiliares
 		\begin{itemize}
 			\item<alert@3> Autoconf, Automake, Scripts Shell ou Batch, QMake, etc.
@@ -225,7 +229,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -237,12 +241,25 @@
 	específicos escritos nas linguagens "modernas" da epóca BASIC, COBOL, BCPL, etc., 
 	todos os outros eram escritos em Assembly, mais ou menos assim:
 	
-	\VerbatimInput[xleftmargin=15mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex01.txt}
+	\vspace{-\baselineskip}
+	\begin{columns}[T]
+		\tiny
+		\begin{column}{0.5\linewidth}
+			\begin{block}{linux x86 assembly}
+				\VerbatimInput[xleftmargin=8mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex01.txt}
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{block}{z80 assembly}
+				\VerbatimInput[xleftmargin=8mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex03.txt}
+			\end{block}
+		\end{column}
+	\end{columns}
 	
 	Na epóca em que desenvolver era função de programadores de verdade que tinham que
 	lêr os manuais de arquitetura do processador, gerenciar a memória de seus programas, etc.
 	Hoje a realidade é bem diferente, utilizamos bibliotecas e funções desenvolvidas
-	por terceiros e adequamos aos nossos programas.
+	por terceiros e as adequamos aos nossos programas.
 \end{frame}
 
 \begin{frame}
@@ -280,7 +297,7 @@
 	\item \Large{\textbf{Uma rápida introdução ao C}}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -355,9 +372,24 @@
 	\framesubtitle{Fluxos de controle em C}
 
 	Fluxos de controle são comandos que desviam o programa dependendo de alguma
-	condição ou iteração, em C existem cinco palavras chamas que e
+	condição ou iteração, em C existem cinco palavras chaves para executar desvios
+	e iterações no seu programa, são elas:
 	
-
+	\begin{columns}[T]
+		\scriptsize
+		\begin{column}{0.5\linewidth}
+			\begin{block}{O comando 'while'e o 'do-while'}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops.txt}
+			\end{block}
+        \end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{block}{O comando 'for', o 'break' e 'continue'}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops02.txt}
+			\end{block}
+		\end{column}
+	\end{columns}
+	
+	
 	}
 	
 	\only<4> {
@@ -379,19 +411,11 @@
 	\end{block}
 	}
 	
-	\only<6> {
-	\framesubtitle{Loops e iterações}
-	
-	\begin{block}{Switch}
-		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops02.txt}
-	\end{block}
-	}
-	
-	\only<7>{
+	\only<6>{
 		Funções
 		Estruturas
 	}
-	\only<8>{
+	\only<7>{
 		Ponteiros
 		Alocação Dinamica de Memória
 	}
@@ -406,7 +430,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{\textbf{Desenvolvendo programas simples}}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -508,7 +532,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{\textbf{Utilizando controle de versões}}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
@@ -613,14 +637,14 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{\textbf{Programando com autotools}}
+	\item \Large{\textbf{Utilizando o autotools}}
 	\item \Large{Debugando seu código}
 	\end{itemize}
 	\normalsize
 \end{frame}
 
 \begin{frame}
-	\frametitle{Programando com autotools}
+	\frametitle{Utilizando o autotools}
 	
 	\only<1>{
 	Agora imagine se você tivesse que compilar mais de vinte arquivos um a um e 
@@ -669,7 +693,7 @@
 	\item \Large{Uma rápida introdução ao C}
 	\item \Large{Desenvolvendo programas simples}
 	\item \Large{Utilizando controle de versões}
-	\item \Large{Programando com autotools}
+	\item \Large{Utilizando o autotools}
 	\item \Large{\textbf{Debugando seu código}}
 	\end{itemize}
 	\normalsize
@@ -677,6 +701,15 @@
 
 \begin{frame}
 	\frametitle{Debugando seu código}
+	\only<1>{
+		\framesubtitle{Utilizando o GDB}
+	}
+	\only<2>{
+		\framesubtitle{Brincando com o strace e o ltrace}
+	}
+	\only<3>{
+		\framesubtitle{O pacote binutils}
+	}
 \end{frame}
 
 \begin{frame}

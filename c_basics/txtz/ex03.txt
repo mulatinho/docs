@@ -1,0 +1,12 @@
+org    1000h      ;Origin at 1000h
+memcpy public
+loop   ld     a,b ;Test BC,
+or     c          ;If BC = 0,
+retz              ; Return
+ld     a,(de)     ;Load A from (DE)
+ld     (hl),a     ;Store A into (HL)
+inc    de         ;Increment DE
+inc    hl         ;Increment HL
+dec    bc         ;Decrement BC
+jp     loop       ;Repeat the loop
+end

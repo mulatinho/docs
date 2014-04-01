@@ -1,11 +1,9 @@
-for (inicializacao; condicao; iteracao) {
-	declarações....
-}
-
-while (condicao) {
-	declarações
+while (!(ret = comidaPronta(forno))) {
+	make_the_rango();
 }
 
 do {
-	declaracoes
-} while (condicao);
+	ret = check_the_books();
+	if (ret)
+		study++;
+} while (!study);
