@@ -1,5 +1,7 @@
-while (!(ret = comidaPronta(forno))) {
+while (!(ret = comidaPronta(forno)))
+{
 	make_the_rango();
+	ingredientes++;
 }
 
 do {

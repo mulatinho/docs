@@ -1,0 +1,7 @@
+struct Carro {
+	float velocidade, litros;
+	char marca[TAM_MARCA];
+	char modelo[TAM_STRING];
+};
+
+struct Carro *fiat;

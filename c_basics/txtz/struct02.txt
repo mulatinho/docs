@@ -1,0 +1,7 @@
+typedef struct {
+	int tipo;
+	int idade_maxima;
+	char nome[32];
+} Animal;
+
+Animal *cachorro;

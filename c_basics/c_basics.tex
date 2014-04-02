@@ -87,7 +87,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -102,7 +102,7 @@
 		\begin{itemize}
 			\item<2-| alert@2> Uma série de instruções utilizando uma linguagem 
 			de programação dentro de uma máquina capaz de interpretá-las e 
-			processá-las com um intuito específico.
+			processá-las com um objetivo específico.
 		\end{itemize}
 		\item<1->\Large{Como ele é feito?}
 		\begin{itemize}
@@ -153,7 +153,7 @@
 	\item \Large{\textbf{Ferramentas importantes}}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -227,7 +227,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{\textbf{Um pouco de história}}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -295,7 +295,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{\textbf{Uma rápida introdução ao C}}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -379,28 +379,31 @@
 		\scriptsize
 		\begin{column}{0.5\linewidth}
 			\begin{block}{O comando 'while'e o 'do-while'}
-				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops.txt}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/loops.txt}
 			\end{block}
         \end{column}
 		\begin{column}{0.5\linewidth}
 			\begin{block}{O comando 'for', o 'break' e 'continue'}
-				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/loops02.txt}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/loops02.txt}
 			\end{block}
 		\end{column}
 	\end{columns}
-	
 	
 	}
 	
 	\only<4> {
 	\framesubtitle{If-then-else e o operador '?'}
 	
-	As formas mais simples de criar condições em C são através do if-else e do
-	operador '?', abaixo podemos ver exemplos de suas declarações.
+	As formas mais simples de criar condições em C são através do famoso if-then-else
+	e do operador '?', abaixo podemos ver exemplos de suas declarações.
 	
 	\begin{block}{If-then-else e o operador '?'}
 		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/condicoes.txt}
 	\end{block}
+	
+	Não há muito o que dizer aqui em relação ao if-then-else, o operador '?' realiza
+	um teste na expressão à esquerda e se a condição for falsa retorna o primeiro valor 
+	depois do operador ou se verdadeira, o segundo valor após os ':' (dois pontos).
 	}
 	
 	\only<5> {
@@ -412,12 +415,53 @@
 	}
 	
 	\only<6>{
-		Funções
-		Estruturas
+	
+	Funções
+	\begin{block}{Protótipos e/de Funções}
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/funcoes.txt}
+	\end{block}
+	
+	Estruturas
+	
+	\begin{columns}[T]
+		\scriptsize
+		\begin{column}{0.5\linewidth}
+			\begin{block}{Declaração de Struct}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/struct01.txt}
+			\end{block}
+        \end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{block}{Usando novos tipos de dados}
+				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/struct02.txt}
+			\end{block}
+		\end{column}
+	\end{columns}
 	}
+	
 	\only<7>{
-		Ponteiros
-		Alocação Dinamica de Memória
+	\framesubtitle{Ponteiros e alocação dinâmica de memória}
+	\begin{columns}[T]
+	\begin{column}{0.7\linewidth}
+	Um dos maiores problemas para programadores iniciantes em C é a questão dos
+	ponteiros, para ajudar a entender podemos fazer algumas afirmações:
+
+	\begin{itemize}
+		\item A memória é linear.
+	\end{itemize}
+	\end{column}
+	
+	\begin{column}{0.3\linewidth}
+		\begin{figure}
+			\includegraphics[width=100px]{imgs/pointers.png}
+		\end{figure}
+	\end{column}
+	\end{columns}
+	
+	\begin{block}{Alocação Dinâmica de Memória}
+		char *ptr = malloc(100);\\
+		int *nptr = malloc(sizeof(int) * 50);\\
+		nptr = realloc(nptr, (sizeof(int) * 75));
+	\end{block}
 	}
 \end{frame}
 
@@ -428,7 +472,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{\textbf{Desenvolvendo programas simples}}
+	\item \Large{\textbf{Desenvolvendo programas}}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -437,7 +481,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Desenvolvendo programas simples}
+	\frametitle{Desenvolvendo programas}
 	
 	\only<1>{
 	Vamos fazer o clássico "Hello World" para começar, ele simplesmente imprime
@@ -521,6 +565,13 @@
 		\end{column}
 	\end{columns}
 	}
+	
+	\only<4> {
+		\framesubtitle{Bibliotecas comuns}
+		\begin{block}{Compilando código com biblitoecas alternativas}
+			
+		\end{block}
+	}
 \end{frame}
 
 \begin{frame}
@@ -530,7 +581,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{\textbf{Utilizando controle de versões}}
 	\item \Large{Utilizando o autotools}
 	\item \Large{Debugando seu código}
@@ -573,11 +624,11 @@
 	controle de versões é bastante amplo e deve ficar para uma apresentação 
 	específica. Mas vamos a algumas dicas....
 	}
-\end{frame}
-
-\begin{frame}
-	\frametitle{Utilizando controle de versões}
 	
+	\only<3>{
+	}
+	
+	\only<4>{
 	GIT, criado por Linus Torvalds.
 	
 	\begin{columns}[T]
@@ -626,6 +677,7 @@
 		\end{column}
 	\end{columns}
 	\normalsize
+	}
 \end{frame}
 
 \begin{frame}
@@ -635,7 +687,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{\textbf{Utilizando o autotools}}
 	\item \Large{Debugando seu código}
@@ -682,6 +734,10 @@
 	\end{description}
 	
 	}
+	
+	\only<3>{
+	\framesubtitle{Como utilizar o autotools no seu projeto}
+	}
 \end{frame}
 
 \begin{frame}
@@ -691,7 +747,7 @@
 	\item \Large{Ferramentas importantes}
 	\item \Large{Um pouco de história}
 	\item \Large{Uma rápida introdução ao C}
-	\item \Large{Desenvolvendo programas simples}
+	\item \Large{Desenvolvendo programas}
 	\item \Large{Utilizando controle de versões}
 	\item \Large{Utilizando o autotools}
 	\item \Large{\textbf{Debugando seu código}}
@@ -705,10 +761,16 @@
 		\framesubtitle{Utilizando o GDB}
 	}
 	\only<2>{
-		\framesubtitle{Brincando com o strace e o ltrace}
+		\framesubtitle{Utilizando o strace}
 	}
 	\only<3>{
+		\framesubtitle{Utilizando o ltrace}
+	}
+	\only<4>{
 		\framesubtitle{O pacote binutils}
+	}
+	\only<5>{
+		\framesubtitle{O pacote binutils, parte 2}
 	}
 \end{frame}
 
