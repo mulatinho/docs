@@ -1,0 +1,10 @@
+% aclocal
+% autoconf
+% touch README AUTHORS NEWS ChangeLog
+% automake -a
+configure.ac: installing `./install-sh'
+configure.ac: installing `./mkinstalldirs'
+configure.ac: installing `./missing'
+Makefile.am: installing `./INSTALL'
+Makefile.am: installing `./COPYING'
+Makefile.am: installing `./depcomp'

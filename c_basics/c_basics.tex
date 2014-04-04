@@ -4,7 +4,6 @@
 \usepackage[latin1]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage{draftwatermark}
-%\usepackage[inline]{enumitem}
 
 \setbeamercolor{background canvas}{bg=}
 
@@ -74,7 +73,7 @@
 		\end{column}
 		\begin{column}{0.4\linewidth}
 			\begin{figure}
-				\includegraphics[width=120px]{imgs/mlt.jpg}
+				\includegraphics[width=120]{imgs/mlt.jpg}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -237,7 +236,7 @@
 
 \begin{frame}
 	\frametitle{Um pouco de história}
-	Talvez seja difícil de imaginar para alguns mas até 1970, exceto alguns programas
+	Talvez seja difícil de imaginar para alguns mas até 1970, exceto em alguns programas
 	específicos escritos nas linguagens "modernas" da epóca BASIC, COBOL, BCPL, etc., 
 	todos os outros eram escritos em Assembly, mais ou menos assim:
 	
@@ -264,6 +263,7 @@
 
 \begin{frame}
 	\frametitle{Um pouco de história}
+	\framesubtitle{E onde está o C nisso!?}
 	\begin{columns}[T]
 		\begin{column}{0.5\linewidth}
 			\begin{itemize}
@@ -275,7 +275,7 @@
 		\end{column}
 		\begin{column}{0.5\linewidth}
 			\begin{figure}
-				\includegraphics[width=150px]{imgs/pdp11-70-front.jpg}
+				\includegraphics[width=150]{imgs/pdp11-70-front.jpg}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -284,7 +284,7 @@
 	
 	A maioria dos sistemas operacionais modernos são escritos em C, por ser capaz
 	de realizar abstrações, mexer com bits e bytes e controlar de forma eficiente
-	a memória, C é simplesmente a linguagem que criou o Unix, o Linux, o Windows, 
+	a memória. C é simplesmente a linguagem que criou o Unix, o Linux, o Windows, 
 	o Java e vários outros programas utilizados até hoje.
 \end{frame}
 
@@ -386,6 +386,10 @@
 			\begin{block}{O comando 'for', o 'break' e 'continue'}
 				\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/loops02.txt}
 			\end{block}
+			\begin{itemize}
+				\item break, para a execução do loop.
+				\item continue, vai para próxima iteração.
+			\end{itemize}
 		\end{column}
 	\end{columns}
 	
@@ -452,7 +456,7 @@
 	
 	\begin{column}{0.3\linewidth}
 		\begin{figure}
-			\includegraphics[width=100px]{imgs/pointers.png}
+			\includegraphics[width=100]{imgs/pointers.png}
 		\end{figure}
 	\end{column}
 	\end{columns}
@@ -568,8 +572,21 @@
 	
 	\only<4> {
 		\framesubtitle{Bibliotecas comuns}
-		\begin{block}{Compilando código com biblitoecas alternativas}
-			
+		Compilando código com biblitoecas alternativas
+		
+		\begin{block}{Tabela de bibliotecas C ANSI C99}
+		\begin{tabular}{c l}
+			\scriptsize
+			assert.h &  detecção de erros lógicos dentro dos programas\\
+			errno.h & códigos de erro de funções de outras bibliotecas\\
+			limits.h & constantes númericas padrões no ANSI C\\
+			locale.h & internacionalização de textos e caracteres\\
+			math.h & funções matemáticas úteis em C\\
+			signal.h & sinalização de eventos e sinais\\
+			\textbf{stdio.h} & \textbf{biblioteca de entrada e saída de dados padrão}\\
+			string.h & manipulação de strings\\
+			stdlib.h & alocação de memória, números randomicos, etc.\\
+		\end{tabular}
 		\end{block}
 	}
 \end{frame}
@@ -626,11 +643,31 @@
 	}
 	
 	\only<3>{
+	\begin{columns}[T]
+		\begin{column}{0.5\linewidth}
+			\begin{itemize}
+				\item Criado por Dennis Ritchie e Ken Thompson no período dos anos 
+				de 1969 até 1972.
+				\item Estruturada, imperativa, procedural e padronizada pela ISO.
+				\item Utilizada em baixo nível e alto nível.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{figure}
+				\includegraphics[height=200]{imgs/vcs.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
 	}
 	
 	\only<4>{
-	GIT, criado por Linus Torvalds.
+	\framesubtitle{GIT, criado por Linus Torvalds.}
 	
+	Abaixo podemos ver uma lista de exemplos de comando do GIT e seus significados,
+	acredite depois de um ou dois dias mexendo isso se torna fácil e muito útil no
+	seu dia a dia.
+	
+	\vspace{-\baselineskip}
 	\begin{columns}[T]
 		\tiny
 		\begin{column}{0.5\linewidth}
@@ -699,11 +736,12 @@
 	\frametitle{Utilizando o autotools}
 	
 	\only<1>{
-	Agora imagine se você tivesse que compilar mais de vinte arquivos um a um e 
-	depois fazer o link dos objetos na mão, centenas de vezes, quantas vezes você
-	erraria a ordem de compilação? esqueceria um ou outro fonte/objeto? Para evitar
-	que isso aconteça e que você não precise sempre realizar esse trabalho de 
-	maluco, a GNU desenvolveu a ferramenta chamada \textbf{autotools}.
+	Lembra como compilar um programa? Como gerar um Makefile!? Agora imagine se 
+	você tivesse que compilar mais de trinta arquivos um a um e depois fazer o link
+	dos objetos na mão, centenas de vezes, quantas vezes você erraria a ordem de
+	compilação? esqueceria um ou outro fonte/objeto? Para evitar que isso aconteça
+	e que você não precise sempre realizar esse trabalho de maluco, a GNU 
+	desenvolveu a ferramenta chamada \textbf{autotools}.
 	
 	\begin{block}{Quem nunca fez!?}
 		\$ ./configure\\
@@ -735,8 +773,62 @@
 	
 	}
 	
-	\only<3>{
-	\framesubtitle{Como utilizar o autotools no seu projeto}
+	\only<3> {
+	Com apenas a edição de dois arquivos, 
+	
+	\begin{itemize}
+		\item 'Makefile.am'
+		\item 'configure.ac'
+	\end{itemize}
+	
+	e mais três comandos (listados abaixo) geramos de forma eficiente no nosso
+	projeto o sistema de builds da GNU, tornando nossa vida mais fácil.
+	
+	\begin{block}{Utilizando o sistema de builds da GNU passo-a-passo}
+		\scriptsize
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/ex04.txt}
+	\end{block}
+	
+	Então, como gerar os arquivos necessários para o projeto!?
+	}
+	
+	\only<4>{
+	\framesubtitle{O arquivo de entrada 'Makefile.am'}
+	Arquivos do projeto:
+	
+	\begin{tabular}{c c c c c}
+		Makefile.am & configure.ac & func01.c & func02.c & headers.h \\
+	\end{tabular}
+	
+	\vskip 5mm
+	
+	O arquivo 'Makefile.am' é a entrada que contém a especificação de todos os seus
+	fontes, bibliotecas de compilação (CFLAGS e LDADD), arquivos de documentação
+	e arquivos comuns do projeto, além de diretórios para build, etc. Vejamos um 
+	exemplo bem básico abaixo de seu conteúdo:
+	
+	\begin{block}{Makefile.am}
+		\scriptsize
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/Makefile.am}
+	\end{block}
+	
+	}
+	
+	\only<5>{
+	\framesubtitle{O arquivo de entrada 'configure.ac'}
+	Um típico arquivo 'configure.ac' é a entrada para os comandos aclocal e autoconf, 
+	ele é definido usando a descrição macro m4 e não é tão difícil de entender depois
+	de alguns minutos lendo sua documentação, vejamos um exemplo:
+	
+	\begin{block}{configure.ac}
+		\scriptsize
+		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/configure.ac}
+	\end{block}
+	}
+	
+	\only<6> {
+	\framesubtitle{Gerando o build do projeto}
+	\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/ex05.txt}
 	}
 \end{frame}
 
@@ -755,22 +847,27 @@
 	\normalsize
 \end{frame}
 
-\begin{frame}
+\begin{frame}[t]
 	\frametitle{Debugando seu código}
 	\only<1>{
 		\framesubtitle{Utilizando o GDB}
+		Como compilar usando GDB
+		
+		Como chamar o GDB
+		
+		Comandos básicos
 	}
 	\only<2>{
-		\framesubtitle{Utilizando o strace}
+	\framesubtitle{Utilizando o GDB, parte 2}
 	}
 	\only<3>{
-		\framesubtitle{Utilizando o ltrace}
+		\framesubtitle{Utilizando o strace}
 	}
 	\only<4>{
-		\framesubtitle{O pacote binutils}
+		\framesubtitle{Utilizando o ltrace}
 	}
 	\only<5>{
-		\framesubtitle{O pacote binutils, parte 2}
+		\framesubtitle{O pacote binutils}
 	}
 \end{frame}
 

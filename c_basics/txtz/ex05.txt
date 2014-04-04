@@ -1,0 +1,27 @@
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ aclocal
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ autoconf
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ touch NEWS README AUTHORS ChangeLog
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ automake --add-missing
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ ./configure
+checking for a BSD-compatible install... /usr/bin/ginstall -c
+checking whether build environment is sane... yes
+....
+....
+checking dependency style of gcc... gcc3
+checking whether ln -s works... yes
+checking for ranlib... ranlib
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: executing depfiles commands
+mulatinho@forrest:~/repo/github/docs/c_basics/ex$ make
+gcc -DPACKAGE_NAME=\"funcmax\" -DPACKAGE_TARNAME=\"funcmax\" -DPACKAGE_VERSION=\"0.1\" 
+-DPACKAGE_STRING=\"funcmax\ 0.1\" -DPACKAGE_BUGREPORT=\"alex@mulatinho.net\" 
+-DPACKAGE_URL=\"\" -DPACKAGE=\"funcmax\" -DVERSION=\"0.1\" -I.     -g -O2 -MT func01.o 
+-MD -MP -MF .deps/func01.Tpo -c -o func01.o func01.c
+mv -f .deps/func01.Tpo .deps/func01.Po
+gcc -DPACKAGE_NAME=\"funcmax\" -DPACKAGE_TARNAME=\"funcmax\" -DPACKAGE_VERSION=\"0.1\" 
+-DPACKAGE_STRING=\"funcmax\ 0.1\" -DPACKAGE_BUGREPORT=\"alex@mulatinho.net\" 
+-DPACKAGE_URL=\"\" -DPACKAGE=\"funcmax\" -DVERSION=\"0.1\" -I.     -g -O2 -MT func02.o 
+-MD -MP -MF .deps/func02.Tpo -c -o func02.o func02.c
+mv -f .deps/func02.Tpo .deps/func02.Po
+gcc  -g -O2   -o funcmax func01.o func02.o  
