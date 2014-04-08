@@ -112,10 +112,10 @@
 		\end{itemize}
 		\item<1->\Large{Quais ferramentas utilizo para desenvolvê-lo?}
 		\begin{itemize}
-			\item<4-| alert@4> Basicamente você precisa de três coisas: um editor,
-			um compilador que transformará o seu texto editado em um objeto	e um 
-			linker que ira traduzir o objeto gerado para um binário entendido pela
-			a arquitetura do seu computador.
+			\item<4-| alert@4> Basicamente você precisa de três coisas: um editor
+			para construir o seu código, um compilador que transformará o seu código 
+			em um objeto e um linker que ira traduzir o objeto gerado para um 
+			binário entendido pela a arquitetura do seu computador.
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -450,7 +450,16 @@
 	ponteiros, para ajudar a entender podemos fazer algumas afirmações:
 
 	\begin{itemize}
-		\item A memória é linear.
+		\scriptsize
+		\item A memória alocada é segmentada de forma linear.
+		\item Por padrão, é separada em páginas de 4KB.
+		\item A razão do limite de memória é definida
+		pela tamanho da página vezes o tamanho virtual
+		de endereçamento.
+		\item Em C quando usamos o operador \&var estamos
+		dizendo 'o endereço da memória do ponteiro var', e quando usamos o
+		operador *var estamos dizendo 'o valor contido no 
+		ponteiro var'.
 	\end{itemize}
 	\end{column}
 	
@@ -464,7 +473,7 @@
 	\begin{block}{Alocação Dinâmica de Memória}
 		char *ptr = malloc(100);\\
 		int *nptr = malloc(sizeof(int) * 50);\\
-		nptr = realloc(nptr, (sizeof(int) * 75));
+		nptr = realloc(\&nptr, (sizeof(int) * 75));
 	\end{block}
 	}
 \end{frame}
@@ -646,11 +655,23 @@
 	\begin{columns}[T]
 		\begin{column}{0.5\linewidth}
 			\begin{itemize}
-				\item Criado por Dennis Ritchie e Ken Thompson no período dos anos 
-				de 1969 até 1972.
-				\item Estruturada, imperativa, procedural e padronizada pela ISO.
-				\item Utilizada em baixo nível e alto nível.
+				\item Imagine o gráfico ao lado como a linha de desenvolvimento
+				de software.
+				\item Note a linha do tempo de cima para baixo.
+				\item Os itens de cor:
 			\end{itemize}
+			
+			\begin{description}
+				\setlength{\itemindent}{2pt}
+				\scriptsize
+				\item[Azul] Representam as releases, as tags/versões oficiais do 
+				produto.
+				\item[Amarelo] Desenvolvimento bruto, onde são adicionados
+				itens ao projeto.
+				\item[Rosa] Novas ramificações, onde são desenvolvidos itens 
+				antes de entrar nas versões de desenvolvimento e ou release de 
+				versões.
+			\end{description}
 		\end{column}
 		\begin{column}{0.5\linewidth}
 			\begin{figure}
@@ -850,6 +871,9 @@
 \begin{frame}[t]
 	\frametitle{Debugando seu código}
 	\only<1>{
+		\framesubtitle{Por quê debugar??}
+	}
+	\only<2>{
 		\framesubtitle{Utilizando o GDB}
 		Como compilar usando GDB
 		
@@ -857,16 +881,24 @@
 		
 		Comandos básicos
 	}
-	\only<2>{
+	\only<3>{
 	\framesubtitle{Utilizando o GDB, parte 2}
 	}
-	\only<3>{
-		\framesubtitle{Utilizando o strace}
-	}
 	\only<4>{
-		\framesubtitle{Utilizando o ltrace}
+		Para os que não gostam de comandos de console é claro que temos soluções
+		livres e gráficas!! É o estilo do DDD.
+		
+		\begin{figure}
+			\includegraphics[height=180px,width=280px]{imgs/ddd.png}
+		\end{figure}
 	}
 	\only<5>{
+		\framesubtitle{Utilizando o strace}
+	}
+	\only<6>{
+		\framesubtitle{Utilizando o ltrace}
+	}
+	\only<7>{
 		\framesubtitle{O pacote binutils}
 	}
 \end{frame}
