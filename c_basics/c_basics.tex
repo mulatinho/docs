@@ -186,8 +186,7 @@
 		suas versões de desenvolvimento, quando percebem que isto é muito importante
 		já estão com o projeto todo bagunçado e é muito pior corrigir depois.
 		\item[Diagnóstico] Muito úteis para analisar os binários como os debuggers,
-		aqui também se encaixariam ferramentas de trace como o strace, ltrace. E até
-		quem sabe de áreas específicas como 
+		aqui também se encaixariam ferramentas de trace como o strace, ltrace. 
 		\item[Auxiliares] Ferramentas de auxílio como o autotools que geram para
 		você scripts de configuração, compilação, etc. são cruciais para fazer você
 		não perder tempo com rotinas mecânicas.
@@ -399,7 +398,7 @@
 	\framesubtitle{If-then-else e o operador '?'}
 	
 	As formas mais simples de criar condições em C são através do famoso if-then-else
-	e do operador '?', abaixo podemos ver exemplos de suas declarações.
+	e do operador '?', vamos aos exemplos.
 	
 	\begin{block}{If-then-else e o operador '?'}
 		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/condicoes.txt}
@@ -420,13 +419,25 @@
 	
 	\only<6>{
 	
-	Funções
-	\begin{block}{Protótipos e/de Funções}
-		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/funcoes.txt}
-	\end{block}
+	\begin{columns}[T]
+		\begin{column}{0.25\linewidth}
+			Funções
+			\begin{itemize}
+				\scriptsize
+				\item Protótipo é escrito de forma resumida no início dos fontes.
+				\item O retorno da função pode ser void (nada) ou um tipo de dado.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.75\linewidth}
+			\begin{figure}
+				\includegraphics[width=220,height=110]{imgs/funcoes.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
 	
 	Estruturas
 	
+	\vspace{-\baselineskip}
 	\begin{columns}[T]
 		\scriptsize
 		\begin{column}{0.5\linewidth}
@@ -872,24 +883,62 @@
 	\frametitle{Debugando seu código}
 	\only<1>{
 		\framesubtitle{Por quê debugar??}
+		
+		Debugar é o ato de confirmar que algo que você pensa que é verdadeiro
+		de fato o é, ou que, provando passo a passo você descubra que algo não é
+		tão verdadeiro quanto você pensava ser.
+		
+		\vskip 5mm
+		
+		Um bug nada mais do que uma condição de erro, falha ou algo que é inesperado
+		numa série de rotinas que deveriam seguir uma lógica conhecida. Debugar então
+		é necessário para confirmar que seu programa está seguindo todas as rotinas
+		que você escreveu sem condições desconhecidas a você.
+		
+		\vskip 5mm 
+		
+		Alguns motivos para debugar:
+		\begin{itemize}
+			\item Identificar um erro e/ou condição
+			\item Acompanhar uma rotina detalhadamente
+			\item Determinar loop infinito, execuções de threads, variáveis, etc.
+		\end{itemize}
 	}
 	\only<2>{
 		\framesubtitle{Utilizando o GDB}
-		Como compilar usando GDB
+		O GDB é o projeto da GNU para debugar aplicativos escritos principalmente 
+		em C/C++ mas também tem capacidade de interagir com muitas outras linguagens,
+		nós vamos focar aqui na ferramenta de console para que você possa entender
+		processos básicos na etapa de debug de um programa.
 		
-		Como chamar o GDB
+		\begin{columns}[T]
+			\begin{column}{0.4\linewidth}
+				\begin{block}{Compilando programa para GDB}
+					\$ gcc -g -o program1 program1.c\\
+					\$ gdb program1\\
+					(gdb) run <argv1>...<argvN>
+				\end{block}
+			\end{column}
+			\begin{column}{0.6\linewidth}
+				\VerbatimInput[xleftmargin=2mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex05.txt}
+			\end{column}
+		\end{columns}
 		
-		Comandos básicos
 	}
 	\only<3>{
-	\framesubtitle{Utilizando o GDB, parte 2}
+		\framesubtitle{Utilizando o GDB, parte 2}
+		Comandos básicos
+		\begin{tabular}{c l}
+			run & roda o programa em questão, pode usar argumentos.
+			step & 
+		\end{tabular}
 	}
 	\only<4>{
 		Para os que não gostam de comandos de console é claro que temos soluções
 		livres e gráficas!! É o estilo do DDD.
 		
 		\begin{figure}
-			\includegraphics[height=180px,width=280px]{imgs/ddd.png}
+			\includegraphics[height=180,width=280]{imgs/ddd.png}
 		\end{figure}
 	}
 	\only<5>{
@@ -899,14 +948,29 @@
 		\framesubtitle{Utilizando o ltrace}
 	}
 	\only<7>{
-		\framesubtitle{O pacote binutils}
+		\framesubtitle{Por final, pacote binutils...}
+		
+		\begin{block}{Programas e significados}
+		\begin{tabular}{c l}
+			\scriptsize
+			assert.h &  detecção de erros lógicos dentro dos programas\\
+			errno.h & códigos de erro de funções de outras bibliotecas\\
+			limits.h & constantes númericas padrões no ANSI C\\
+			locale.h & internacionalização de textos e caracteres\\
+			math.h & funções matemáticas úteis em C\\
+			signal.h & sinalização de eventos e sinais\\
+			\textbf{stdio.h} & \textbf{biblioteca de entrada e saída de dados padrão}\\
+			string.h & manipulação de strings\\
+			stdlib.h & alocação de memória, números randomicos, etc.\\
+		\end{tabular}
+		\end{block}
 	}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Isso é tudo pessoal!}
     \Huge
-    \textbf{Dúvidas?}
+    \textbf{Dúvidas e Sugestões?}
     \vskip 10mm
     \normalsize
     Alexandre Mulatinho\\
