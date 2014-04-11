@@ -913,14 +913,27 @@
 		
 		\begin{columns}[T]
 			\begin{column}{0.4\linewidth}
-				\begin{block}{Compilando programa para GDB}
-					\$ gcc -g -o program1 program1.c\\
-					\$ gdb program1\\
+				\scriptsize
+				\begin{block}{Compilando programa e rodando no GDB}
+					\$ gcc \textbf{-g} -o program1 program1.c\\
+					\$ \textbf{gdb} program1\\
 					(gdb) run <argv1>...<argvN>
 				\end{block}
+				Principais erros
+				\begin{itemize}
+					\item buffer overflow
+					\item stack overflow
+					\item memory leak
+					\item loops, retornos de função, etc.
+				\end{itemize}
 			\end{column}
-			\begin{column}{0.6\linewidth}
-				\VerbatimInput[xleftmargin=2mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/ex05.txt}
+			\begin{column}{0.3\linewidth}
+				gdb1.c example\\ \hline
+				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb1.c}
+			\end{column}
+			\begin{column}{0.3\linewidth}
+				gdb2.c example\\ \hline
+				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb2.c}
 			\end{column}
 		\end{columns}
 		
@@ -928,10 +941,35 @@
 	\only<3>{
 		\framesubtitle{Utilizando o GDB, parte 2}
 		Comandos básicos
-		\begin{tabular}{c l}
-			run & roda o programa em questão, pode usar argumentos.
-			step & 
+		
+		\vspace{-0.5em}
+		\begin{table}
+		\scriptsize
+		\begin{tabular}{c | p{7cm}}
+			\textbf{comandos} & \textbf{descrição} \\ \hline
+			run & roda o programa em questão, pode usar argumentos. \\ \hline
+			break / watch & seta um breakpoint/watchpoint dentro do código fonte. \\ \hline
+			step / next & step, vai para a proxima instrução dentro da função. ja
+			o next vai para a proxima função ou rotina.\\ \hline
+			print / display & imprime o valor de uma variavel, struct, dado.\\ \hline
+			info & mostra informações de registradores, variáveis locais, etc.\\ \hline
 		\end{tabular}
+		\end{table}
+		
+		\begin{columns}[T]
+			\begin{column}{0.5\linewidth}
+				\scriptsize
+				\begin{exampleblock}{exemplo debugando com gdb, parte 1}
+					aaaa
+				\end{exampleblock}
+			\end{column}
+			\begin{column}{0.5\linewidth}
+				\scriptsize
+				\begin{exampleblock}{exemplo debugando com gdb,parte 2}
+					dddd
+				\end{exampleblock}
+			\end{column}
+		\end{columns}
 	}
 	\only<4>{
 		Para os que não gostam de comandos de console é claro que temos soluções
@@ -948,22 +986,7 @@
 		\framesubtitle{Utilizando o ltrace}
 	}
 	\only<7>{
-		\framesubtitle{Por final, pacote binutils...}
-		
-		\begin{block}{Programas e significados}
-		\begin{tabular}{c l}
-			\scriptsize
-			assert.h &  detecção de erros lógicos dentro dos programas\\
-			errno.h & códigos de erro de funções de outras bibliotecas\\
-			limits.h & constantes númericas padrões no ANSI C\\
-			locale.h & internacionalização de textos e caracteres\\
-			math.h & funções matemáticas úteis em C\\
-			signal.h & sinalização de eventos e sinais\\
-			\textbf{stdio.h} & \textbf{biblioteca de entrada e saída de dados padrão}\\
-			string.h & manipulação de strings\\
-			stdlib.h & alocação de memória, números randomicos, etc.\\
-		\end{tabular}
-		\end{block}
+		\framesubtitle{Valgrind para memória}
 	}
 \end{frame}
 

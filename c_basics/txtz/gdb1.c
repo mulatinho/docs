@@ -1,12 +1,15 @@
 #include <stdio.h>
+
+void set_pointer(char *p)
+{
+	*p = 10;
+}
+
 int main(void)
 {
-	int i = 0;
-	int j[3];
-	for(i=0; i<7; i++) {
-		j[i] = i;
-		printf("i=%d, j[%d]=%d\n", i, i, j[i]);
-	}
+	char *p = NULL;
+	
+	set_pointer(p);
 	
 	return 0;
 }
