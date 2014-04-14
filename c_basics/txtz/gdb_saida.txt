@@ -1,0 +1,11 @@
+$ gdb gdb2
+(gdb) b 8
+Breakpoint 1 at 0x400567: file gdb2.c, line 8.
+(gdb) r
+.....
+(gdb) c
+Continuing.
+i=2, x=8, j=20, viajar
+
+Breakpoint 1, main () at gdb2.c:8
+8	    printf("i=%d, x=%d, j=%d, %s\n", 

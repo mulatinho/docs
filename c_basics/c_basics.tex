@@ -42,7 +42,7 @@
 					\item controle de versões e 
 					\item debug em sistemas Unix.
 				\end{itemize}
-				
+				\item Entusiastas do uso de software livre!
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -588,8 +588,6 @@
 	
 	\only<4> {
 		\framesubtitle{Bibliotecas comuns}
-		Compilando código com biblitoecas alternativas
-		
 		\begin{block}{Tabela de bibliotecas C ANSI C99}
 		\begin{tabular}{c l}
 			\scriptsize
@@ -604,6 +602,23 @@
 			stdlib.h & alocação de memória, números randomicos, etc.\\
 		\end{tabular}
 		\end{block}
+		
+		Compilando código com biblitoecas alternativas
+		
+		\vspace{-\lineskip}
+		\begin{columns}[T]
+			\tiny
+			\begin{column}{0.5\linewidth}
+			\begin{exampleblock}{Utilizando POSIX Threads}
+				\$ gcc -o prog prog.c \textbf{-lpthread}
+			\end{exampleblock}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\begin{exampleblock}{Utilizando GTK no gráfico}
+				\$ gcc -o gtktest gtktest.c \textbf{`pkg-config --cflags --libs gtk+-2.0`}
+			\end{exampleblock}
+		\end{column}
+	\end{columns}
 	}
 \end{frame}
 
@@ -936,17 +951,17 @@
 	}
 	\only<3>{
 		\framesubtitle{Utilizando o GDB, parte 2}
-		Comandos básicos
-		
-		\vspace{-0.5em}
+
 		\begin{table}
 		\scriptsize
 		\begin{tabular}{c | p{7cm}}
 			\textbf{comandos} & \textbf{descrição} \\ \hline
 			run & roda o programa em questão, pode usar argumentos. \\ \hline
 			break / watch & seta um breakpoint/watchpoint dentro do código fonte. \\ \hline
-			step / next & step, vai para a proxima instrução dentro da função. ja
-			o next vai para a proxima função ou rotina.\\ \hline
+			step / next & step, adentra na subrotina dentro da função atual. ja
+			o next vai para a proxima linha da função atual.\\ \hline
+			continue & continua a execução até que o próximo breakpoint seja 
+			encontrado no código. \\ \hline
 			print / display & imprime o valor de uma variavel, struct, dado.\\ \hline
 			info & mostra informações de registradores, variáveis locais, etc.\\ \hline
 		\end{tabular}
@@ -956,13 +971,13 @@
 			\begin{column}{0.5\linewidth}
 				\scriptsize
 				\begin{exampleblock}{exemplo debugando com gdb, parte 1}
-					aaaa
+					\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/gdb_saida.txt}
 				\end{exampleblock}
 			\end{column}
 			\begin{column}{0.5\linewidth}
 				\scriptsize
 				\begin{exampleblock}{exemplo debugando com gdb,parte 2}
-					dddd
+					\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/gdb_saida02.txt}
 				\end{exampleblock}
 			\end{column}
 		\end{columns}
@@ -977,9 +992,39 @@
 	}
 	\only<5>{
 		\framesubtitle{Utilizando o strace}
+		O 'strace' é utilizado para rastrear com detalhes ou de forma resumida
+		chamadas de sistema executadas dentro de softwares
+		
+		\begin{itemize}
+			\item Chamadas de sistema são requisições de serviços definidos diretamente
+			no kernel com uma função específica.
+			\item Sempre que você carrega uma biblioteca, lê ou escreve em um arquivo
+			você está executando uma chamada do sistema.
+			\item No linux as chamadas do sistema estão descritas no cabeçalho
+			\textit{/usr/include/asm/unistd.h}.
+		\end{itemize}
+		
+		\vspace{-0.75\baselineskip}
+		\begin{block}{Como executar o strace?}
+			\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/strace02.txt}
+		\end{block}
+		
 	}
 	\only<6>{
-		\framesubtitle{Utilizando o ltrace}
+		\framesubtitle{Utilizando o strace, parte 2}
+		Também podemos analisar detalhadamente cada chamada, abaixo podemos ver
+		a simples saída do strace sem muito detalhamento mas que nos ajudam bastante
+		
+		\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/strace.txt}
+		
+		Alguns itens a observar:
+		\begin{itemize}
+			\scriptsize
+			\item Na linha 2 (dois) é mostrado a execução do comando na shell.
+			\item Na linha 3 (três) é carregada uma biblioteca SSL.
+			\item Na linha 8 (oito) vemos claramente o retorno -1 da execução do
+			programa bem como os argumentos passados pela função connect()
+		\end{itemize}
 	}
 	\only<7>{
 		\framesubtitle{Valgrind para memória}
@@ -1013,14 +1058,19 @@
 	\only<8>{
 		\framesubtitle{Valgrind para memória, parte 2.}
 		\begin{column}{0.6\linewidth}
-			\scriptsize
-			\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/valgrind.txt}
+			\normalsize
+			\VerbatimInput[xleftmargin=2mm,numbers=left,fontshape=sl,fontsize=\scriptsize]{txtz/valgrind.txt}
 		\end{column}
 		
 		\vskip 5mm
 		
-		\scriptsize
-		O código com erro na linha 8.
+		\begin{itemize}
+			\scriptsize
+			\item Na linha 9 até a linha 11 vemos claramente que houve um vazamento
+			de memória provocado pela linha 8 do nosso programa gdb4.c
+			\item Finalmente o resumo final confirma o vazamento de memória e informa
+			quantos bytes foram perdidos.
+		\end{itemize}
 	}
 \end{frame}
 

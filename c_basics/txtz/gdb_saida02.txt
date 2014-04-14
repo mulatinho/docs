@@ -1,0 +1,12 @@
+(gdb) display things[i]
+1: things[i] = 0x400440 <_start> "1\355I\211...
+(gdb) p i
+$1 = 3
+(gdb) n
+i=3, x=9, j=27, 1�I��^H�..
+10	    if (!(i % 3) && i!=0) {
+....
+(gdb) n
+15	    x++;
+(gdb) p x
+$2 = 12
