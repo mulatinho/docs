@@ -1,0 +1,15 @@
+$ gcc -g -Wall -o gdb4 gdb4.c
+$ valgrind --leak-check=full ./gdb4
+==18493== Memcheck, a memory error detector
+.....
+==18493== HEAP SUMMARY:
+==18493==     in use at exit: 400 bytes in 1 blocks
+==18493==   total heap usage: 1 allocs, 0 frees, 400 bytes allocated
+==18493== 
+==18493== 400 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==18493==    at 0x4C2C5AB: malloc (vg_replace_malloc.c:270)
+==18493==    by 0x40071A: main (gdb4.c:8)
+==18493== 
+==18493== LEAK SUMMARY:
+==18493==    definitely lost: 400 bytes in 1 blocks
+....

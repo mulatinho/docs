@@ -35,24 +35,14 @@
 				\item Iniciantes no mundo Unix/Linux.
 				\item Profissionais em busca de mais conhecimento
 				em desenvolvimento utilizando ferramentas livres.
-				\item Quem quer aprender o básico sobre desenvolvimento,
-				controle de versões e debug em sistemas Unix.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-	
-	\vskip 8mm
-	
-	\begin{columns}[T]
-		\begin{column}{0.3\linewidth}
-			\Large{\textbf{Quem não deve gostar muito destes slides?}}
-		\end{column}
-		\begin{column}{0.7\linewidth}
-			\normalsize
-			\begin{itemize}
-				\item Quem já tem bastante experiência em C.
-				\item Profissionais que não trabalham com sistemas Unix, Linux, 
-				MacOS, *BSD. E nem querem trabalhar!
+				\item Quem quer aprender o básico sobre:
+				\begin{itemize}
+					\item a linguagem C,
+					\item desenvolvimento,
+					\item controle de versões e 
+					\item debug em sistemas Unix.
+				\end{itemize}
+				
 			\end{itemize}
 		\end{column}
 	\end{columns}
@@ -63,7 +53,7 @@
 	\begin{columns}[T]
 		\begin{column}{0.6\linewidth}
 			\begin{itemize}
-				\item Analista de Suporte
+				\item Atualmente Analista de Suporte
 				\item 10 (dez) anos trabalhando no mercado de TI como desenvolvedor,
 				administrador de sistemas e analista de suporte em geral.
 				\item Certificado Linux - LPIC-1 / LPIC-2
@@ -73,7 +63,7 @@
 		\end{column}
 		\begin{column}{0.4\linewidth}
 			\begin{figure}
-				\includegraphics[width=120]{imgs/mlt.jpg}
+				\includegraphics[width=0.7\textwidth]{imgs/mlt.jpg}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -97,22 +87,22 @@
 \begin{frame}
 	\frametitle{Conceitos Básicos}
 	\begin{itemize}
-		\item<1->\Large{O que é um programa?}
+		\item\Large{O que é um programa?}
 		\begin{itemize}
-			\item<2-| alert@2> Uma série de instruções utilizando uma linguagem 
+			\item Uma série de instruções utilizando uma linguagem 
 			de programação dentro de uma máquina capaz de interpretá-las e 
 			processá-las com um objetivo específico.
 		\end{itemize}
-		\item<1->\Large{Como ele é feito?}
+		\item\Large{Como ele é feito?}
 		\begin{itemize}
-			\item<3-| alert@3> No final um programa é constituído de "0"s e "1"s
+			\item No final um programa é constituído de "0"s e "1"s
 			e só é entendido pelo computador, seria inviável desenvolvermos algo
 			assim e por isso foram definidas palavras por programadores que contendo
 			uma lógica adequada constroem um programa de computador.
 		\end{itemize}
-		\item<1->\Large{Quais ferramentas utilizo para desenvolvê-lo?}
+		\item\Large{Quais ferramentas utilizo para desenvolvê-lo?}
 		\begin{itemize}
-			\item<4-| alert@4> Basicamente você precisa de três coisas: um editor
+			\item Basicamente você precisa de três coisas: um editor
 			para construir o seu código, um compilador que transformará o seu código 
 			em um objeto e um linker que ira traduzir o objeto gerado para um 
 			binário entendido pela a arquitetura do seu computador.
@@ -274,7 +264,7 @@
 		\end{column}
 		\begin{column}{0.5\linewidth}
 			\begin{figure}
-				\includegraphics[width=150]{imgs/pdp11-70-front.jpg}
+				\includegraphics[width=0.75\textwidth]{imgs/pdp11-70-front.jpg}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -411,10 +401,16 @@
 	
 	\only<5> {
 	\framesubtitle{O comando switch}
+	O switch é chamado de 'if elegante', ele não é tão poderoso pois trata apenas
+	expressões simples e geralmente apenas variáveis, é muito utilizado para 
+	selecionar opções em loops de menu.
 	
 	\begin{block}{Switch}
 		\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\scriptsize]{txtz/condicoes02.txt}
 	\end{block}
+	
+	O case sempre deve ser um número ou um hash, lembrando que em C um número também
+	pode ser uma letra como em 'A', 'B' ou 'C'.
 	}
 	
 	\only<6>{
@@ -463,10 +459,10 @@
 	\begin{itemize}
 		\scriptsize
 		\item A memória alocada é segmentada de forma linear.
-		\item Por padrão, é separada em páginas de 4KB.
-		\item A razão do limite de memória é definida
-		pela tamanho da página vezes o tamanho virtual
-		de endereçamento.
+%		\item Por padrão, é separada em páginas de 4KB.
+%		\item A razão do limite de memória é definida
+%		pela tamanho da página vezes o tamanho virtual
+%		de endereçamento.
 		\item Em C quando usamos o operador \&var estamos
 		dizendo 'o endereço da memória do ponteiro var', e quando usamos o
 		operador *var estamos dizendo 'o valor contido no 
@@ -476,7 +472,7 @@
 	
 	\begin{column}{0.3\linewidth}
 		\begin{figure}
-			\includegraphics[width=100]{imgs/pointers.png}
+			\includegraphics[width=0.75\linewidth]{imgs/pointers.png}
 		\end{figure}
 	\end{column}
 	\end{columns}
@@ -912,8 +908,8 @@
 		processos básicos na etapa de debug de um programa.
 		
 		\begin{columns}[T]
-			\begin{column}{0.4\linewidth}
-				\scriptsize
+			\begin{column}{0.3\linewidth}
+				\tiny
 				\begin{block}{Compilando programa e rodando no GDB}
 					\$ gcc \textbf{-g} -o program1 program1.c\\
 					\$ \textbf{gdb} program1\\
@@ -927,13 +923,13 @@
 					\item loops, retornos de função, etc.
 				\end{itemize}
 			\end{column}
-			\begin{column}{0.3\linewidth}
+			\begin{column}{0.4\linewidth}
 				gdb1.c example\\ \hline
-				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb1.c}
+				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb2.c}
 			\end{column}
 			\begin{column}{0.3\linewidth}
 				gdb2.c example\\ \hline
-				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb2.c}
+				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb1.c}
 			\end{column}
 		\end{columns}
 		
@@ -987,6 +983,44 @@
 	}
 	\only<7>{
 		\framesubtitle{Valgrind para memória}
+		O valgrind analisa erros de softwares diretamente ligados a memória, é muito
+		útil para descobrir memory leaks.
+		
+		\begin{columns}[T]
+			\begin{column}{0.5\linewidth}
+				\normalsize
+				O código ao lado mostra um programa com dois problemas: um 
+				comportamento indefinido (um dos erros mais difíceis de detectar
+				sem uma ferramenta adequada em C) e um vazamento de memória devido
+				ao alocamento sem liberação.
+				
+				\begin{itemize}
+					\item O valgrind aponta a quantidade de bytes escritos na
+					memória que contém erros ou vazamento.
+				\end{itemize}
+			\end{column}
+			\begin{column}{0.5\linewidth}
+				\scriptsize
+				gdb4.c example\\ \hline
+				\VerbatimInput[xleftmargin=5mm,numbers=left,fontshape=sl,fontsize=\tiny]{txtz/gdb4.c}
+				\normalsize
+				\begin{itemize}
+					\item Identifica a função responsável e a linha dentro do código fonte.
+				\end{itemize}
+			\end{column}
+		\end{columns}
+	}
+	\only<8>{
+		\framesubtitle{Valgrind para memória, parte 2.}
+		\begin{column}{0.6\linewidth}
+			\scriptsize
+			\VerbatimInput[xleftmargin=2mm,fontshape=sl,fontsize=\tiny]{txtz/valgrind.txt}
+		\end{column}
+		
+		\vskip 5mm
+		
+		\scriptsize
+		O código com erro na linha 8.
 	}
 \end{frame}
 

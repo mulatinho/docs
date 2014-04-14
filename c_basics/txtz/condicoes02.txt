@@ -2,6 +2,8 @@ switch (var) {
 	case 2:
 		total += var;
 		break;
+	case 27:
+		total *= 25;
 	
 	default:
 		total++;

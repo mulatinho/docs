@@ -1,0 +1,24 @@
+execve("./gdb1", ["./gdb1"], [/* 53 vars */]) = 0
+brk(0)                                  = 0x17a6000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ffed0654000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=270861, ...}) = 0
+mmap(NULL, 270861, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7ffed0611000
+close(3)                                = 0
+open("/lib64/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\0\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\220\36\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2098910, ...}) = 0
+mmap(NULL, 3965536, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7ffed0069000
+mprotect(0x7ffed0228000, 2093056, PROT_NONE) = 0
+mmap(0x7ffed0427000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1be000) = 0x7ffed0427000
+mmap(0x7ffed042d000, 16992, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7ffed042d000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ffed0610000
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7ffed060e000
+arch_prctl(ARCH_SET_FS, 0x7ffed060e740) = 0
+mprotect(0x7ffed0427000, 16384, PROT_READ) = 0
+mprotect(0x7ffed0655000, 4096, PROT_READ) = 0
+munmap(0x7ffed0611000, 270861)          = 0
+--- SIGSEGV {si_signo=SIGSEGV, si_code=SEGV_MAPERR, si_addr=0} ---
++++ killed by SIGSEGV +++
