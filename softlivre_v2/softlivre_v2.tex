@@ -10,7 +10,7 @@
 \mode<presentation>
 { \usetheme{Warsaw} }
 
-\title[Software Livre - Conceitos e Aplicações]{Software Livre - Conceitos e Aplicações}
+\title[Software Livre e Código Aberto - Conceitos e Aplicações]{Software Livre e Código Aberto\\Conceitos e Aplicações}
 \author{Alexandre Mulatinho\\ E-mail: alex@mulatinho.net}
 \institute{Mulatinho's Weblog\\ http://alex.mulatinho.net\\ Twitter: @alexmulatinho}
 
@@ -41,7 +41,7 @@
 				\begin{itemize}
 					\item história da computação,
 					\item licenciamento de software,
-					\item cases de sucesso no governo e 
+					\item Ameaças e Cases de Sucesso no governo e 
 					\item ferramentas de software livre.
 				\end{itemize}
 			\end{itemize}
@@ -69,12 +69,11 @@
 \begin{frame}
 	\frametitle{Agenda}
 	\begin{itemize}
-	\item \Large{\textbf{Conceitos Básicos}}
-	\item \Large{História do Software Livre}
-	\item \Large{Licenças e Negócios}
-	\item \Large{Ferramentas Revolucionárias}
-	\item \Large{Ações que beneficiaram você!}
-	\item \Large{Cases de Sucesso}
+	\item \large{\textbf{Conceitos Básicos}}
+	\item \large{Software Livre e Código Aberto}
+	\item \large{Licenças e Negócios}
+	\item \large{Ferramentas Revolucionárias}
+	\item \large{Ameaças e Cases de Sucesso}
 	\end{itemize}
 	\normalsize
 \end{frame}
@@ -103,26 +102,23 @@
 	\begin{enumerate}
 		\item Um hardware (computador, sistema embarcado, etc.)
 		\item Um compilador (transformará o código em binário)
+		\item Um editor (para que seja possível escrever o código)
 		\item Um desenvolvedor (responsável pelo código do programa)
 	\end{enumerate}
 	
 	Geralmente existe um sistema operacional entre os itens 1 e 2, embora isso
 	não seja necessariamente a regra. 
 	
-	\begin{block}{Arquiteturas de Computadores}
-		x86, ia64, SPARC, PowerPC, ARM, Z80, ....
-	\end{block}
-	
 	\begin{columns}[T]
 		\begin{column}{0.5\linewidth}
-			\begin{exampleblock}{Fabricantes}
+			\begin{block}{Os Gigantes}
 				IBM, Intel, AMD, Apple, ...
-			\end{exampleblock}
+			\end{block}
 		\end{column}
 		\begin{column}{0.5\linewidth}
-			\begin{exampleblock}{Sistemas Operacionais}
+			\begin{block}{Sistemas Operacionais}
 				Linux, Windows, MacOS, ...
-			\end{exampleblock}
+			\end{block}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -130,9 +126,28 @@
 \begin{frame}
 	\frametitle{Conceitos Básicos}
 	\framesubtitle{Miscelânia de softwares por S.O.}
-	\begin{figure}
-		\includegraphics[width=0.70\linewidth]{imgs/conjuntos_so.png}
-	\end{figure}
+	\begin{columns}[T]
+		\begin{column}{0.35\linewidth}
+			\vskip 5mm
+			Tipos de software
+			\begin{itemize}
+				\item Básico.
+				\item Aplicativo.
+			\end{itemize}
+			
+			\vskip 5mm 
+			
+			\footnotesize
+			Muitas vezes esquecemos que estes softwares são \textbf{criados por pessoas}
+			e não por empresas, as empresas apenas apenas contratam os funcionários,
+			patrocinam o sistema e colocam o seu nome e sua marca.
+		\end{column}
+		\begin{column}{0.65\linewidth}
+			\begin{figure}
+				\includegraphics[width=0.95\linewidth]{imgs/conjuntos_so.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -140,38 +155,124 @@
 	\framesubtitle{Principais diferenças de software}
 	\Large{Então o que diferencia um software proprietário de um software livre!?}
 	
-	\vskip 5mm 
+	% \vskip 5mm 
 	
 	\begin{itemize}
 	\item \Large{Antes de tudo sua filosofia,}
 	\item \Large{As licenças contidas no software,}
+	\item \Large{Os direitos fornecidos aos usuários,}
 	\end{itemize}
 	
-	\vskip 5mm 
+	%\vskip 5mm 
 	
 	\large{E acima de tudo a liberdade de estudar o software tendo como pré-requesito
 	o acesso ao código fonte.}
 	
+	\begin{flushright}
+		\scriptsize{Veremos isso mais à frente...}
+	\end{flushright}
+	
 \end{frame}
 
+% Conceitos Básicos
+% % Definição de Software
+% % Mitos e Crenças
+% % 
+
 \begin{frame}
-	\frametitle{Conceitos Básicos}
-	\framesubtitle{Alguns mitos e inverdades}
-	
-	\Large{O que o software livre não é!?}
-	
+	\frametitle{Agenda}
 	\begin{itemize}
-		\item \Large{Comunista,}
-		\item \Large{Sistema para nerds e geeks,}
-		\item \Large{\textbf{Absolutamente} gratuito.}
+	\item \large{Conceitos Básicos}
+	\item \large{\textbf{Software Livre e Código Aberto}}
+	\item \large{Licenças e Negócios}
+	\item \large{Ferramentas Revolucionárias}
+	\item \large{Ameaças e Cases de Sucesso}
 	\end{itemize}
-	
-	\Large{Software livre pode ser comercializado!?}
+	\normalsize
 \end{frame}
 
 \begin{frame}
-	\frametitle{Conceitos Básicos}
-	\framesubtitle{Software Livre}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{Alguns antecedentes, parte I}
+	
+	\begin{description}
+		\item[1956] O governo americano proibe a AT\&T de entrar no mercado de
+		software e isso dá início a distribuição livre do MULTICS (futuro Unix).
+		\item[1969] Ken Thompson e Dennis Ritchie dão início ao desenvolvimento 
+		do Unics utilizando a linguagem de montagem Assembly.
+		\item[1972] Os dois hackers tentam re-escrever o Unics em B, durante o 
+		processo criam a linguagem C utilizada até hoje nos sistemas operacionais.
+	\end{description}
+	
+	Apartir dessa data o Unix começa a ser distribuído em universidades e centros
+	de pesquisa americanas.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{Alguns antecedentes, parte II}
+	
+	\begin{description}
+		\item[1976] Bill Gates escreve uma "carta aberta aos hobbystas" que
+		revoluciona o mercado de software proprietário.
+		\item[1979] AT\&T começa a forçar a venda de licenças restritivas quando
+		percebe a possibilidade de ganhar dinheiro com o Unix.
+		\item[1981] A IBM fecha acordo com a Microsoft para que ela forneça o 
+		DOS para PC iniciando-se a expansão da empresa.
+		\item[1983] Stallman envia uma mensagem a USENET informando a criação do
+		GNU para desenvolver um sistema operacional aberto como o UNIX.
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{O início do Software Livre} 
+	
+	\begin{columns}[T]
+		\begin{column}{0.45\linewidth}
+			\begin{figure}
+				\includegraphics[width=\linewidth]{imgs/stallman.jpg}
+			\end{figure}
+	
+			\begin{itemize}
+				\footnotesize
+				\item Richard Matthew Stallman
+			\end{itemize}
+			
+		\end{column}
+		\begin{column}{0.55\linewidth}
+			\vskip 5mm
+			
+			Formado em física pela Harvard e depois funcionário do laboratório
+			de inteligência artificial do MIT, Stallman percebeu a barreira que
+			o software proprietário infligia ao avanço do conhecimento tecnológico.
+			
+			\vskip 2mm
+			
+			\begin{itemize}
+				\footnotesize
+				\item O primeiro revés da Xerox.
+				\item A parabóla da receita doméstica.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
+	\vskip 5mm
+	
+	Cria o movimento GNU, a Fundação de Software Livre (FSF) e a licença GPL
+	que defende os códigos livres de softwares proprietários.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Livre e Código Aberto}
+	\begin{center}
+		\Huge{Então, o que é realmente o Software Livre?}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{Definição de Software Livre}
 	
 	Todo o software que cumpre os quatro requesitos citados abaixo é conhecido
 	como software livre. Os requesitos, também conhecidos nas comunidades como 
@@ -188,8 +289,8 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Conceitos Básicos}
-	\framesubtitle{Software Livre, parte 2.}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{Definição de Software Livre, parte II}
 	
 	\begin{description}
 		\item[nº 2:] Redistribuição de cópias do software obtidas, ou seja, 
@@ -208,50 +309,116 @@
 	O autor é protegido por uma licença chamada \textbf{Copyleft}.
 \end{frame}
 
-% Conceitos Básicos
-% % Definição de Software
-% % Mitos e Crenças
-% % 
+\begin{frame}
+	\frametitle{Conceitos Básicos}
+	\framesubtitle{Alguns mitos e inverdades}
+	
+	\Large{O que o software livre não é!?}
+	
+	\begin{itemize}
+		\item \Large{Comunista,}
+		\item \Large{Sistema para nerds e geeks,}
+		\item \Large{\textbf{Absolutamente} gratuito.}
+	\end{itemize}
+	
+	\Large{Software livre pode ser comercializado!?}
+\end{frame}
 
-% História do Software Livre
+\begin{frame}
+	\frametitle{O início do Open Source}
+	\framesubtitle{Código aberto vs Software Livre} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{O início do Open Source}
+	\framesubtitle{Open Source Initiative}
+\end{frame}
+
+% Software Livre e Código Aberto
 % % Início e História
 % % Open Source
-% % Software Livre No Mundo
-% % Software Livre No Brasil
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \large{Conceitos Básicos}
+	\item \large{Software Livre e Código Aberto}
+	\item \large{\textbf{Licenças e Negócios}}
+	\item \large{Ferramentas Revolucionárias}
+	\item \large{Ameaças e Cases de Sucesso}
+	\end{itemize}
+	\normalsize
+\end{frame}
 
 % Licenças e Negócios
 % % Software Proprietário vs Software Livre
 % % Copyright e Copyleft
-% % Negócios Utilizando Software Livre
-% % Negócios 
-
-% Ferramentas Revolucionárias
-% % Apache
-% % Linux
-% % OpenOffice / LibreOffice
-% % Android
-
-% Ações que beneficiaram você
-% % 
-% % FISL
-% % Marco Civil na Internet
-
-% Cases de Sucesso
-% % 
-% % Expresso Cidadão
-% % 
 
 \begin{frame}
-	\frametitle{Referências}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \large{Conceitos Básicos}
+	\item \large{Software Livre e Código Aberto}
+	\item \large{Licenças e Negócios}
+	\item \large{\textbf{Ferramentas Revolucionárias}}
+	\item \large{Ameaças e Cases de Sucesso}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+% Ferramentas Revolucionárias
+% % Linux
+% % Apache
+% % Android
+% % OpenOffice / LibreOffice
+% % Algumas Imagens
+
+\begin{frame}
+	\frametitle{Agenda}
+	\begin{itemize}
+	\item \large{Conceitos Básicos}
+	\item \large{Software Livre e Código Aberto}
+	\item \large{Licenças e Negócios}
+	\item \large{Ferramentas Revolucionárias}
+	\item \large{\textbf{Ameaças e Cases de Sucesso}}
+	\end{itemize}
+	\normalsize
+\end{frame}
+
+% Ações que beneficiaram você / Ameaças e Soluções Digitais
+% % Privacidade
+% % Privacidade na Internet
+% % Marco Civil na Internet
+% Ameaças e Cases de Sucesso
+% % Comunidades
+% % Expresso Cidadão
+% % LibreOffice
+% % LTSP e Telecentros
+% % One Laptop Per Children
+
+\begin{frame}
+	\frametitle{Isso é tudo pessoal!}
 	
-	\Large{\textbf{Websites}}
-	
-	\vskip 5mm
 	
 	
+	\begin{center}
+		\Large{Obrigado a todos!}
+		\vskip 4mm
+		\Large{\textbf{Software Livre:}}\\
+		\normalsize{Socialmente justo,\\
+		tecnologicamente viável e\\
+		economicamente sustentável.}
+	\end{center}
 	
-	\Large{\textbf{Livros}}
+	\Large{\textbf{Referências}}
 	
-	\vskip 5mm
+	\begin{enumerate}
+		\footnotesize{}
+		\item Software Livre, Sérgio Amadeu.
+		\item Software Livre e Inclusão Digital, Sérgio Amadeu e João Cassino.
+		\item "A catedral e o Bazar", Eric S. Raymond.
+		\item História do Software Livre e Código Aberto, Wikipédia.
+		\item "Free Software: Freedom and Cooperation", Richard Stallman.
+	\end{enumerate}
 \end{frame}
 \end{document}
