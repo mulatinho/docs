@@ -62,7 +62,7 @@
 	\end{itemize}
 	
 	\begin{center}
-		\Large{\textbf{Software livre!}}
+		\Large{\textbf{Software livre e Código aberto!}}
 	\end{center}
 \end{frame}
 
@@ -82,6 +82,75 @@
 
 \begin{frame}
 	\frametitle{Conceitos Básicos}
+	\framesubtitle{A importância do livre conhecimento}
+	
+	Segundo Platão o \textbf{conhecimento} tem como base a crença \textit{verdadeira
+	e justificada} e é definida simplesmente pelo ato de conhecer algo, tornando
+	imprescendível que o \textbf{dado} e a \textbf{informação} estejam disponíveis.
+
+	\vskip 5mm
+	Apenas três dos vários tipos de conhecimento:
+	
+	\begin{description}
+		\item[Sensorial] Obtido de nossas experiências sensitivas e fisiológicas
+		(tato, visão, paladar, olfato, audição).
+		\item[Científico] Busca por leis e sistemas, no intuito de explicar de modo
+		racional aquilo que se está observando. 
+		\item[Filosófico] Ligado a ideiais e a conceitos geralmente obtidos através
+		de debates e indagações.
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conceitos Básicos}
+	\framesubtitle{A importância do livre conhecimento, parte II}
+	
+	\textbf{Propriedade Intelectual} é a soma dos direitos relativos às
+	obras literárias, artísticas e científicas. No nosso contexto isto
+	também é aplicado aos programas de computador.
+	
+	\begin{itemize}
+		\item No Brasil a lei número 9.609 dita as regras para o registro
+		de patentes de Software, e a lei 9.610 fala sobre os direitos
+		autorais em todos os âmbitos.
+		\item O registro de patentes no Brasil é realizado pelo INPI.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conceitos Básicos}
+	\framesubtitle{A importância do livre conhecimento, parte II}
+
+	\begin{columns}[T]
+		\begin{column}{0.35\linewidth}
+			\begin{figure}
+				\includegraphics[width=0.95\linewidth]{imgs/piramide-conhecimento.jpg}
+			\end{figure}
+			\scriptsize
+			DIKW, do inglês Data-Information-Knowledge-Wisdow, também conhecida 
+			como Pirâmide do Conhecimento
+		\end{column}
+		\begin{column}{0.65\linewidth}
+			Se formos refletir nas definições e explicações citadas anteriormente,
+			o que seria de nós se o conhecimento...
+	
+			\begin{itemize}
+				\item De fazer fogo na era pré-histórica não fosse repassado?
+				\item Acadêmico e científico não fosse compartilhado em pesquisas?
+				\item Da matemática e da lógica não fossem estudadas?
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	
+	\vskip 4mm
+	
+	E o que isso tudo tem a ver com software livre e código aberto? Veremos a 
+	frente, por hora voltemos a nosso nicho...
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conceitos Básicos}
 	\framesubtitle{Qual a definição para \large{\textbf{software}}!?}
 	
 	\emph{"Qualquer programa ou grupo de programas que instrui o hardware sobre a 
@@ -97,27 +166,6 @@
 
 \begin{frame}
 	\frametitle{Conceitos Básicos}
-	\framesubtitle{Algumas definições que devemos recordar..}
-	
-	\textbf{Propriedade Intelectual} é a soma dos direitos relativos às
-	obras literárias, artísticas e científicas. No nosso contexto isto
-	também é aplicado aos programas de computador.
-	
-	\begin{itemize}
-		\item No Brasil a lei número 9.609 dita as regras para o registro
-		de patentes de Software, e a lei 9.610 fala sobre os direitos
-		autorais em todos os âmbitos.
-	\end{itemize}
-	
-	
-	% Conhecimento
-	
-	% Propriedade Intelectual
-	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Conceitos Básicos}
 	\framesubtitle{Principais requisitos}
 	
 	O que é \textbf{necessário para construir} um software!?
@@ -125,6 +173,7 @@
 	\begin{enumerate}
 		\item Um hardware (computador, sistema embarcado, etc.)
 		\item Um compilador (transformará o código em binário)
+		\item Uma linguagem de programação.
 		\item Um editor (para que seja possível escrever o código)
 		\item Um desenvolvedor (responsável pelo código do programa)
 	\end{enumerate}
@@ -178,7 +227,7 @@
 	\framesubtitle{Principais diferenças de software}
 	\Large{Então o que caracteriza um software livre!?}
 	
-	% \vskip 5mm 
+	\vskip 5mm 
 	
 	\begin{itemize}
 	\item \Large{Antes de tudo sua filosofia,}
@@ -186,13 +235,13 @@
 	\item \Large{Os direitos fornecidos aos usuários,}
 	\end{itemize}
 	
-	%\vskip 5mm 
+	\vskip 5mm 
 	
 	\large{E acima de tudo a liberdade de estudar o software tendo como pré-requesito
 	o acesso ao código fonte.}
 	
 	\begin{flushright}
-		\scriptsize{Veremos isso mais à frente...}
+		\scriptsize{Vamos entender um pouco melhor!? ;)}
 	\end{flushright}
 	
 \end{frame}
@@ -331,7 +380,32 @@
 	
 	\vskip 5mm
 	
-	O autor é protegido por uma licença chamada \textbf{Copyleft}.
+	O autor é protegido por licenças conhecidas como \textbf{Copyleft}.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Livre e Código Aberto}
+	\framesubtitle{Vantagens e Desvantagens}
+	
+	\begin{columns}[T]
+		\begin{column}{0.5\linewidth}
+			\textbf{Vantagens}
+			\begin{itemize}
+				\item Liberdade de escolha,
+				\item Compartilhamento de conhecimento,
+				\item Mais voluntários, mais olhos. Lei de Linus.
+				\item Muitas vezes gratuito o que ajuda a reduzir custos.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.5\linewidth}
+			\textbf{Desvantagens}
+			\begin{itemize}
+				\item Exige conhecimento técnico específico,
+				\item Carente de suporte formal através de empresas,
+				\item Muito preconceito sobre o modelo de negócios.
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
@@ -340,11 +414,15 @@
 	
 	\Large{O que o software livre não é!?}
 	
+	\vskip 5mm
+	
 	\begin{itemize}
 		\item \Large{Comunista,}
 		\item \Large{Sistema para nerds e geeks,}
 		\item \Large{\textbf{Absolutamente} gratuito.}
 	\end{itemize}
+	
+	\vskip 5mm
 	
 	\Large{Software livre pode ser comercializado!?}
 \end{frame}
@@ -367,6 +445,9 @@
 			
 			\begin{itemize}
 				\item Autor de "A catedral e o Bazar".
+				\begin{itemize}
+					\item Lei de Linus
+				\end{itemize}
 				\item Desmistificou o conceito de "livre".
 				\item Criou a Iniciativa do Código Aberto.
 			\end{itemize}
@@ -391,17 +472,16 @@
 				\begin{itemize}
 					\item Permite que códigos abertos sejam integrados a 
 					softwares proprietários.
-					\item Permite o uso de licenças diferentes da GPL.
+					\item Permite o uso de licenças mais permissivas do que a GPL.
 				\end{itemize}
+				\item Abriu os olhos de grandes empresas que patrocinam e 
+				incentivam o uso de código aberto até hoje como a IBM, Red Hat, 
+				Google, etc.
 			\end{itemize}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Software Livre e Código Aberto}
-	\framesubtitle{Vantagens e Desvantagens}
-\end{frame}
 % Software Livre e Código Aberto
 % % Início e História
 % % Open Source
@@ -428,26 +508,84 @@
 
 \begin{frame}
 	\frametitle{Licenças de Software}
+	\framesubtitle{Tipos de licença comuns do software proprietário}
+	
+	\begin{itemize}
+		\item \textbf{Freeware} é um software considerado gratuito que dispõe de
+		todas as suas funcionalidades abertas mas que quase sempre não é considerado
+		software livre pois não disponibiliza seu código fonte.
+		\item O software \textbf{shareware} também é disponibilizado gratuitamente
+		mas com algumas limitações de uso e/ou suas funcionalidades e só é totalmente
+		liberado mediante a pagamento pelo usuário.
+		\begin{itemize}
+			\item \textbf{Software Trial} limita por tempo (dias, meses) a utilização
+			de um software dando ao usuário a possibilidade de testar antes de comprar
+			o software.
+			\item E o \textbf{Software Demo} que é uma versão limitada do software também
+			para avaliação mas contendo apenas alguns pedaços da solução completa.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Licenças de Software}
 	\framesubtitle{Licença Pública da GNU}
+	A licença pública da GNU, mas conhecida como GPL, foi criada em 1989 e é 
+	utilizada na maioria dos softwares livres de hoje em dia, isso inclui o Kernel
+	do Linux e o Wikipédia.
 	
+	\begin{itemize}
+		\item Basicamente garante as quatro liberdades citadas anteriormente ao
+		usuário e a proteção dos direitos do desenvolvedor de software.
+		\begin{itemize}
+			\item Utilização do software.
+			\item Estudo do software e seus fontes.
+			\item Distribuição do software.
+			\item Modificação e distribuição do software.
+		\end{itemize}
+		\item Direito legal ao software preservando o nome do autor.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Licenças de Software}
-	\framesubtitle{Licença MIT}
+	\framesubtitle{Licença Apache, BSD, MIT}
 	
-\end{frame}
-
-\begin{frame}
-	\frametitle{Licenças de Software}
-	\framesubtitle{Licença Apache 2.0}
+	Basicamente estas licenças contemplam as idéias da GPL mas com pequenas 
+	mudanças importantes em sua descrição. São elas:
 	
+	\vskip 5mm
+	
+	\begin{columns}
+		\begin{column}{0.33\linewidth}
+			\textbf{Licença Apache}
+			\begin{itemize}
+				\small
+				\item
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.33\linewidth}
+			\textbf{Licença BSD}
+			\begin{itemize}
+				\small
+				\item
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.33\linewidth}
+			\textbf{Licença MIT}
+			\begin{itemize}
+				\small
+				\item
+			\end{itemize}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Licenças de Software}
 	\framesubtitle{Licença Creative Commons}
 	
+	Basicamente estas licenças 
 \end{frame}
 
 \begin{frame}
@@ -502,8 +640,25 @@
 
 \begin{frame}
 	\frametitle{Ferramentas e Cases de (In)Sucessos}
+	\framesubtitle{O GNU/Linux, parte II}
+	
+	% Screenshots
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ferramentas e Cases de (In)Sucessos}
+	\framesubtitle{O GNU/Linux, parte III}
+	
+	% Screenshots
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ferramentas e Cases de (In)Sucessos}
 	\framesubtitle{Apache HTTP Server}
 	
+	\begin{figure}
+		\includegraphics[width=0.95\linewidth]{imgs/apache-netcraft-stats.png}
+	\end{figure}
 \end{frame}
 
 
@@ -515,15 +670,15 @@
 
 \begin{frame}
 	\frametitle{Ferramentas e Cases de (In)Sucessos}
-	\framesubtitle{One Laptop Per Children}
+	\framesubtitle{LTSP, Telecentros e One Laptop Per Children}
 	
 \end{frame}
 
 \begin{frame}
 	\frametitle{Ferramentas e Cases de (In)Sucessos}
-	\begin{center}
-		\Huge{Você está seguro utilizando software proprietário!?}
-	\end{center}
+	\framesubtitle{LTSP, Telecentros e One Laptop Per Children}
+	
+	% Screenshots
 \end{frame}
 
 \begin{frame}
@@ -540,14 +695,22 @@
 
 \begin{frame}
 	\frametitle{Ferramentas e Cases de (In)Sucessos}
-	\framesubtitle{Software Livre no Mundo}
-	% Regulamentarização, Governos, Países
+	\framesubtitle{Software Livre e Você!}
+	% BIND acessando internet
+	% Roteadores
+	% Internet das coisas
 \end{frame}
 
 \begin{frame}
 	\frametitle{Ferramentas e Cases de (In)Sucessos}
 	\framesubtitle{Software Livre no Brasil}
 	% Governo, Empresas
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ferramentas e Cases de (In)Sucessos}
+	\framesubtitle{Software Livre no Mundo}
+	% Regulamentarização, Governos, Países
 \end{frame}
 
 \begin{frame}
